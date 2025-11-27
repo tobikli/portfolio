@@ -4,7 +4,7 @@ import Darkmode from '@/components/DarkMode.vue'
 import PopupView from '@/views/PopupView.vue'
 import { resolveDynamicComponent } from 'vue'
 import { sections } from '@/data/sections'
-
+import AppFooter from './components/AppFooter.vue'
 import { reactive, onMounted, onBeforeUnmount } from 'vue'
 
 const visible = reactive<Record<string, boolean>>({})
@@ -22,7 +22,7 @@ onMounted(() => {
   observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       const id = (entry.target as HTMLElement).id
-      visible[id] = entry.isIntersecting && entry.intersectionRatio > 0.2
+      visible[id] = entry.isIntersecting && entry.intersectionRatio > 0.1
     })
   }, opts)
 
@@ -55,6 +55,7 @@ onBeforeUnmount(() => {
       />
     </section>
   </main>
+  <AppFooter />
   <Darkmode />
   <PopupView />
 </template>

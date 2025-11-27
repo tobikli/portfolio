@@ -8,6 +8,13 @@ import { ref, onMounted, onBeforeUnmount } from 'vue'
 const isDark = useDark()
 const currentAnchor = ref('')
 
+const isContact = (id: string) => {
+  if (id === 'contact' && currentAnchor.value === '') {
+    return 'active'
+  }
+  return ''
+}
+
 onMounted(() => {
   const pageSections = document.querySelectorAll('section')
 
@@ -42,7 +49,7 @@ onMounted(() => {
             :href="'#' + section.id"
             :class="[
               'nav-link px-3 py-2 rounded text-sm underline-offset-8',
-              currentAnchor === section.id ? 'active' : '',
+              currentAnchor === section.id ? 'active' : isContact(section.id),
               'text-gray-900 dark:text-gray-100',
             ]"
           >

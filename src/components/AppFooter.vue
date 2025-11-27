@@ -5,7 +5,6 @@ const year = new Date().getFullYear()
 </script>
 
 <template>
-  <hr />
   <ScrollVelocity
     :texts="[`| Copyright ${year} ${information.name_short}`, 'Made with ♡ and Vue.js |']"
     :velocity="10"

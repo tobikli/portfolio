@@ -2,7 +2,6 @@
 import { ref } from 'vue'
 import { information } from '@/data/information'
 import { showPopup } from '@/composables/usePopup'
-import AppFooter from '@/components/AppFooter.vue'
 const email = ref('')
 const message = ref('')
 
@@ -42,7 +41,6 @@ const sendMessage = () => {
       </div>
     </div>
   </div>
-  <AppFooter />
 </template>
 
 <style>
