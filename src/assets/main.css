@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import 'tailwindcss';
+@import 'primeicons/primeicons.css';
+
+@theme {
+  --font-montserrat: 'Montserrat', sans-serif;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  html,
+  body,
+  #app {
+    @apply font-montserrat;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  /* tell the browser to offset anchor scrolling by the header height */
+  scroll-padding-top: var(--header-height, 64px);
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+:root {
+  --header-height: 64px;
+}
+
+.section {
+  scroll-margin-top: var(--header-height);
+}
