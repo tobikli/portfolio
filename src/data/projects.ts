@@ -116,21 +116,4 @@ export const projects: Project[] = [
     tags: ['Unity', 'C#'],
     link: '',
   },
-  {
-    name: 'imgtoascii',
-    shortName: 'imgtoascii',
-    shortDescription: 'Image to asciiart converter.',
-    longDescription: `
-    Simple python script to convert any picture to ascii art. The algorithm is based on the birghtness in the grayscale variant of the picture and matches each brightness level to one ASCII character.
-    Usage:
-
-    ./ita.py
-    -h help
-    -o Outputfile
-    -s Scalefactor [1,2,4,8]
-    `,
-    date: '2023',
-    tags: ['Python'],
-    link: 'https://github.com/tobikli/imgtoascii',
-  },
 ]

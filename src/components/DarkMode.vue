@@ -1,20 +1,18 @@
 <script setup lang="ts">
-import { useDark, useToggle } from '@vueuse/core';
+import { useDark, useToggle } from '@vueuse/core'
 
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
 </script>
 
 <template>
-    <button
+  <button
     @click="toggleDark()"
-    class="fixed bottom-4 right-4 z-9999 inline-flex items-center justify-center w-12 h-12 rounded-full
-           bg-gray-600/5 backdrop-blur-xs
-           hover:scale-105 transform-gpu transition"
-    >
-    <i v-if="isDark" class="pi pi-sun"/>
-    <i v-else class="pi pi-moon"/>
-    </button>
+    class="fixed bottom-4 right-4 z-9999 inline-flex items-center rounded-full justify-center w-10 h-10 bg-gray-600/5 backdrop-blur-xs hover:scale-105 transform-gpu transition"
+  >
+    <i v-if="isDark" class="pi pi-sun" />
+    <i v-else class="pi pi-moon" />
+  </button>
 </template>
 
 <style>

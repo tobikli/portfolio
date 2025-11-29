@@ -27,9 +27,9 @@ const splitLines = lines.map((line) => ({
     :move-particles-on-hover="true"
     :particle-hover-factor="1"
     :alpha-particles="false"
-    :particle-base-size="100"
-    :size-randomness="2"
-    :camera-distance="30"
+    :particle-base-size="60"
+    :size-randomness="4"
+    :camera-distance="40"
     :disable-rotation="false"
     class="w-full h-full pointer-events-none"
   />
@@ -73,7 +73,7 @@ const splitLines = lines.map((line) => ({
         <font-awesome-icon
           :icon="link.icon"
           size="2xl"
-          class="transition-colors duration-300 hover:text-gray-600"
+          class="transition-all duration-300 hover:scale-110"
         />
       </motion.a>
     </div>
