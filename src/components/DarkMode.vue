@@ -6,17 +6,21 @@ const toggleDark = useToggle(isDark)
 </script>
 
 <template>
-  <button
-    @click="toggleDark()"
-    class="fixed bottom-4 right-4 z-9999 inline-flex items-center rounded-full justify-center w-10 h-10 bg-gray-600/5 backdrop-blur-xs hover:scale-105 transform-gpu transition"
+  <div
+    class="fixed bottom-4 right-4 z-9999 pb-safearea"
   >
-    <i v-if="isDark" class="pi pi-sun" />
-    <i v-else class="pi pi-moon" />
-  </button>
+    <button
+      @click="toggleDark()"
+      class="inline-flex items-center rounded-full justify-center w-10 h-10 bg-gray-600/5 backdrop-blur-xs hover:scale-105 transform-gpu transition"
+    >
+      <i v-if="isDark" class="pi pi-sun" />
+      <i v-else class="pi pi-moon" />
+    </button>
+  </div>
 </template>
 
 <style>
-button {
-  padding-bottom: env(safe-area-inset-bottom, 0.5rem);
+.pb-safearea {
+  padding-bottom: env(safe-area-inset-bottom, 0);
 }
 </style>
