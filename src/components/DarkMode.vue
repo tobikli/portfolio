@@ -11,7 +11,7 @@ const toggleDark = useToggle(isDark)
   >
     <button
       @click="toggleDark()"
-      class="inline-flex items-center rounded-full justify-center w-10 h-10 bg-gray-600/5 backdrop-blur-xs hover:scale-105 transform-gpu transition"
+      class="inline-flex items-center rounded-full justify-center w-10 h-10 bg-gray-600/5 backdrop-blur-xs hover:scale-105 hover:cursor-pointer transform-gpu transition"
     >
       <i v-if="isDark" class="pi pi-sun" />
       <i v-else class="pi pi-moon" />
