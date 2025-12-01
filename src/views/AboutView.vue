@@ -31,33 +31,35 @@ import PublicationsOverview from '@/components/PublicationsOverview.vue'
             focused on <b>Software Engineering</b> and <b>Cloud Technologies</b>.
           </p>
           <p class="mt-3 mb-3">I have experience with:</p>
-          <motion.a
-            v-for="tech in information.techstack"
-            :key="tech.name"
-            :title="tech.name"
-            class="p-2"
-            :initial="{ opacity: 0, y: 20 }"
-            :animate="{ opacity: 1, y: 0 }"
-            :transition="{ duration: 0.5, delay: 0 }"
-            :whileHover="{ scale: 1.2, rotate: 10 }"
-            :whileTap="{ scale: 0.9 }"
-          >
-            <font-awesome-icon
-              :icon="tech.icon"
-              size="lg"
-              class="transition-all duration-300 hover:scale-110"
-            />
-          </motion.a>
+          <div class="flex flex-wrap gap-2">
+            <motion.a
+              v-for="tech in information.techstack"
+              :key="tech.name"
+              :title="tech.name"
+              class="p-1"
+              :initial="{ opacity: 0, y: 20 }"
+              :animate="{ opacity: 1, y: 0 }"
+              :transition="{ duration: 0.5, delay: 0 }"
+              :whileHover="{ scale: 1.2, rotate: 10 }"
+              :whileTap="{ scale: 0.9 }"
+            >
+              <font-awesome-icon
+                :icon="tech.icon"
+                size="lg"
+                class="transition-all duration-300 hover:scale-110"
+              />
+            </motion.a>
+          </div>
         </div>
         <div
           class="inline-block h-0.5 md:h-auto md:w-0.5 self-stretch bg-neutral-100 dark:bg-white/10"
         ></div>
         <div class="text-left p-5">
           <div class="border-gray-400 p-2 mb-3 text-center">
-            <p class="sf-indicator">
+            <div class="flex items-center gap-4">
               <span class="status-dot status-green"></span>
-              <span class="status-text">Currently employed at Siemens Cybersecurity </span>
-            </p>
+              <p class="m-0">Currently employed at Siemens Cybersecurity</p>
+            </div>
           </div>
           <p>
             I embrace technology, science and building digital infrastructure, applications and
@@ -143,28 +145,29 @@ import PublicationsOverview from '@/components/PublicationsOverview.vue'
 </template>
 
 <style scoped>
-.sf-indicator {
-  --sf-indicator-size: 8px;
-  --sf-indicator-green: #0bbf0b;
-  --sf-indicator-red: #c51b1b;
-  --sf-indicator-orange: #db8719;
-}
+/* Status indicator container (optional reusable class) */
 .sf-indicator {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  align-items: flex-start; /* aligns dot with top of text */
+  gap: 10px; /* space between dot and text */
   margin: 10px 0;
 }
 
-.sf-indicator .status-dot {
-  width: var(--sf-indicator-size);
-  height: var(--sf-indicator-size);
+/* Status dot */
+.status-dot {
+  --size: 8px; /* dot size */
+  width: var(--size);
+  height: var(--size);
   border-radius: 50%;
   position: relative;
+  flex-shrink: 0; /* prevents dot from shrinking */
+  margin-top: 2px; /* tweak to align with text baseline */
+  background-color: var(--sf-indicator-green); /* default green */
 }
 
-.sf-indicator .status-dot::before,
-.sf-indicator .status-dot::after {
+/* Pulse animation */
+.status-dot::before,
+.status-dot::after {
   content: '';
   position: absolute;
   top: 50%;
@@ -178,7 +181,7 @@ import PublicationsOverview from '@/components/PublicationsOverview.vue'
   opacity: 0.3;
 }
 
-.sf-indicator .status-dot::after {
+.status-dot::after {
   animation-delay: 1s;
 }
 
@@ -193,13 +196,16 @@ import PublicationsOverview from '@/components/PublicationsOverview.vue'
   }
 }
 
+/* Status colors */
 .status-green {
-  background-color: var(--sf-indicator-green);
+  background-color: #0bbf0b;
 }
+
 .status-red {
-  background-color: var(--sf-indicator-red);
+  background-color: #c51b1b;
 }
+
 .status-orange {
-  background-color: var(--sf-indicator-orange);
+  background-color: #db8719;
 }
 </style>

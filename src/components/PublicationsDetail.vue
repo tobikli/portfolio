@@ -45,7 +45,7 @@ const decreasePresentation = () => {
     <h1 class="text-center text-xl p-4">Paper</h1>
     <div>
       <div class="flex justify-center">
-        <VuePDF :pdf="thesis" :page="thesisPage" />
+        <VuePDF :fit-parent="true" :pdf="thesis" :page="thesisPage" />
       </div>
       <div class="flex justify-center p-4">
         <button @click="decreaseThesis" class="m-2 hover:cursor-pointer">&lt;</button>
@@ -57,7 +57,7 @@ const decreasePresentation = () => {
       <h1 class="text-center text-xl p-4">Presentation</h1>
       <div>
         <div class="flex justify-center">
-          <VuePDF :pdf="presentation" :page="presentationPage" />
+          <VuePDF :fit-parent="true" :pdf="presentation" :page="presentationPage" />
         </div>
         <div class="flex justify-center p-4">
           <button @click="decreasePresentation" class="m-2 hover:cursor-pointer">&lt;</button>

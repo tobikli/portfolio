@@ -42,10 +42,6 @@ export const information = {
       icon: 'fa-brands fa-vuejs',
     },
     {
-      name: 'HTML',
-      icon: 'fa-brands fa-html5',
-    },
-    {
       name: 'JS',
       icon: 'fa-brands fa-js',
     },
