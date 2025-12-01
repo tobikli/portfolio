@@ -55,7 +55,7 @@ button.anim::after {
   content: '';
   position: absolute;
   left: 50%;
-  bottom: -12px;
+  bottom: 12px;
   transform: translateX(-50%) scaleX(0);
   transform-origin: center;
   width: calc(30%);

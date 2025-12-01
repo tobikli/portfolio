@@ -50,7 +50,7 @@ defineProps<{
                 componentProps: { project },
               })
             "
-            class="hover:cursor-pointer"
+            class="hover:cursor-pointer hover:underline"
           >
             View
           </button>

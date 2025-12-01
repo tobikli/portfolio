@@ -18,14 +18,14 @@ export const sections: Section[] = [
     view: HomeView,
   },
   {
-    name: 'Projects',
-    id: 'projects',
-    view: ProjectsView,
-  },
-  {
     name: 'About',
     id: 'about',
     view: AboutView,
+  },
+  {
+    name: 'Projects',
+    id: 'projects',
+    view: ProjectsView,
   },
   {
     name: 'Contact',
