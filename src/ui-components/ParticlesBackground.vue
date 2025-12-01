@@ -347,5 +347,12 @@ watch(
   overflow: hidden; /* Prevent scrollbars if particles go slightly out of bounds */
 }
 
+@supports (-webkit-touch-callout: none) {
+  .background-canvas-wrapper canvas {
+    filter: blur(12px);
+    opacity: 0.9;
+  }
+}
+
 /* The :deep(canvas) rule is no longer needed as styles are set directly on gl.canvas in JS for robustness */
 </style>

@@ -47,16 +47,17 @@ const splitLines = lines.map((line) => ({
         </motion.span>
       </div>
     </div>
-    <motion.div class="mt-15 p-5 backdrop-blur-sm bg-black/2 dark:bg-white/2"
-        :initial="{ opacity: 0, y: 20 }"
-        :animate="{ opacity: 1, y: 0 }"
-        :transition="{ duration: 0.5, delay: 2 }"
+    <motion.div
+      class="mt-15 p-5 backdrop-blur-sm bg-black/2 dark:bg-white/2"
+      :initial="{ opacity: 0, y: 20 }"
+      :animate="{ opacity: 1, y: 0 }"
+      :transition="{ duration: 0.5, delay: 2 }"
     >
       <motion.a
         v-for="link in information.links"
         :key="link.name"
         :href="link.link"
-        class="m-6 "
+        class="m-6"
         :initial="{ opacity: 0, y: 20 }"
         :animate="{ opacity: 1, y: 0 }"
         :transition="{ duration: 0.5, delay: 2 }"
@@ -66,7 +67,7 @@ const splitLines = lines.map((line) => ({
         <font-awesome-icon
           :icon="link.icon"
           size="2xl"
-          class="transition-all duration-300 hover:scale-110 "
+          class="transition-all duration-300 hover:scale-110"
         />
       </motion.a>
     </motion.div>
