@@ -1,9 +1,11 @@
+<!-- src/ui-components/ParticlesBackground.vue -->
 <template>
-  <div ref="containerRef" :class="className" class="relative"></div>
+  <!-- Removed 'relative' class from template for clarity, as 'fixed' will override it -->
+  <div ref="containerRef" :class="className" class="background-canvas-wrapper"></div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch, useTemplateRef } from 'vue'
+import { ref, onMounted, onUnmounted, watch } from 'vue' // Corrected import: use `ref` directly
 import { Renderer, Camera, Geometry, Program, Mesh } from 'ogl'
 
 interface ParticlesProps {
@@ -36,7 +38,8 @@ const props = withDefaults(defineProps<ParticlesProps>(), {
   className: '',
 })
 
-const containerRef = useTemplateRef<HTMLDivElement>('containerRef')
+// Correct template ref declaration
+const containerRef = ref<HTMLDivElement | null>(null)
 const mouseRef = ref({ x: 0, y: 0 })
 
 let renderer: Renderer | null = null
@@ -123,13 +126,11 @@ const fragment = /* glsl */ `
   }
 `
 
+// Adjusted handleMouseMove to use window coordinates for global listening
 const handleMouseMove = (e: MouseEvent) => {
-  const container = containerRef.value
-  if (!container) return
-
-  const rect = container.getBoundingClientRect()
-  const x = ((e.clientX - rect.left) / rect.width) * 2 - 1
-  const y = -(((e.clientY - rect.top) / rect.height) * 2 - 1)
+  // Normalize mouse coordinates to -1 to 1 range for OGL
+  const x = (e.clientX / window.innerWidth) * 2 - 1
+  const y = -((e.clientY / window.innerHeight) * 2 - 1) // Y-axis is usually inverted in GL
   mouseRef.value = { x, y }
 }
 
@@ -142,12 +143,15 @@ const initParticles = () => {
   container.appendChild(gl.canvas)
   gl.clearColor(0, 0, 0, 0)
 
+  // Ensure the canvas covers the container and doesn't block events
   gl.canvas.style.width = '100%'
   gl.canvas.style.height = '100%'
   gl.canvas.style.display = 'block'
-  gl.canvas.style.position = 'absolute'
+  gl.canvas.style.position = 'absolute' // Absolute relative to its parent `background-canvas-wrapper`
   gl.canvas.style.top = '0'
   gl.canvas.style.left = '0'
+  gl.canvas.style.zIndex = '-1' // Put canvas behind other content
+  gl.canvas.style.pointerEvents = 'none' // Crucial: Allow clicks to pass through
 
   camera = new Camera(gl, { fov: 15 })
   camera.position.set(0, 0, props.cameraDistance)
@@ -155,29 +159,21 @@ const initParticles = () => {
   const resize = () => {
     if (!container) return
 
-    const parentWidth =
-      container.parentElement?.offsetWidth || container.offsetWidth || window.innerWidth
-    const parentHeight =
-      container.parentElement?.offsetHeight || container.offsetHeight || window.innerHeight
-
-    const width = Math.max(parentWidth, 300)
-    const height = Math.max(parentHeight, 300)
+    // Use container's actual size, which should be viewport size due to wrapper CSS
+    const width = container.offsetWidth
+    const height = container.offsetHeight
 
     renderer!.setSize(width, height)
     camera!.perspective({ aspect: width / height })
-
-    gl.canvas.style.width = '100%'
-    gl.canvas.style.height = '100%'
-    gl.canvas.style.display = 'block'
-    gl.canvas.style.position = 'absolute'
-    gl.canvas.style.top = '0'
-    gl.canvas.style.left = '0'
   }
   window.addEventListener('resize', resize, false)
   resize()
 
+  // IMPORTANT: Move mousemove listener to window if pointer-events: none is on container/canvas
   if (props.moveParticlesOnHover) {
-    container.addEventListener('mousemove', handleMouseMove)
+    // Remove previous listener if it was on container (for re-initialization)
+    container.removeEventListener('mousemove', handleMouseMove)
+    window.addEventListener('mousemove', handleMouseMove) // Listen globally on the window
   }
 
   const count = props.particleCount
@@ -243,7 +239,8 @@ const initParticles = () => {
     }
 
     if (particles) {
-      if (props.moveParticlesOnHover) {
+      // Particles position updated based on mouseRef (now from window listener)
+      if (props.moveParticlesOnHover && mouseRef.value.x !== 0 && mouseRef.value.y !== 0) {
         particles.position.x = -mouseRef.value.x * props.particleHoverFactor
         particles.position.y = -mouseRef.value.y * props.particleHoverFactor
       } else {
@@ -268,13 +265,14 @@ const initParticles = () => {
   return () => {
     window.removeEventListener('resize', resize)
     if (props.moveParticlesOnHover) {
-      container.removeEventListener('mousemove', handleMouseMove)
+      window.removeEventListener('mousemove', handleMouseMove) // Cleanup global listener
     }
     if (animationFrameId) {
       cancelAnimationFrame(animationFrameId)
       animationFrameId = null
     }
-    if (container.contains(gl.canvas)) {
+    // Check if gl.canvas exists before attempting to remove it
+    if (gl.canvas && container.contains(gl.canvas)) {
       container.removeChild(gl.canvas)
     }
   }
@@ -288,7 +286,8 @@ const cleanup = () => {
   if (renderer) {
     const container = containerRef.value
     const gl = renderer.gl
-    if (container && gl.canvas.parentNode === container) {
+    // Check if gl.canvas exists before attempting to remove it
+    if (gl.canvas && container && gl.canvas.parentNode === container) {
       container.removeChild(gl.canvas)
     }
     gl.getExtension('WEBGL_lose_context')?.loseContext()
@@ -316,6 +315,7 @@ watch(
   { deep: true },
 )
 
+// This watch block is fine as the `update` loop already reads these props directly.
 watch(
   () => [
     props.particleSpread,
@@ -327,24 +327,25 @@ watch(
     props.particleHoverFactor,
     props.disableRotation,
   ],
-  () => {},
+  () => {
+    // No explicit action needed here as the `update` loop continuously reads these props.
+    // However, if `moveParticlesOnHover` changes, you might want to re-attach/detach the listener.
+    // For simplicity, re-initialization on these changes could also be considered if needed.
+  },
 )
 </script>
 
 <style scoped>
-div {
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
+.background-canvas-wrapper {
+  position: fixed; /* Covers the entire viewport */
+  top: 0;
+  left: 0;
+  width: 100vw; /* Use viewport units for full width */
+  height: 100vh; /* Use viewport units for full height */
+  z-index: -1; /* Puts it behind other content */
+  pointer-events: none; /* Allows clicks to pass through this wrapper div */
+  overflow: hidden; /* Prevent scrollbars if particles go slightly out of bounds */
 }
 
-:deep(canvas) {
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-}
+/* The :deep(canvas) rule is no longer needed as styles are set directly on gl.canvas in JS for robustness */
 </style>
