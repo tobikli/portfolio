@@ -16,7 +16,7 @@ import TextType from '@/ui-components/TextType.vue'
         :text-colors="['', '']"
         class="text-4xl mb-10"
       />
-      <div class="flex flex-wrap justify-center gap-4 max-w-350">
+      <div class="flex flex-wrap justify-center gap-4 max-w-300">
         <div v-for="project in projects" :key="project.name">
           <Projectbox :project="project" />
         </div>

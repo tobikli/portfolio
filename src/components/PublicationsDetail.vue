@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { VuePDF, usePDF } from '@tato30/vue-pdf'
+import { showPopup } from '@/composables/usePopup';
 import { ref } from 'vue'
+import PublicationsOverview from './PublicationsOverview.vue';
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 
 const props = defineProps<{
@@ -41,15 +43,34 @@ const decreasePresentation = () => {
 
 <template>
   <div>
+    <Button
+    class="px-2 py-1 hover:cursor-pointer mb-4 text-sm hover:bg-black hover:text-white hover:dark:bg-white hover:dark:text-black"
+        @click="
+      showPopup({
+        title: 'Publications',
+        component: PublicationsOverview,
+      })
+    "
+    >
+      <i class="pi pi-arrow-left"></i>
+    </Button>
     <p>{{ detail }}</p>
     <h1 class="text-center text-xl p-4">Paper</h1>
     <div>
       <div class="flex justify-center">
         <VuePDF :fit-parent="true" :pdf="thesis" :page="thesisPage" />
       </div>
-      <div class="flex justify-center p-4">
+      <div class="flex justify-center items-center p-4">
         <button @click="decreaseThesis" class="m-2 hover:cursor-pointer">&lt;</button>
-        <a class="m-2">{{ thesisPage }}/{{ thesisPages }}</a>
+        <input
+          type="number"
+          v-model.number="thesisPage"
+          :min="1"
+          :max="thesisPages"
+          class="m-2 w-16 text-center border px-2 py-1 bg-white dark:bg-black text-gray-900 dark:text-gray-100"
+          aria-label="Current thesis page"
+        />
+        <span class="m-2 text-gray-900 dark:text-gray-100">/ {{ thesisPages }}</span>
         <button @click="increaseThesis" class="m-2 hover:cursor-pointer">&gt;</button>
       </div>
     </div>
@@ -59,10 +80,18 @@ const decreasePresentation = () => {
         <div class="flex justify-center">
           <VuePDF :fit-parent="true" :pdf="presentation" :page="presentationPage" />
         </div>
-        <div class="flex justify-center p-4">
+        <div class="flex justify-center items-center p-4">
           <button @click="decreasePresentation" class="m-2 hover:cursor-pointer">&lt;</button>
-          <a class="m-2">{{ presentationPage }}/{{ presentationPages }}</a>
-          <button @click="increasePresentation" class="m-2 hover:cursor-pointer">&gt;</button>
+          <input
+            type="number"
+            v-model.number="presentationPage"
+            :min="1"
+            :max="presentationPages"
+            class="m-2 w-16 text-center border px-2 py-1 bg-white dark:bg-black text-gray-900 dark:text-gray-100"
+            aria-label="Current thesis page"
+          />
+        <span class="m-2 text-gray-900 dark:text-gray-100">/ {{ presentationPages }}</span>
+        <button @click="increasePresentation" class="m-2 hover:cursor-pointer">&gt;</button>
         </div>
       </div>
     </div>

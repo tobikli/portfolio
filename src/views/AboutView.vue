@@ -12,7 +12,7 @@ import PublicationsOverview from '@/components/PublicationsOverview.vue'
     <div class="text-center w-full max-w-4xl">
       <h1 class="text-3xl mb-12">About me</h1>
       <!-- Information -->
-      <div class="grid grid:cols-1 md:grid-cols-[1fr_auto_1fr] mb-30">
+      <div class="grid grid:cols-1 md:grid-cols-[1fr_auto_1fr] mb-40">
         <div class="text-left p-5">
           <h2 class="text-lg mb-3">My name is {{ information.name }}</h2>
           <p>

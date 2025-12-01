@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, onBeforeUnmount } from 'vue'
 import { popupState, hidePopup } from '@/composables/usePopup'
-
+import { motion } from 'motion-v'
 function onKey(e: KeyboardEvent) {
   if (e.key === 'Escape') hidePopup()
 }
@@ -31,9 +31,14 @@ onBeforeUnmount(() => {
         <div>
           <h3 class="text-lg font-semibold">{{ popupState.title }}</h3>
         </div>
-        <button @click="hidePopup" class="ml-4 p-2 hover:cursor-pointer" aria-label="Close">
+        <motion.button
+        @click="hidePopup"
+        class="ml-4 p-2 hover:cursor-pointer"
+        aria-label="Close"
+        :whileHover="{ rotate: 90 }"
+        >
           <i class="pi pi-times"></i>
-        </button>
+        </motion.button>
       </header>
 
       <section class="prose dark:prose-invert">

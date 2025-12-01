@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { defineProps } from 'vue'
 import type { Project } from '@/data/projects'
 import { showPopup } from '@/composables/usePopup'
 import ProjectDetail from './ProjectDetail.vue'

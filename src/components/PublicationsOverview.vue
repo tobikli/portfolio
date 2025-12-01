@@ -5,7 +5,7 @@ import PublicationsDetail from './PublicationsDetail.vue'
 </script>
 
 <template>
-  <div class="text-center">
+  <div class="text-center p-5">
     <div v-for="publication in publications" :key="publication.title">
       <button
         class="p-3 w-full"

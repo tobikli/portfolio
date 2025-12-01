@@ -78,7 +78,7 @@ export const projects: Project[] = [
     Industrial Edge Connection,
     MQTT Protocol
     `,
-    date: '2024-2024',
+    date: '2024-2025',
     tags: ['Swift', 'JS', 'TS', 'MQTT'],
     link: 'https://aet.cit.tum.de/projects/courses/ipraktikum/24w/',
   },
