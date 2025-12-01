@@ -345,13 +345,7 @@ watch(
   z-index: -1; /* Puts it behind other content */
   pointer-events: none; /* Allows clicks to pass through this wrapper div */
   overflow: hidden; /* Prevent scrollbars if particles go slightly out of bounds */
-}
-
-@supports (-webkit-touch-callout: none) {
-  .background-canvas-wrapper canvas {
-    filter: blur(12px);
-    opacity: 0.9;
-  }
+  filter: blur(5px);
 }
 
 /* The :deep(canvas) rule is no longer needed as styles are set directly on gl.canvas in JS for robustness */
