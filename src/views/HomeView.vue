@@ -21,7 +21,7 @@ const splitLines = lines.map((line) => ({
 <template>
   <!-- Add 'relative z-10' to your main content container -->
   <div class="min-h-screen flex flex-col items-center justify-start px-6 pt-5 relative z-10">
-    <div class="h-60"></div>
+    <div class="h-50"></div>
     <div class="backdrop-blur-sm bg-black/2 dark:bg-white/2 p-5">
       <div
         v-for="(line, lineIndex) in splitLines"
@@ -78,7 +78,7 @@ const splitLines = lines.map((line) => ({
     :particle-colors="[isDark ? '#ffffff' : '#000000']"
     :move-particles-on-hover="true"
     :particle-hover-factor="1"
-    :alpha-particles="true"
+    :alpha-particles="false"
     :particle-base-size="80"
     :size-randomness="10"
     :camera-distance="40"
