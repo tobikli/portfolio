@@ -32,22 +32,23 @@ onBeforeUnmount(() => {
           <h3 class="text-lg font-semibold">{{ popupState.title }}</h3>
         </div>
         <motion.button
-        @click="hidePopup"
-        class="ml-4 p-2 hover:cursor-pointer"
-        aria-label="Close"
-        :whileHover="{ rotate: 90 }"
+          @click="hidePopup"
+          class="ml-4 p-2 hover:cursor-pointer"
+          aria-label="Close"
+          :whileHover="{ rotate: 90 }"
         >
           <i class="pi pi-times"></i>
         </motion.button>
       </header>
 
       <section class="prose dark:prose-invert">
-        <template v-if="popupState.component">
-          <component :is="popupState.component" v-bind="popupState.componentProps" />
-        </template>
-        <template v-else>
-          <p v-html="popupState.message" />
-        </template>
+        <component
+          v-if="popupState.component"
+          :is="popupState.component"
+          v-bind="popupState.componentProps"
+          :key="popupState.componentKey"
+        />
+        <p v-else v-html="popupState.message" />
       </section>
     </div>
   </div>

@@ -1,8 +1,5 @@
 import { reactive } from 'vue'
 
-/* eslint-disable  @typescript-eslint/no-explicit-any */
-
-
 export type PopupPayload = {
   title?: string
   message?: string
@@ -16,23 +13,25 @@ export const popupState = reactive({
   message: '',
   component: null as any,
   componentProps: {} as Record<string, any>,
+  componentKey: 0, // add key
 })
 
 export function showPopup(payload: PopupPayload) {
+  // clear previous
+  popupState.visible = false
+  popupState.component = null
+  popupState.componentProps = {}
+  // set new
   popupState.title = payload.title ?? ''
   popupState.message = payload.message ?? ''
   popupState.component = payload.component ?? null
   popupState.componentProps = payload.componentProps ?? {}
+  popupState.componentKey++
   popupState.visible = true
 }
 
 export function hidePopup() {
   popupState.visible = false
-  // optional: clear data
-  // popupState.title = ''
-  // popupState.message = ''
-  // popupState.component = null
-  // popupState.componentProps = {}
 }
 
 export function usePopup() {
