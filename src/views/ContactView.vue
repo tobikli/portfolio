@@ -17,7 +17,7 @@ const sendMessage = () => {
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col items-center justify-start px-6 pt-5">
+  <div class="w-full flex flex-col items-center justify-start px-6 pb-20 md:pb-28">
     <div class="text-center">
       <h1 class="text-3xl mb-12">Contact</h1>
       <p class="text-md">Contact me directly</p>
@@ -43,7 +43,7 @@ const sendMessage = () => {
   </div>
 </template>
 
-<style>
+<style scoped>
 button.anim {
   position: relative;
   display: inline-block;

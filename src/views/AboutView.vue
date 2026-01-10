@@ -8,7 +8,7 @@ import PublicationsOverview from '@/components/PublicationsOverview.vue'
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col items-center justify-start px-6 pt-5">
+  <div class="w-full flex flex-col items-center justify-start px-6 pb-20 md:pb-28">
     <div class="text-center w-full max-w-4xl">
       <h1 class="text-3xl mb-12">About me</h1>
       <!-- Information -->
@@ -28,7 +28,13 @@ import PublicationsOverview from '@/components/PublicationsOverview.vue'
           </p>
           <p>
             During my Bachelor studies, next to mandatory courses in maths, algorithms and logic, I
-            focused on <b>Software Engineering</b> and <b>Cloud Technologies</b>.
+            focused on <b>Software Engineering</b> and <b>Cloud Technologies</b>. My Master courses
+            focus on AI, SE and <b>Cybersecurity</b>.
+          </p>
+          <p>
+            Find my personal infrastructure here:
+            <a class="underline" href="https://twkl.net">TWKL</a> and
+            <a class="underline" href="https://twks.net">TWKS</a>
           </p>
           <p class="mt-3 mb-3">I have experience with:</p>
           <div class="flex flex-wrap gap-2">
@@ -66,14 +72,20 @@ import PublicationsOverview from '@/components/PublicationsOverview.vue'
             experiences.
           </p>
           <p class="mt-3">
-            Furthermore, I love traveling the world, trying out culinary exquisites and I love most
-            animals.
+            Furthermore, I love traveling the world (and hopefully outer worlds soon), trying out
+            culinary exquisites and music.
+          </p>
+          <p>
+            You can also find some cool stuff on my
+            <a class="underline" href="https://v2.tobiwn.me">alternative Portfolio!</a>
+          </p>
+          <p class="mt-3">
+            More information about myself and my work can be seen below or using this interactive
+            <a class="underline" href="/shell">shell</a>.
           </p>
 
-          <p class="mt-3">More information about myself and my work can be seen below.</p>
-
           <div>
-            <div class="flex justify-center mt-2">
+            <div class="justify-center grid grid-cols-2 mt-5">
               <AnimationButton
                 text="Curriculum Vitae"
                 title="Curriculum Vitae"

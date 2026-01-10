@@ -5,10 +5,10 @@ import TextType from '@/ui-components/TextType.vue'
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col items-center justify-start px-6 pt-5">
+  <div class="w-full flex flex-col items-center justify-start px-6 pb-20 md:pb-28">
     <div class="text-center">
       <TextType
-        :text="['Take a look at my Projects', 'More in progress!']"
+        :text="['Take a look at my projects', 'More in progress!']"
         :typingSpeed="50"
         :pauseDuration="6000"
         :showCursor="true"

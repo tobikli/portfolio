@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import { motion } from 'motion-v'
 import { information } from '@/data/information'
-import { useDark } from '@vueuse/core'
-import ParticlesBackground from '@/ui-components/ParticlesBackground.vue'
-
-const isDark = useDark()
+import ScrollIcon from '@/components/ScrollIcon.vue'
+import '@/assets/stars.css'
 
 const lines = [
   { text: `Hello, I'm ${information.name}`, size: 'text-3xl', weight: 'font-semibold' },
@@ -19,70 +17,97 @@ const splitLines = lines.map((line) => ({
 </script>
 
 <template>
-  <!-- Add 'relative z-10' to your main content container -->
-  <div class="min-h-screen flex flex-col items-center justify-start px-6 pt-5 relative z-10">
-    <div class="h-50"></div>
-    <div class="backdrop-blur-sm bg-black/2 dark:bg-white/2 p-5">
-      <div
-        v-for="(line, lineIndex) in splitLines"
-        :key="lineIndex"
-        :class="[line.size, 'text-center']"
-      >
-        <motion.span
-          v-for="(word, wordIndex) in line.words"
-          :key="wordIndex"
-          class="inline-block mr-2 mb-2 transition-transform hover:cursor-default"
-          :initial="{ opacity: 0, y: 20 }"
-          :animate="{ opacity: 1, y: 0 }"
-          :transition="{
-            duration: 0.5,
-            delay:
-              wordIndex * 0.2 + (lineIndex > 0 ? splitLines[lineIndex - 1]!.words.length * 0.2 : 0),
-          }"
-          :whileHover="{ scale: 1.15, y: -4 }"
-          :hoverTransition="{ duration: 0.15, delay: 0 }"
-          :class="line.weight"
-        >
-          {{ word }}
-        </motion.span>
-      </div>
+  <div
+    class="relative min-h-screen w-full flex flex-col items-center justify-start px-6 pb-20 md:pb-28 overflow-hidden"
+  >
+    <div class="stars-container">
+      <div id="stars"></div>
+      <div id="stars2"></div>
+      <div id="stars3"></div>
     </div>
-    <motion.div
-      class="mt-15 p-5 backdrop-blur-sm bg-black/2 dark:bg-white/2"
-      :initial="{ opacity: 0, y: 20 }"
-      :animate="{ opacity: 1, y: 0 }"
-      :transition="{ duration: 0.5, delay: 2 }"
-    >
-      <motion.a
-        v-for="link in information.links"
-        :key="link.name"
-        :href="link.link"
-        class="m-6"
+    <div class="relative z-10 w-full flex flex-col items-center pb-36 md:pb-44">
+      <div class="h-50"></div>
+      <div class="backdrop-blur-sm bg-black/2 dark:bg-white/2 p-5">
+        <div
+          v-for="(line, lineIndex) in splitLines"
+          :key="lineIndex"
+          :class="[line.size, 'text-center']"
+        >
+          <motion.span
+            v-for="(word, wordIndex) in line.words"
+            :key="wordIndex"
+            class="inline-block mr-2 mb-2 transition-transform hover:cursor-default"
+            :initial="{ opacity: 0, y: 20 }"
+            :animate="{ opacity: 1, y: 0 }"
+            :transition="{
+              duration: 0.5,
+              delay:
+                wordIndex * 0.2 +
+                (lineIndex > 0 ? splitLines[lineIndex - 1]!.words.length * 0.2 : 0),
+            }"
+            :whileHover="{ scale: 1.15, y: -4 }"
+            :hoverTransition="{ duration: 0.15, delay: 0 }"
+            :class="line.weight"
+          >
+            {{ word }}
+          </motion.span>
+        </div>
+      </div>
+      <motion.div
+        class="mt-15 p-5 backdrop-blur-sm bg-black/2 dark:bg-white/2"
         :initial="{ opacity: 0, y: 20 }"
         :animate="{ opacity: 1, y: 0 }"
         :transition="{ duration: 0.5, delay: 2 }"
-        :whileHover="{ scale: 1.2, rotate: 10 }"
-        :whileTap="{ scale: 0.9 }"
       >
-        <font-awesome-icon
-          :icon="link.icon"
-          size="2xl"
-          class="transition-all duration-300 hover:scale-110"
-        />
-      </motion.a>
-    </motion.div>
+        <motion.a
+          v-for="link in information.links"
+          :key="link.name"
+          :href="link.link"
+          class="m-6"
+          :initial="{ opacity: 0, y: 20 }"
+          :animate="{ opacity: 1, y: 0 }"
+          :transition="{ duration: 0.5, delay: 2 }"
+          :whileHover="{ scale: 1.2, rotate: 10 }"
+          :whileTap="{ scale: 0.9 }"
+        >
+          <font-awesome-icon
+            :icon="link.icon"
+            size="2xl"
+            class="transition-all duration-300 hover:scale-110"
+          />
+        </motion.a>
+      </motion.div>
+    </div>
+    <ScrollIcon />
   </div>
-  <ParticlesBackground
-    :particle-count="700"
-    :particle-spread="10"
-    :speed="0.1"
-    :particle-colors="[isDark ? '#ffffff' : '#000000']"
-    :move-particles-on-hover="true"
-    :particle-hover-factor="1"
-    :alpha-particles="false"
-    :particle-base-size="80"
-    :size-randomness="10"
-    :camera-distance="40"
-    :disable-rotation="false"
-  />
 </template>
+
+<style scoped>
+:global(body) {
+  overflow-x: hidden;
+}
+
+.stars-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+:global(html:not(.dark) .stars-container) {
+  filter: invert(1) brightness(0.35);
+}
+
+:global(#stars),
+:global(#stars2),
+:global(#stars3),
+:global(.meteor-container),
+:global(.meteor-1),
+:global(.meteor-7),
+:global(.meteor-13) {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+</style>

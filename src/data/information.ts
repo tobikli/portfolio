@@ -86,13 +86,13 @@ export const work = [
 export const education = [
   {
     school: 'Technical University of Munich',
-    degree: 'M.Sc. Informatics',
+    degree: 'M. Sc. Informatics',
     information: 'Specialization in Software Engineering and ML',
     time: '2025-Present',
   },
   {
     school: 'Technical University of Munich',
-    degree: 'B.Sc. Informatics',
+    degree: 'B. Sc. Informatics',
     information: 'Participation in iPraktikum',
     time: '2022-2025',
   },

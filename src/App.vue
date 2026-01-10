@@ -2,12 +2,15 @@
 import AppHeader from '@/components/AppHeader.vue'
 import Darkmode from '@/components/DarkMode.vue'
 import PopupView from '@/views/PopupView.vue'
-import { resolveDynamicComponent } from 'vue'
+import { resolveDynamicComponent, computed } from 'vue'
+import { useRoute, RouterView } from 'vue-router'
 import { sections } from '@/data/sections'
 import AppFooter from './components/AppFooter.vue'
 import { reactive, onMounted, onBeforeUnmount } from 'vue'
 
 const visible = reactive<Record<string, boolean>>({})
+const route = useRoute()
+const isShell = computed(() => route.name === 'shell')
 
 let observer: IntersectionObserver | null = null
 
@@ -37,27 +40,33 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <AppHeader />
-  <main class="min-h-screen">
-    <section
-      v-for="(section, index) in sections"
-      :key="section.id"
-      :id="section.id"
-      class="section"
-      :class="{
-        'section-visible': visible[section.id],
-        'section-hidden': !visible[section.id],
-      }"
-    >
-      <component
-        :class="[index + 1 === sections.length ? '' : 'mb-30']"
-        :is="resolveDynamicComponent(section.view)"
-      />
-    </section>
-  </main>
-  <AppFooter />
-  <Darkmode />
-  <PopupView />
+  <template v-if="!isShell">
+    <AppHeader />
+    <main class="min-h-screen">
+      <section
+        v-for="(section, index) in sections"
+        :key="section.id"
+        :id="section.id"
+        class="section"
+        :class="{
+          'section-visible': visible[section.id],
+          'section-hidden': !visible[section.id],
+        }"
+      >
+        <component
+          :class="[index === sections.length ? '' : 'mb-40']"
+          :is="resolveDynamicComponent(section.view)"
+        />
+      </section>
+    </main>
+    <AppFooter />
+    <Darkmode />
+    <PopupView />
+  </template>
+
+  <template v-else>
+    <RouterView />
+  </template>
 </template>
 
 <style scoped>
@@ -68,6 +77,7 @@ onBeforeUnmount(() => {
 .section {
   opacity: 0;
   transform: translateY(12px) scale(0.996);
+  scroll-margin-top: 80px;
   transition:
     opacity 420ms cubic-bezier(0.2, 0.9, 0.4, 1),
     transform 420ms cubic-bezier(0.2, 0.9, 0.4, 1);
