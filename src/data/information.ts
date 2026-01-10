@@ -60,7 +60,7 @@ export const work = [
   {
     place: 'Siemens AG',
     role: 'Cybersecurity IS Working Student',
-    information: 'CYS-OE-IS',
+    information: 'Automation, Virtualisation and Administration of Infrastructure for Cybersecurity Systems',
     time: '2025-Present',
   },
   {
@@ -87,7 +87,7 @@ export const education = [
   {
     school: 'Technical University of Munich',
     degree: 'M. Sc. Informatics',
-    information: 'Specialization in Software Engineering and ML',
+    information: 'Specialization in Software Engineering, ML and Cybersecurity',
     time: '2025-Present',
   },
   {

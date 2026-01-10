@@ -54,7 +54,7 @@ const splitLines = lines.map((line) => ({
         </div>
       </div>
       <motion.div
-        class="mt-15 p-5 backdrop-blur-sm bg-black/2 dark:bg-white/2"
+        class="mt-15 p-2 backdrop-blur-sm bg-black/2 dark:bg-white/2 flex"
         :initial="{ opacity: 0, y: 20 }"
         :animate="{ opacity: 1, y: 0 }"
         :transition="{ duration: 0.5, delay: 2 }"

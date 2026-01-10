@@ -2,9 +2,12 @@
 import { information, work } from '@/data/information'
 import { education } from '@/data/information'
 import { motion } from 'motion-v'
+import { showPopup } from '@/composables/usePopup'
 import AnimationButton from '@/components/AnimationButton.vue'
 import CVDetail from '@/components/CVDetail.vue'
+import ImageDetail from '@/components/ImageDetail.vue'
 import PublicationsOverview from '@/components/PublicationsOverview.vue'
+import profileImg from '@/assets/images/profile.png'
 </script>
 
 <template>
@@ -14,6 +17,24 @@ import PublicationsOverview from '@/components/PublicationsOverview.vue'
       <!-- Information -->
       <div class="grid grid:cols-1 md:grid-cols-[1fr_auto_1fr] mb-40">
         <div class="text-left p-5">
+          <div class="flex justify-center mb-6">
+            <div class="relative w-30 h-30 mb-5">
+              <img
+                :src="profileImg"
+                :alt="`Portrait of ${information.name}`"
+                class="relative w-full h-full object-cover rounded-full hover:cursor-crosshair"
+                @click="
+                  showPopup({
+                    title: 'Me',
+                    component: ImageDetail,
+                    componentProps: {
+                      image: profileImg,
+                    },
+                  })
+                "
+              />
+            </div>
+          </div>
           <h2 class="text-lg mb-3">My name is {{ information.name }}</h2>
           <p>
             I'm currently in my <b>Master of Science</b> studies of
@@ -31,11 +52,7 @@ import PublicationsOverview from '@/components/PublicationsOverview.vue'
             focused on <b>Software Engineering</b> and <b>Cloud Technologies</b>. My Master courses
             focus on AI, SE and <b>Cybersecurity</b>.
           </p>
-          <p>
-            Find my personal infrastructure here:
-            <a class="underline" href="https://twkl.net">TWKL</a> and
-            <a class="underline" href="https://twks.net">TWKS</a>
-          </p>
+
           <p class="mt-3 mb-3">I have experience with:</p>
           <div class="flex flex-wrap gap-2">
             <motion.a
@@ -61,7 +78,7 @@ import PublicationsOverview from '@/components/PublicationsOverview.vue'
           class="inline-block h-0.5 md:h-auto md:w-0.5 self-stretch bg-neutral-100 dark:bg-white/10"
         ></div>
         <div class="text-left p-5">
-          <div class="border-gray-400 p-2 mb-3 text-center">
+          <div class="border-gray-400/40 p-2 mb-10 text-center">
             <div class="flex items-center gap-4">
               <span class="status-dot status-green"></span>
               <p class="m-0">Currently employed at Siemens Cybersecurity</p>
@@ -75,17 +92,22 @@ import PublicationsOverview from '@/components/PublicationsOverview.vue'
             Furthermore, I love traveling the world (and hopefully outer worlds soon), trying out
             culinary exquisites and music.
           </p>
-          <p>
+          <p class="mt-3">
             You can also find some cool stuff on my
             <a class="underline" href="https://v2.tobiwn.me">alternative Portfolio!</a>
           </p>
-          <p class="mt-3">
+          <p>
+            and stats of my personal infrastructure here:
+            <a class="underline" href="https://twkl.net">TWKL</a> and
+            <a class="underline" href="https://twks.net">TWKS</a>
+          </p>
+          <p class="mt-10">
             More information about myself and my work can be seen below or using this interactive
             <a class="underline" href="/shell">shell</a>.
           </p>
 
           <div>
-            <div class="justify-center grid grid-cols-2 mt-5">
+            <div class="justify-center grid grid-cols-1 md:grid-cols-2 mt-5">
               <AnimationButton
                 text="Curriculum Vitae"
                 title="Curriculum Vitae"
@@ -106,7 +128,7 @@ import PublicationsOverview from '@/components/PublicationsOverview.vue'
         <div>
           <h2 class="text-xl mb-6">Education</h2>
           <ul class="space-y-4 flex flex-col items-center">
-            <li v-for="edu in education" :key="edu.degree" class="w-full max-w-[400px]">
+            <li v-for="edu in education" :key="edu.degree" class="w-full max-w-100">
               <div
                 class="border border-gray-200 dark:border-gray-400 p-5 flex flex-col items-center text-center"
               >
