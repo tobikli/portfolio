@@ -1,4 +1,5 @@
 export const information = {
+  url: 'https://tobiwn.me',
   name: 'Tobias Wen Klingenberg',
   name_short: 'Tobias Klingenberg',
   mail: 'tobikli@pm.me',

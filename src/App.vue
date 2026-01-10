@@ -7,6 +7,25 @@ import { useRoute, RouterView } from 'vue-router'
 import { sections } from '@/data/sections'
 import AppFooter from './components/AppFooter.vue'
 import { reactive, onMounted, onBeforeUnmount } from 'vue'
+import { useHead } from '@unhead/vue'
+import { information } from './data/information'
+
+useHead({
+  title: 'Tobias Wen Klingenberg',
+  meta: [
+    {
+      name: 'description',
+      content: 'Welcome to my personal portfolio—projects, publications, and ways to get in touch.',
+    },
+    { property: 'og:title', content: 'Tobias Wen Klingenberg' },
+    {
+      property: 'og:description',
+      content: 'Welcome to my personal portfolio—projects, publications, and ways to get in touch.',
+    },
+    { property: 'og:type', content: 'website' },
+  ],
+  link: [{ rel: 'canonical', href: information.url }],
+})
 
 const visible = reactive<Record<string, boolean>>({})
 const route = useRoute()

@@ -1,6 +1,7 @@
 import './assets/main.css'
 
 import { createApp } from 'vue'
+import { createHead } from '@unhead/vue/client'
 import App from './App.vue'
 import router from './router'
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -12,7 +13,8 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 library.add(fas, far, fab)
 
 const app = createApp(App)
-
+const head = createHead()
+app.use(head)
 app.component('font-awesome-icon', FontAwesomeIcon)
 
 app.use(router)
