@@ -11,18 +11,19 @@ import { useHead } from '@unhead/vue'
 import { information } from './data/information'
 
 useHead({
-  title: 'Tobias Wen Klingenberg',
+  title: 'Tobias Klingenberg',
   meta: [
     {
       name: 'description',
       content: 'Welcome to my personal portfolio—projects, publications, and ways to get in touch.',
     },
-    { property: 'og:title', content: 'Tobias Wen Klingenberg' },
+    { property: 'og:title', content: 'Tobias Klingenberg' },
     {
       property: 'og:description',
       content: 'Welcome to my personal portfolio—projects, publications, and ways to get in touch.',
     },
     { property: 'og:type', content: 'website' },
+    { property: 'author', content: 'Tobias Klingenberg' },
   ],
   link: [{ rel: 'canonical', href: information.url }],
 })
