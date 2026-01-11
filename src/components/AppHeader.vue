@@ -16,13 +16,17 @@ const isLastSection = (id: string) => {
 }
 
 onMounted(() => {
-  const pageSections = document.querySelectorAll('section')
+  // Only track the page sections in the main content; ignore popup or other sections
+  const pageSections = document.querySelectorAll('main .section[id]')
 
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
+        const id = entry.target.id
+        if (!id) return
+
         if (entry.isIntersecting) {
-          currentAnchor.value = entry.target.id
+          currentAnchor.value = id
         }
       })
     },
