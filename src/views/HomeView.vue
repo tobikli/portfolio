@@ -27,7 +27,7 @@ const splitLines = lines.map((line) => ({
     </div>
     <div class="relative z-10 w-full flex flex-col items-center pb-36 md:pb-44">
       <div class="h-50"></div>
-      <div class="backdrop-blur-sm bg-black/2 dark:bg-white/2 p-5">
+      <div class="safari-backdrop bg-black/2 dark:bg-white/2 p-5">
         <div
           v-for="(line, lineIndex) in splitLines"
           :key="lineIndex"
@@ -54,7 +54,7 @@ const splitLines = lines.map((line) => ({
         </div>
       </div>
       <motion.div
-        class="mt-15 p-2 backdrop-blur-sm bg-black/2 dark:bg-white/2 flex"
+        class="mt-15 p-2 safari-backdrop bg-black/2 dark:bg-white/2 flex"
         :initial="{ opacity: 0, y: 20 }"
         :animate="{ opacity: 1, y: 0 }"
         :transition="{ duration: 0.5, delay: 2 }"
@@ -85,6 +85,11 @@ const splitLines = lines.map((line) => ({
 <style scoped>
 :global(body) {
   overflow-x: hidden;
+}
+
+.safari-backdrop {
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }
 
 .stars-container {
