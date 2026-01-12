@@ -13,7 +13,22 @@
   body,
   #app {
     @apply font-montserrat;
+    background-color: rgb(245, 245, 245); /* pick your light-mode base */
+    color: #0f172a;
   }
+  html.dark,
+  .dark body,
+  .dark #app {
+    background-color: #0f1013; /* pick your dark-mode base */
+    color: #e5e7eb;
+  }
+}
+
+:root {
+  --bg-accent: rgb(235, 235, 235);
+}
+:root.dark {
+  --bg-accent: #15161a;
 }
 
 html {

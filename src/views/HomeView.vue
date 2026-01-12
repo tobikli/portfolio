@@ -5,7 +5,7 @@ import ScrollIcon from '@/components/ScrollIcon.vue'
 import '@/assets/stars.css'
 
 const lines = [
-  { text: `Hello, I'm ${information.name}`, size: 'text-3xl', weight: 'font-semibold' },
+  { text: `Hello, I'm ${information.name_short}`, size: 'text-3xl', weight: 'font-semibold' },
   { text: 'Welcome to my portfolio!', size: 'text-xl', weight: 'font-medium' },
   { text: information.slogan, size: 'text-2xl', weight: 'font-medium' },
 ]
@@ -24,10 +24,15 @@ const splitLines = lines.map((line) => ({
       <div id="stars"></div>
       <div id="stars2"></div>
       <div id="stars3"></div>
+      <div class="meteor-container">
+        <div class="meteor-1"></div>
+        <div class="meteor-7"></div>
+        <div class="meteor-13"></div>
+      </div>
     </div>
     <div class="relative z-10 w-full flex flex-col items-center pb-36 md:pb-44">
       <div class="h-50"></div>
-      <div class="safari-backdrop bg-black/2 dark:bg-white/2 p-5">
+      <div class="bg-(--bg-accent) p-5">
         <div
           v-for="(line, lineIndex) in splitLines"
           :key="lineIndex"
@@ -54,7 +59,7 @@ const splitLines = lines.map((line) => ({
         </div>
       </div>
       <motion.div
-        class="mt-15 p-2 safari-backdrop bg-black/2 dark:bg-white/2 flex"
+        class="mt-15 p-2 bg-(--bg-accent) flex"
         :initial="{ opacity: 0, y: 20 }"
         :animate="{ opacity: 1, y: 0 }"
         :transition="{ duration: 0.5, delay: 2 }"
@@ -87,17 +92,11 @@ const splitLines = lines.map((line) => ({
   overflow-x: hidden;
 }
 
-.safari-backdrop {
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-}
-
 .stars-container {
-  position: absolute;
+  position: fixed;
   inset: 0;
   overflow: hidden;
-  pointer-events: none;
-  z-index: 0;
+  z-index: -10;
 }
 
 :global(html:not(.dark) .stars-container) {
@@ -106,11 +105,7 @@ const splitLines = lines.map((line) => ({
 
 :global(#stars),
 :global(#stars2),
-:global(#stars3),
-:global(.meteor-container),
-:global(.meteor-1),
-:global(.meteor-7),
-:global(.meteor-13) {
+:global(#stars3) {
   position: absolute;
   left: 0;
   top: 0;
