@@ -12,7 +12,7 @@ defineProps<{
 
 <template>
   <button
-    class="group relative text-md overflow-hidden hover:cursor-pointer bg-gray-100/70 dark:bg-white/5 p-3 m-2 min-w-40 transition-all hover:text-white hover:dark:text-black"
+    class="group relative text-md overflow-hidden hover:cursor-pointer bg-gray-200/70 dark:bg-white/5 p-3 m-2 min-w-40 transition-all hover:text-white hover:dark:text-black"
     @click="
       showPopup({
         title: title,
