@@ -32,7 +32,7 @@ const splitLines = lines.map((line) => ({
     </div>
     <div class="relative z-10 w-full flex flex-col items-center pb-36 md:pb-44">
       <div class="h-50"></div>
-      <div class="bg-(--bg-accent) p-5">
+      <div class="p-5">
         <div
           v-for="(line, lineIndex) in splitLines"
           :key="lineIndex"
@@ -59,7 +59,7 @@ const splitLines = lines.map((line) => ({
         </div>
       </div>
       <motion.div
-        class="mt-15 p-2 bg-(--bg-accent) flex"
+        class="mt-15 p-2 flex"
         :initial="{ opacity: 0, y: 20 }"
         :animate="{ opacity: 1, y: 0 }"
         :transition="{ duration: 0.5, delay: 2 }"
