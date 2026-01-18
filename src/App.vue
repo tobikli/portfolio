@@ -11,7 +11,6 @@ import { useHead } from '@unhead/vue'
 
 useHead({
   title: 'Tobias Klingenberg – Software Engineer & Computer Science Student',
-
   meta: [
     {
       name: 'description',
@@ -62,13 +61,54 @@ useHead({
       content: 'Portfolio of Tobias Klingenberg, Computer Science student at TUM.',
     },
   ],
-
   link: [
     {
       rel: 'canonical',
       href: 'https://tobiwn.me',
     },
   ],
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "ProfilePage",
+        "name": "Tobias Klingenberg",
+        "url": "https://tobiwn.me/",
+        "dateCreated": "2024-12-23T12:34:00-05:00",
+        "dateModified": "2025-03-27T14:53:00-05:00",
+        "mainEntity": {
+          "@type": "Person",
+          "name": "Tobias Klingenberg",
+          "alternateName": "tobikli",
+          "identifier": "tobiwn",
+          "description": "CS Student by heart",
+          "image": "https://tobiwn.me/images/profile.jpg",
+          "sameAs": [
+            "https://www.linkedin.com/in/klingenberg",
+            "https://github.com/tobikli"
+          ],
+          "interactionStatistic": [
+            {
+              "@type": "InteractionCounter",
+              "interactionType": "https://schema.org/FollowAction",
+              "userInteractionCount": 1
+            },
+            {
+              "@type": "InteractionCounter",
+              "interactionType": "https://schema.org/LikeAction",
+              "userInteractionCount": 5
+            }
+          ],
+          "agentInteractionStatistic": {
+            "@type": "InteractionCounter",
+            "interactionType": "https://schema.org/WriteAction",
+            "userInteractionCount": 2346
+          }
+        }
+      })
+    }
+  ]
 })
 
 const visible = reactive<Record<string, boolean>>({})
