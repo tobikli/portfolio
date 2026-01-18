@@ -8,24 +8,67 @@ import { sections } from '@/data/sections'
 import AppFooter from './components/AppFooter.vue'
 import { reactive, onMounted, onBeforeUnmount } from 'vue'
 import { useHead } from '@unhead/vue'
-import { information } from './data/information'
 
 useHead({
-  title: 'Tobias Klingenberg',
+  title: 'Tobias Klingenberg – Software Engineer & Computer Science Student',
+
   meta: [
     {
       name: 'description',
-      content: 'Welcome to my personal portfolio—projects, publications, and ways to get in touch.',
+      content:
+        'Portfolio of Tobias Klingenberg, Computer Science student at TUM. Projects in software engineering, web development, and system design.',
     },
-    { property: 'og:title', content: 'Tobias Klingenberg' },
+
+    {
+      name: 'keywords',
+      content:
+        'Tobias Klingenberg, Tobias Wen Klingenberg, TWK, software engineer, computer science, TUM, portfolio',
+    },
+
+    {
+      name: 'author',
+      content: 'Tobias Klingenberg',
+    },
+
+    {
+      property: 'og:title',
+      content: 'Tobias Klingenberg – Portfolio',
+    },
     {
       property: 'og:description',
-      content: 'Welcome to my personal portfolio—projects, publications, and ways to get in touch.',
+      content:
+        'Personal portfolio of Tobias Klingenberg, showcasing software engineering and computer science projects.',
     },
-    { property: 'og:type', content: 'website' },
-    { property: 'author', content: 'Tobias Klingenberg' },
+    {
+      property: 'og:type',
+      content: 'website',
+    },
+    {
+      property: 'og:url',
+      content: 'https://tobiwn.me',
+    },
+
+    // Twitter / X
+    {
+      name: 'twitter:card',
+      content: 'summary',
+    },
+    {
+      name: 'twitter:title',
+      content: 'Tobias Klingenberg – Portfolio',
+    },
+    {
+      name: 'twitter:description',
+      content: 'Portfolio of Tobias Klingenberg, Computer Science student at TUM.',
+    },
   ],
-  link: [{ rel: 'canonical', href: information.url }],
+
+  link: [
+    {
+      rel: 'canonical',
+      href: 'https://tobiwn.me',
+    },
+  ],
 })
 
 const visible = reactive<Record<string, boolean>>({})
