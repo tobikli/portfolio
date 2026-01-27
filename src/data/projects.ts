@@ -18,7 +18,7 @@ export const projects: Project[] = [
     `,
     date: '2025',
     tags: ['React', 'Next.js', 'TS'],
-    link: 'https://uplan.twkl.net',
+    link: 'https://uplan.twks.net',
   },
   {
     name: 'tobiwn.me',
@@ -44,7 +44,7 @@ export const projects: Project[] = [
     `,
     date: '2025',
     tags: ['Proxmox', 'VM', 'Net'],
-    link: 'https://twkl.net',
+    link: 'https://twks.net',
   },
   {
     name: 'tobia.sh',

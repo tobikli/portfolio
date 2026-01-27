@@ -98,7 +98,6 @@ import profileImg from '@/assets/images/profile.png'
           </p>
           <p>
             and stats of my personal infrastructure here:
-            <a class="underline" href="https://twkl.net">TWKL</a> and
             <a class="underline" href="https://twks.net">TWKS</a>
           </p>
           <p class="mt-10">
