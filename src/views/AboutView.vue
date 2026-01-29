@@ -8,6 +8,16 @@ import CVDetail from '@/components/CVDetail.vue'
 import ImageDetail from '@/components/ImageDetail.vue'
 import PublicationsOverview from '@/components/PublicationsOverview.vue'
 import profileImg from '@/assets/images/profile.png'
+
+function getAge(birthDate: Date) {
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    return age;
+}
 </script>
 
 <template>
@@ -37,7 +47,7 @@ import profileImg from '@/assets/images/profile.png'
           </div>
           <h2 class="text-lg mb-3">My name is {{ information.name }}</h2>
           <p>
-            I'm currently in my <b>Master of Science</b> studies of
+            I'm currently {{ getAge(information.birthday) }} years old and in my <b>Master of Science</b> studies of
             <a
               class="underline"
               href="https://www.cit.tum.de/en/cit/studies/degree-programs/master-informatics/"

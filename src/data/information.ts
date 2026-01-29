@@ -4,6 +4,7 @@ export const information = {
   name_short: 'Tobias Klingenberg',
   mail: 'tobikli@pm.me',
   slogan: 'Master Informatics student at TUM',
+  birthday: new Date("2003-05-26"),
   links: [
     {
       name: 'GitHub',
