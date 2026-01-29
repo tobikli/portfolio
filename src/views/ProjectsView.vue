@@ -2,6 +2,8 @@
 import Projectbox from '@/components/ProjectBox.vue'
 import { projects } from '@/data/projects'
 import TextType from '@/ui-components/TextType.vue'
+import AnimationButton from '@/components/AnimationButton.vue'
+import ProjectsOverview from '@/components/ProjectsOverview.vue'
 </script>
 
 <template>
@@ -17,9 +19,12 @@ import TextType from '@/ui-components/TextType.vue'
         class="text-4xl mb-10"
       />
       <div class="flex flex-wrap justify-center gap-4 max-w-300">
-        <div v-for="project in projects" :key="project.name">
+        <div v-for="project in projects.slice(0, 9)" :key="project.name">
           <Projectbox :project="project" />
         </div>
+      </div>
+      <div class="p-10">
+        <AnimationButton text="All Projects" title="All Projects" :component="ProjectsOverview" />
       </div>
     </div>
   </div>

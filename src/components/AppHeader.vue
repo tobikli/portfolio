@@ -42,9 +42,13 @@ onMounted(() => {
 </script>
 
 <template>
-  <header class="sticky top-0 left-0 right-0 z-50 backdrop-blur-md" style="--header-height: 64px">
-    <div class="max-w-6xl mx-auto w-full px-4 py-3 flex items-center gap-4">
-      <img :src="isDark ? logo_light : logo_dark" alt="Logo" class="w-10 h-10 shrink-0" />
+  <header class="sticky top-0 left-0 right-0 z-50 backdrop-blur-md h-16">
+    <div class="max-w-6xl mx-auto w-full px-4 flex items-center gap-4 h-full">
+      <img
+        :src="isDark ? logo_light : logo_dark"
+        alt="Logo"
+        class="w-10 h-10 shrink-0 hidden sm:block"
+      />
       <div class="flex-1 flex justify-center">
         <nav class="flex gap-2" role="navigation" aria-label="Main">
           <a
@@ -61,7 +65,7 @@ onMounted(() => {
           </a>
         </nav>
       </div>
-      <div class="w-10 h-10 shrink-0" aria-hidden="true"></div>
+      <div class="w-10 h-10 shrink-0 hidden sm:block" aria-hidden="true"></div>
     </div>
   </header>
 </template>
