@@ -1,12 +1,19 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { VuePDF, usePDF } from '@tato30/vue-pdf'
 import CV from '@/assets/cv.pdf'
-const { pdf } = usePDF(CV)
 
+const { pdf } = usePDF(CV)
+const loading = ref(true)
 </script>
 
 <template>
-  <div class="flex justify-center">
-    <VuePDF :fit-parent="true" :pdf="pdf" />
+  <div class="flex justify-center items-center">
+    <div
+      v-if="loading"
+      class="w-8 h-8 border-4 border-gray-300 border-t-gray-700 rounded-full animate-spin"
+    />
+
+    <VuePDF v-show="!loading" :pdf="pdf" :fit-parent="true" @loaded="loading = false" />
   </div>
 </template>

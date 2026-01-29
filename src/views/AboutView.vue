@@ -10,13 +10,13 @@ import PublicationsOverview from '@/components/PublicationsOverview.vue'
 import profileImg from '@/assets/images/profile.png'
 
 function getAge(birthDate: Date) {
-    const today = new Date();
-    let age = today.getFullYear() - birthDate.getFullYear();
-    const m = today.getMonth() - birthDate.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-        age--;
-    }
-    return age;
+  const today = new Date()
+  let age = today.getFullYear() - birthDate.getFullYear()
+  const m = today.getMonth() - birthDate.getMonth()
+  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+    age--
+  }
+  return age
 }
 </script>
 
@@ -25,7 +25,7 @@ function getAge(birthDate: Date) {
     <div class="text-center w-full max-w-4xl">
       <h1 class="text-3xl mb-12">About me</h1>
       <!-- Information -->
-      <div class="grid grid:cols-1 md:grid-cols-[1fr_auto_1fr] mb-40">
+      <div class="grid grid:cols-1 lg:grid-cols-[1fr_auto_1fr] mb-40">
         <div class="text-left p-5">
           <div class="flex justify-center mb-6">
             <div class="relative w-30 h-30 mb-5">
@@ -47,7 +47,8 @@ function getAge(birthDate: Date) {
           </div>
           <h2 class="text-lg mb-3">My name is {{ information.name }}</h2>
           <p>
-            I'm currently {{ getAge(information.birthday) }} years old and in my <b>Master of Science</b> studies of
+            I'm currently {{ getAge(information.birthday) }} years old and in my
+            <b>Master of Science</b> studies of
             <a
               class="underline"
               href="https://www.cit.tum.de/en/cit/studies/degree-programs/master-informatics/"
@@ -85,7 +86,7 @@ function getAge(birthDate: Date) {
           </div>
         </div>
         <div
-          class="inline-block h-0.5 md:h-auto md:w-0.5 self-stretch bg-neutral-100 dark:bg-white/10"
+          class="inline-block h-0.5 lg:h-auto lg:w-0.5 self-stretch bg-black/10 dark:bg-white/10"
         ></div>
         <div class="text-left p-5">
           <div class="border-gray-400/40 p-2 mb-10 text-center">
@@ -110,13 +111,13 @@ function getAge(birthDate: Date) {
             and stats of my personal infrastructure here:
             <a class="underline" href="https://twks.net">TWKS</a>
           </p>
-          <p class="mt-10">
+          <p class="mt-6">
             More information about myself and my work can be seen below or using this interactive
             <a class="underline" href="/shell">shell</a>.
           </p>
 
           <div>
-            <div class="justify-center grid grid-cols-1 md:grid-cols-2 mt-5">
+            <div class="justify-center grid grid-cols-1 sm:grid-cols-2 mt-5">
               <AnimationButton
                 text="Curriculum Vitae"
                 title="Curriculum Vitae"
