@@ -2,9 +2,9 @@ export const information = {
   url: 'https://tobiwn.me',
   name: 'Tobias Wen Klingenberg',
   name_short: 'Tobias Klingenberg',
-  mail: 'tobikli@pm.me',
+  mail: 'hello@tobiwn.me',
   slogan: 'Master Informatics student at TUM',
-  birthday: new Date("2003-05-26"),
+  birthday: new Date('2003-05-26'),
   links: [
     {
       name: 'GitHub',
@@ -62,7 +62,8 @@ export const work = [
   {
     place: 'Siemens AG',
     role: 'Cybersecurity IS Working Student',
-    information: 'Automation, Virtualisation and Administration of Infrastructure for Cybersecurity Systems',
+    information:
+      'Automation, Virtualisation and Administration of Infrastructure for Cybersecurity Systems',
     time: '2025-Present',
   },
   {

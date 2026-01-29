@@ -20,9 +20,12 @@ const sendMessage = () => {
   <div class="w-full flex flex-col items-center justify-start px-6 pb-20 md:pb-28">
     <div class="text-center">
       <h1 class="text-3xl mb-12">Contact</h1>
-      <p class="text-md">Contact me directly</p>
-      <a class="hover:underline" :href="'mailto:' + information.mail">{{ information.mail }}</a>
-      <p class="mb-5 mt-5 text-md">Or here</p>
+      <p class="text-md mb-5">Contact me directly</p>
+      <a class="hover:underline border p-2" :href="'mailto:' + information.mail">{{
+        information.mail
+      }}</a>
+      <hr class="mt-10 border-black/40 dark:border-white/40" />
+      <p class="mb-5 mt-5 text-md">or here</p>
       <div class="grid p-10 bg-black/5 dark:bg-white/2">
         <input
           class="border-b mb-5 focus:outline-none focus:"
