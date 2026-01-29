@@ -18,10 +18,12 @@ import ProjectDetail from './ProjectDetail.vue'
         "
       >
         <div
-          class="grid grid-cols-[20%_60%_20%] p-4 bg hover:cursor-pointer bg-black/3 dark:bg-white/3 hover:bg-black hover:dark:bg-white transition-all hover:text-white hover:dark:text-black"
+          class="grid sm:grid-cols-[30%_50%_20%] p-4 bg hover:cursor-pointer bg-black/3 dark:bg-white/3 hover:bg-black hover:dark:bg-white transition-all hover:text-white hover:dark:text-black"
         >
-          <a class="text-left underline-offset-5 underline"> {{ project.name }}</a>
-          <a class="text-left hover:cursor-pointer"> {{ project.shortDescription }}</a>
+          <a class="text-left underline-offset-5 underline wrap-break-word">
+            {{ project.name }}
+          </a>
+          <a class="text-left sm:my-0 my-2"> {{ project.shortDescription }}</a>
           <a class="text-right">{{ project.date }}</a>
         </div>
       </button>
