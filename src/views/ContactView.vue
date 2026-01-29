@@ -21,9 +21,11 @@ const sendMessage = () => {
     <div class="text-center">
       <h1 class="text-3xl mb-12">Contact</h1>
       <p class="text-md mb-5">Contact me directly</p>
-      <a class="hover:underline border p-2" :href="'mailto:' + information.mail">{{
-        information.mail
-      }}</a>
+      <a
+        class="hover:underline border border-black/40 dark:border-white/40 p-3"
+        :href="'mailto:' + information.mail"
+        >{{ information.mail }}</a
+      >
       <hr class="mt-10 border-black/40 dark:border-white/40" />
       <p class="mb-5 mt-5 text-md">or here</p>
       <div class="grid p-10 bg-black/5 dark:bg-white/2">
