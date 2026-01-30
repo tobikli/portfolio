@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, onBeforeUnmount, computed, watch, nextTick } from 'vue'
+import { onMounted, onBeforeUnmount, computed, watch } from 'vue'
 import { popupState, hidePopup } from '@/composables/usePopup'
 import { motion } from 'motion-v'
 
@@ -28,14 +28,6 @@ const motionHover = computed(() => (isIOS ? {} : { rotate: 90 }))
 
 watch(() => popupState.visible, (visible) => {
   document.body.style.overflow = visible ? 'hidden' : ''
-  
-  // Force cleanup when popup is hidden on iOS
-  if (!visible && isIOS) {
-    nextTick(() => {
-      // Trigger reflow to ensure GPU resources are released
-      void document.body.offsetHeight
-    })
-  }
 })
 </script>
 

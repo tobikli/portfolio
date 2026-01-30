@@ -16,7 +16,14 @@ export const popupState = reactive({
   componentKey: 0, // add key
 })
 
+let cleanupTimer: ReturnType<typeof setTimeout> | null = null
+
 export function showPopup(payload: PopupPayload) {
+  // Clear any pending cleanup
+  if (cleanupTimer) {
+    clearTimeout(cleanupTimer)
+    cleanupTimer = null
+  }
   // clear previous
   popupState.visible = false
   popupState.component = null
@@ -33,11 +40,16 @@ export function showPopup(payload: PopupPayload) {
 export function hidePopup() {
   popupState.visible = false
   // Clear component after a short delay to allow transition/cleanup
-  setTimeout(() => {
+  // Clear any existing timer first to prevent race conditions
+  if (cleanupTimer) {
+    clearTimeout(cleanupTimer)
+  }
+  cleanupTimer = setTimeout(() => {
     if (!popupState.visible) {
       popupState.component = null
       popupState.componentProps = {}
     }
+    cleanupTimer = null
   }, 100)
 }
 
