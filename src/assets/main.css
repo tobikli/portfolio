@@ -48,3 +48,24 @@ html.dark {
 .section {
   scroll-margin-top: var(--header-height);
 }
+
+/* Popup styles for dynamically created popups */
+.popup-root {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+}
+
+/* Optimize for iOS Safari to prevent GPU exhaustion */
+.ios-popup {
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  will-change: auto;
+}
+
+.ios-popup * {
+  /* Prevent child elements from creating new GPU layers */
+  will-change: auto;
+  transform: none;
+  -webkit-transform: none;
+}

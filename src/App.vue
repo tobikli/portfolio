@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import AppHeader from '@/components/AppHeader.vue'
 import Darkmode from '@/components/DarkMode.vue'
-import PopupView from '@/views/PopupView.vue'
 import { resolveDynamicComponent, computed } from 'vue'
 import { useRoute, RouterView } from 'vue-router'
 import { sections } from '@/data/sections'
@@ -164,7 +163,6 @@ onBeforeUnmount(() => {
     </main>
     <AppFooter />
     <Darkmode />
-    <PopupView />
   </template>
 
   <template v-else>

@@ -1,50 +1,141 @@
-import { reactive } from 'vue'
+import { createApp, h, type Component } from 'vue'
 
 export type PopupPayload = {
   title?: string
   message?: string
-  component?: any
+  component?: Component
   componentProps?: Record<string, any>
 }
 
-export const popupState = reactive({
-  visible: false,
-  title: '',
-  message: '',
-  component: null as any,
-  componentProps: {} as Record<string, any>,
-  componentKey: 0,
-})
+// Detect iOS
+const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent)
+
+// Keep track of current popup instance
+let currentPopupApp: any = null
+let currentPopupContainer: HTMLElement | null = null
+let keyHandler: ((e: KeyboardEvent) => void) | null = null
 
 export function showPopup(payload: PopupPayload) {
-  // clear previous immediately
-  popupState.component = null
-  popupState.componentProps = {}
-  popupState.visible = false
-  
-  // Use requestAnimationFrame to ensure DOM cleanup before showing new popup
-  requestAnimationFrame(() => {
-    // set new
-    popupState.title = payload.title ?? ''
-    popupState.message = payload.message ?? ''
-    popupState.component = payload.component ?? null
-    popupState.componentProps = payload.componentProps ?? {}
-    popupState.componentKey++
-    popupState.visible = true
-  })
+  // Close any existing popup first
+  if (currentPopupApp) {
+    hidePopup()
+  }
+
+  // Create container for popup
+  currentPopupContainer = document.createElement('div')
+  currentPopupContainer.className = 'popup-root'
+  document.body.appendChild(currentPopupContainer)
+
+  // Lock body scroll
+  document.body.style.overflow = 'hidden'
+
+  // ESC key handler
+  keyHandler = (e: KeyboardEvent) => {
+    if (e.key === 'Escape') hidePopup()
+  }
+  window.addEventListener('keydown', keyHandler)
+
+  // Create the popup wrapper component using render function
+  const PopupWrapper = {
+    render() {
+      const overlayBlurClass = isIOS ? '' : 'backdrop-blur-md'
+      const modalBlurClass = isIOS ? '' : 'backdrop-blur-2xl'
+
+      return h(
+        'div',
+        {
+          class: `fixed inset-0 z-9998 flex items-center justify-center ${isIOS ? 'ios-popup' : ''}`,
+          role: 'dialog',
+          'aria-modal': 'true',
+          onClick: (e: MouseEvent) => {
+            if (e.target === e.currentTarget) hidePopup()
+          },
+        },
+        [
+          // Background overlay
+          h('div', {
+            class: `absolute inset-0 bg-black/30 ${overlayBlurClass}`,
+            onClick: () => hidePopup(),
+          }),
+          // Modal content
+          h(
+            'div',
+            {
+              class: `relative z-10 w-[min(90vw,900px)] max-h-[85vh] overflow-y-scroll touch-scroll bg-white/90 dark:bg-black/70 text-gray-900 dark:text-gray-100 p-6 ${modalBlurClass}`,
+              onClick: (e: MouseEvent) => e.stopPropagation(),
+            },
+            [
+              // Header
+              h(
+                'header',
+                { class: 'flex items-start justify-between gap-4 mb-4' },
+                [
+                  h('div', {}, [
+                    h('h3', { class: 'text-lg font-semibold' }, payload.title ?? ''),
+                  ]),
+                  h(
+                    'button',
+                    {
+                      class: 'ml-4 p-2 hover:cursor-pointer',
+                      'aria-label': 'Close',
+                      onClick: () => hidePopup(),
+                    },
+                    [h('i', { class: 'pi pi-times' })]
+                  ),
+                ]
+              ),
+              // Content
+              h('section', { class: 'prose dark:prose-invert' }, [
+                payload.component
+                  ? h(payload.component, payload.componentProps ?? {})
+                  : h('p', { innerHTML: payload.message ?? '' }),
+              ]),
+            ]
+          ),
+        ]
+      )
+    },
+  }
+
+  // Create and mount the app
+  currentPopupApp = createApp(PopupWrapper)
+  currentPopupApp.mount(currentPopupContainer)
 }
 
 export function hidePopup() {
-  popupState.visible = false
-  // Immediately clear component on close to free memory (especially important for heavy components like PDFs)
-  requestAnimationFrame(() => {
-    if (!popupState.visible) {
-      popupState.component = null
-      popupState.componentProps = {}
-    }
-  })
+  if (!currentPopupApp || !currentPopupContainer) return
+
+  // Remove key handler
+  if (keyHandler) {
+    window.removeEventListener('keydown', keyHandler)
+    keyHandler = null
+  }
+
+  // Restore body scroll
+  document.body.style.overflow = ''
+
+  // Unmount the app
+  currentPopupApp.unmount()
+  
+  // Remove container from DOM
+  if (currentPopupContainer.parentNode) {
+    currentPopupContainer.parentNode.removeChild(currentPopupContainer)
+  }
+
+  // Clear references immediately
+  currentPopupApp = null
+  currentPopupContainer = null
+
+  // Force garbage collection hint for iOS
+  if (isIOS) {
+    // Small delay to ensure DOM is fully cleaned up
+    setTimeout(() => {
+      // Trigger a reflow to help iOS Safari clean up resources
+      void document.body.offsetHeight
+    }, 0)
+  }
 }
 
 export function usePopup() {
-  return { popupState, showPopup, hidePopup }
+  return { showPopup, hidePopup }
 }
