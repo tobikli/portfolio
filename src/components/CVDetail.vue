@@ -1,10 +1,21 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onBeforeUnmount } from 'vue'
 import { VuePDF, usePDF } from '@tato30/vue-pdf'
 import CV from '@/assets/cv.pdf'
 
 const { pdf } = usePDF(CV)
 const loading = ref(true)
+
+// Cleanup PDF resources when component is destroyed
+onBeforeUnmount(() => {
+  if (pdf.value) {
+    try {
+      pdf.value.destroy()
+    } catch (e) {
+      // Ignore errors during cleanup
+    }
+  }
+})
 </script>
 
 <template>

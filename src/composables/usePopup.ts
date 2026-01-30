@@ -114,7 +114,7 @@ export function hidePopup() {
   // Restore body scroll
   document.body.style.overflow = ''
 
-  // Unmount the app
+  // Unmount the app - this triggers onBeforeUnmount hooks in child components
   currentPopupApp.unmount()
   
   // Remove container from DOM
@@ -123,16 +123,39 @@ export function hidePopup() {
   }
 
   // Clear references immediately
+  const containerToCleanup = currentPopupContainer
   currentPopupApp = null
   currentPopupContainer = null
 
-  // Force garbage collection hint for iOS
+  // Aggressive cleanup for iOS to help Safari release memory
   if (isIOS) {
-    // Small delay to ensure DOM is fully cleaned up
-    setTimeout(() => {
-      // Trigger a reflow to help iOS Safari clean up resources
+    // Use requestIdleCallback if available, otherwise setTimeout
+    const cleanup = () => {
+      // Force removal of any lingering event listeners
+      if (containerToCleanup) {
+        const clone = containerToCleanup.cloneNode(false)
+        if (containerToCleanup.parentNode) {
+          containerToCleanup.parentNode.replaceChild(clone, containerToCleanup)
+        }
+      }
+      
+      // Trigger garbage collection hints
+      // Force a reflow
       void document.body.offsetHeight
-    }, 0)
+      
+      // Clear any cached styles
+      if (document.body.style.cssText) {
+        const currentStyle = document.body.style.cssText
+        document.body.style.cssText = ''
+        document.body.style.cssText = currentStyle
+      }
+    }
+
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(cleanup, { timeout: 100 })
+    } else {
+      setTimeout(cleanup, 50)
+    }
   }
 }
 
