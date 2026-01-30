@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { VuePDF, usePDF } from '@tato30/vue-pdf'
 import { showPopup } from '@/composables/usePopup'
-import { ref } from 'vue'
+import { ref, onBeforeUnmount } from 'vue'
 import PublicationsOverview from './PublicationsOverview.vue'
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 
@@ -42,6 +42,25 @@ const increasePresentation = () => {
 const decreasePresentation = () => {
   if (presentationPage.value - 1 >= 0) presentationPage.value--
 }
+
+// Cleanup PDF resources when component is destroyed
+onBeforeUnmount(() => {
+  // Destroy PDF instances to free memory
+  if (thesis.value) {
+    try {
+      thesis.value.destroy()
+    } catch (e) {
+      // Ignore errors during cleanup
+    }
+  }
+  if (presentation?.value) {
+    try {
+      presentation.value.destroy()
+    } catch (e) {
+      // Ignore errors during cleanup
+    }
+  }
+})
 </script>
 
 <template>
