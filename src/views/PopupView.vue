@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, onBeforeUnmount, computed, watch } from 'vue'
+import { onMounted, onBeforeUnmount, computed, watch, nextTick } from 'vue'
 import { popupState, hidePopup } from '@/composables/usePopup'
 import { motion } from 'motion-v'
 
@@ -19,15 +19,23 @@ onBeforeUnmount(() => {
   window.removeEventListener('keydown', onKey)
 })
 
-// Blur classes
-const overlayBlurClass = computed(() => (isIOS ? 'backdrop-blur-sm' : 'backdrop-blur-md'))
-const modalBlurClass = computed(() => (isIOS ? 'backdrop-blur-sm' : 'backdrop-blur-2xl'))
+// Blur classes - disable blur on iOS to prevent GPU issues
+const overlayBlurClass = computed(() => (isIOS ? '' : 'backdrop-blur-md'))
+const modalBlurClass = computed(() => (isIOS ? '' : 'backdrop-blur-2xl'))
 
 // Motion hover (disable rotate on iOS)
 const motionHover = computed(() => (isIOS ? {} : { rotate: 90 }))
 
 watch(() => popupState.visible, (visible) => {
   document.body.style.overflow = visible ? 'hidden' : ''
+  
+  // Force cleanup when popup is hidden on iOS
+  if (!visible && isIOS) {
+    nextTick(() => {
+      // Trigger reflow to ensure GPU resources are released
+      void document.body.offsetHeight
+    })
+  }
 })
 </script>
 
@@ -40,11 +48,11 @@ watch(() => popupState.visible, (visible) => {
       role="dialog"
     >
       <!-- Background overlay -->
-      <div class="absolute inset-0 bg-black/10" :class="overlayBlurClass" @click="hidePopup" />
+      <div class="absolute inset-0 bg-black/30" :class="overlayBlurClass" @click="hidePopup" />
 
       <!-- Modal content -->
       <div
-        class="relative z-10 w-[min(90vw,900px)] max-h-[85vh] overflow-y-scroll touch-scroll bg-white/80 dark:bg-black/50 text-gray-900 dark:text-gray-100 p-6"
+        class="relative z-10 w-[min(90vw,900px)] max-h-[85vh] overflow-y-scroll touch-scroll bg-white/90 dark:bg-black/70 text-gray-900 dark:text-gray-100 p-6"
         :class="modalBlurClass"
         @click.stop
       >

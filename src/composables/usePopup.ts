@@ -32,6 +32,13 @@ export function showPopup(payload: PopupPayload) {
 
 export function hidePopup() {
   popupState.visible = false
+  // Clear component after a short delay to allow transition/cleanup
+  setTimeout(() => {
+    if (!popupState.visible) {
+      popupState.component = null
+      popupState.componentProps = {}
+    }
+  }, 100)
 }
 
 export function usePopup() {
