@@ -43,21 +43,19 @@ const decreasePresentation = () => {
   if (presentationPage.value - 1 >= 0) presentationPage.value--
 }
 
-// Cleanup PDF resources when component is destroyed
 onBeforeUnmount(() => {
-  // Destroy PDF instances to free memory
   if (thesis.value) {
     try {
       thesis.value.destroy()
     } catch (e) {
-      // Ignore errors during cleanup
+      console.error(e)
     }
   }
   if (presentation?.value) {
     try {
       presentation.value.destroy()
     } catch (e) {
-      // Ignore errors during cleanup
+      console.error(e)
     }
   }
 })
