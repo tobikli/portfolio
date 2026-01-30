@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, onBeforeUnmount, computed, watch } from 'vue'
+import { onMounted, onBeforeUnmount, computed, watch, onUnmounted } from 'vue'
 import { popupState, hidePopup } from '@/composables/usePopup'
 import { motion } from 'motion-v'
 
@@ -19,6 +19,15 @@ onBeforeUnmount(() => {
   window.removeEventListener('keydown', onKey)
 })
 
+// Force garbage collection on iOS when component unmounts
+onUnmounted(() => {
+  if (isIOS) {
+    // Clear any lingering references
+    popupState.component = null
+    popupState.componentProps = {}
+  }
+})
+
 // Blur classes - disable blur on iOS to prevent GPU issues
 const overlayBlurClass = computed(() => (isIOS ? '' : 'backdrop-blur-md'))
 const modalBlurClass = computed(() => (isIOS ? '' : 'backdrop-blur-2xl'))
@@ -36,6 +45,7 @@ watch(() => popupState.visible, (visible) => {
     <div
       v-if="popupState.visible"
       class="fixed inset-0 z-9998 flex items-center justify-center"
+      :class="{ 'ios-popup': isIOS }"
       aria-modal="true"
       role="dialog"
     >
@@ -75,3 +85,20 @@ watch(() => popupState.visible, (visible) => {
     </div>
   </Teleport>
 </template>
+
+<style scoped>
+/* Optimize for iOS Safari to prevent GPU exhaustion */
+.ios-popup {
+  /* Disable hardware acceleration on iOS to reduce GPU memory usage */
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  will-change: auto;
+}
+
+.ios-popup * {
+  /* Prevent child elements from creating new GPU layers */
+  will-change: auto;
+  transform: none;
+  -webkit-transform: none;
+}
+</style>

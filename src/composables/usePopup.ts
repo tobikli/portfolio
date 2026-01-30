@@ -13,44 +13,36 @@ export const popupState = reactive({
   message: '',
   component: null as any,
   componentProps: {} as Record<string, any>,
-  componentKey: 0, // add key
+  componentKey: 0,
 })
 
-let cleanupTimer: ReturnType<typeof setTimeout> | null = null
-
 export function showPopup(payload: PopupPayload) {
-  // Clear any pending cleanup
-  if (cleanupTimer) {
-    clearTimeout(cleanupTimer)
-    cleanupTimer = null
-  }
-  // clear previous
-  popupState.visible = false
+  // clear previous immediately
   popupState.component = null
   popupState.componentProps = {}
-  // set new
-  popupState.title = payload.title ?? ''
-  popupState.message = payload.message ?? ''
-  popupState.component = payload.component ?? null
-  popupState.componentProps = payload.componentProps ?? {}
-  popupState.componentKey++
-  popupState.visible = true
+  popupState.visible = false
+  
+  // Use requestAnimationFrame to ensure DOM cleanup before showing new popup
+  requestAnimationFrame(() => {
+    // set new
+    popupState.title = payload.title ?? ''
+    popupState.message = payload.message ?? ''
+    popupState.component = payload.component ?? null
+    popupState.componentProps = payload.componentProps ?? {}
+    popupState.componentKey++
+    popupState.visible = true
+  })
 }
 
 export function hidePopup() {
   popupState.visible = false
-  // Clear component after a short delay to allow transition/cleanup
-  // Clear any existing timer first to prevent race conditions
-  if (cleanupTimer) {
-    clearTimeout(cleanupTimer)
-  }
-  cleanupTimer = setTimeout(() => {
+  // Immediately clear component on close to free memory (especially important for heavy components like PDFs)
+  requestAnimationFrame(() => {
     if (!popupState.visible) {
       popupState.component = null
       popupState.componentProps = {}
     }
-    cleanupTimer = null
-  }, 100)
+  })
 }
 
 export function usePopup() {
