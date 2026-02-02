@@ -48,7 +48,7 @@ defineProps<{
 
       <div class="ml-auto">
         <slot name="actions">
-          <button class="hover:underline">View</button>
+          <button class="hover:underline hover:cursor-pointer">View</button>
         </slot>
       </div>
     </footer>
