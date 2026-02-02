@@ -2,12 +2,14 @@
 import AppHeader from '@/components/AppHeader.vue'
 import Darkmode from '@/components/DarkMode.vue'
 import PopupView from '@/views/PopupView.vue'
+import { useDark } from '@vueuse/core'
 import { resolveDynamicComponent, computed } from 'vue'
 import { useRoute, RouterView } from 'vue-router'
 import { sections } from '@/data/sections'
 import AppFooter from './components/AppFooter.vue'
 import { reactive, onMounted, onBeforeUnmount } from 'vue'
 import { useHead } from '@unhead/vue'
+import CustomCursor from './ui-components/CustomCursor.vue'
 
 useHead({
   title: 'Tobias Klingenberg – Software Engineer & Computer Science Student',
@@ -114,6 +116,8 @@ const isShell = computed(() => route.name === 'shell')
 
 let observer: IntersectionObserver | null = null
 
+const isDark = useDark()
+
 onMounted(() => {
   const opts = {
     root: null,
@@ -140,6 +144,14 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
+    <custom-cursor
+      :targets="['img', 'a', 'button', 'cursor-hover']"
+      :circleColor="isDark ? '#fff' : '#000'"
+      :circleColorHover="isDark ? '#fff' : '#000'"
+      :dotColor="isDark ? '#fff' : '#000'"
+      :dotColorHover="isDark ? '#fff' : '#000'"
+      :hoverSize="1.4"
+    ></custom-cursor>
   <template v-if="!isShell">
     <AppHeader />
     <main class="min-h-screen">
@@ -167,6 +179,7 @@ onBeforeUnmount(() => {
   <template v-else>
     <RouterView />
   </template>
+
 </template>
 
 <style scoped>

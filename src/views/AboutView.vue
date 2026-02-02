@@ -54,7 +54,7 @@ import PublicationsOverview from '@/components/PublicationsOverview.vue'
               <font-awesome-icon
                 :icon="tech.icon"
                 size="lg"
-                class="transition-all duration-300 hover:scale-110"
+                class="transition-all duration-300 hover:scale-110 cursor-hover"
               />
             </motion.a>
           </div>

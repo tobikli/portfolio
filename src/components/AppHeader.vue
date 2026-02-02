@@ -6,38 +6,58 @@ import { sections } from '@/data/sections'
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 
 const isDark = useDark()
-const currentAnchor = ref('')
+const currentAnchor = ref(sections[0]?.id ?? '')
 
-const isLastSection = (id: string) => {
-  if (id === sections[sections.length - 1]?.id && currentAnchor.value === '') {
-    return 'active'
+const replaceHash = (id: string) => {
+  if (!id) return
+  const next = `${window.location.pathname}${window.location.search}#${id}`
+  if (window.location.hash !== `#${id}`) {
+    window.history.replaceState(null, '', next)
   }
-  return ''
+}
+
+const updateActiveSection = () => {
+  const headerOffset = 64 // matches --header-height
+  const sectionsInDom = Array.from(document.querySelectorAll<HTMLElement>('main .section[id]'))
+
+  let bestId = currentAnchor.value
+  let bestDist = Number.POSITIVE_INFINITY
+
+  sectionsInDom.forEach((el) => {
+    const rect = el.getBoundingClientRect()
+    if (rect.bottom <= 0 || rect.top >= window.innerHeight) return
+    const dist = Math.abs(rect.top - headerOffset)
+    if (dist < bestDist) {
+      bestDist = dist
+      bestId = el.id
+    }
+  })
+
+  if (bestId && bestId !== currentAnchor.value) {
+    currentAnchor.value = bestId
+    replaceHash(bestId)
+  }
+}
+
+let ticking = false
+const handleScroll = () => {
+  if (ticking) return
+  ticking = true
+  requestAnimationFrame(() => {
+    updateActiveSection()
+    ticking = false
+  })
 }
 
 onMounted(() => {
-  // Only track the page sections in the main content; ignore popup or other sections
-  const pageSections = document.querySelectorAll('main .section[id]')
+  updateActiveSection()
+  window.addEventListener('scroll', handleScroll, { passive: true })
+  window.addEventListener('resize', handleScroll, { passive: true })
+})
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        const id = entry.target.id
-        if (!id) return
-
-        if (entry.isIntersecting) {
-          currentAnchor.value = id
-        }
-      })
-    },
-    {
-      threshold: 0.2,
-    },
-  )
-
-  pageSections.forEach((section) => observer.observe(section))
-
-  onBeforeUnmount(() => observer.disconnect())
+onBeforeUnmount(() => {
+  window.removeEventListener('scroll', handleScroll)
+  window.removeEventListener('resize', handleScroll)
 })
 </script>
 
@@ -57,7 +77,7 @@ onMounted(() => {
             :href="'#' + section.id"
             :class="[
               'nav-link px-3 py-2 rounded text-sm underline-offset-8',
-              currentAnchor === section.id ? 'active' : isLastSection(section.id),
+              currentAnchor === section.id ? 'active' : '',
               'text-gray-900 dark:text-gray-100',
             ]"
           >

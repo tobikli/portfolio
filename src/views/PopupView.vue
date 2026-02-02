@@ -40,7 +40,7 @@ watch(
         </div>
         <motion.button
           @click="hidePopup"
-          class="ml-4 p-2 hover:cursor-pointer"
+          class="ml-4 p-2 hover:cursor-pointer cursor-hover"
           aria-label="Close"
           :whileHover="{ rotate: 90 }"
         >

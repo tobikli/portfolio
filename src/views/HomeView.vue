@@ -62,7 +62,7 @@ const splitLines = lines.map((line) => ({
         class="mt-15 p-2 flex"
         :initial="{ opacity: 0, y: 20 }"
         :animate="{ opacity: 1, y: 0 }"
-        :transition="{ duration: 0.5, delay: 2 }"
+        :transition="{ duration: 0.5, delay: 0 }"
       >
         <motion.a
           v-for="link in information.links"
@@ -71,14 +71,14 @@ const splitLines = lines.map((line) => ({
           class="m-6"
           :initial="{ opacity: 0, y: 20 }"
           :animate="{ opacity: 1, y: 0 }"
-          :transition="{ duration: 0.5, delay: 2 }"
-          :whileHover="{ scale: 1.2, rotate: 10 }"
+          :transition="{ duration: 0.5, delay: 0 }"
+          :whileHover="{ scale: 1.2 }"
           :whileTap="{ scale: 0.9 }"
         >
           <font-awesome-icon
             :icon="link.icon"
             size="2xl"
-            class="transition-all duration-300 hover:scale-110"
+            class="cursor-hover"
           />
         </motion.a>
       </motion.div>

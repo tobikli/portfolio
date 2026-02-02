@@ -64,7 +64,7 @@ onBeforeUnmount(() => {
 <template>
   <div>
     <Button
-      class="px-2 py-1 hover:cursor-pointer mb-4 text-sm hover:bg-black hover:text-white hover:dark:bg-white hover:dark:text-black"
+      class="px-2 py-1 hover:cursor-pointer mb-4 text-sm hover:bg-black hover:text-white hover:dark:bg-white hover:dark:text-black cursor-hover"
       @click="
         showPopup({
           title: 'Publications',

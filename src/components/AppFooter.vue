@@ -6,7 +6,7 @@ const year = new Date().getFullYear()
 
 <template>
   <ScrollVelocity
-    :texts="[`| Copyright ${year} ${information.name_short}`, 'Made with ♡ and twk-folio |']"
+    :texts="[`| Copyright ${year} ${information.name_short}`, 'Made with ♡ and vue.js |']"
     :velocity="6"
     :damping="10"
     :stiffness="500"
