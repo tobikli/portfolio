@@ -1,12 +1,29 @@
 <script setup lang="ts">
 import { information } from '@/data/information'
+import { config } from '@/data/config';
 import ScrollVelocity from '@/ui-components/ScrollVelocity.vue'
 const year = new Date().getFullYear()
+const openGitHub = () => {
+  window.location.replace(config.github);
+}
 </script>
 
 <template>
+
+  <div class="flex justify-center text-center">
+    <div class="flex items-center divide-x m-2 border">
+      <div class="px-2 hover-cursor hover:bg-black hover:text-white hover:dark:bg-white hover:dark:text-black" @click="openGitHub">
+        <a class="text-xs">This page on </a>
+        <font-awesome-icon :icon="'fa-brands fa-github'" size="sm" class="cursor-hover" />
+      </div>
+      <div class="px-2">
+        <span class="text-xs">{{ config.commit }}</span>
+      </div>
+    </div>
+  </div>
+
   <ScrollVelocity
-    :texts="[`| Copyright ${year} ${information.name_short}`, 'Made with ♡ and vue.js |']"
+    :texts="[`| Copyright ${year} ${information.name_short}`]"
     :velocity="6"
     :damping="10"
     :stiffness="500"

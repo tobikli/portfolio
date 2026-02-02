@@ -7,8 +7,8 @@
 		"node": "^20.19.0 || >=22.12.0"
 	},
 	"scripts": {
-		"dev": "vite",
-		"build": "run-p type-check \"build-only {@}\" --",
+		"dev": "VITE_GIT_HASH=$(git rev-parse --short HEAD) vite",
+		"build": "VITE_GIT_HASH=$(git rev-parse --short HEAD) run-p type-check \"build-only {@}\" --",
 		"preview": "vite preview",
 		"build-only": "vite build",
 		"type-check": "vue-tsc --build",
@@ -36,7 +36,7 @@
 	"devDependencies": {
 		"@tailwindcss/vite": "^4.1.17",
 		"@tsconfig/node22": "^22.0.2",
-		"@types/node": "^22.18.11",
+		"@types/node": "^25.2.0",
 		"@vitejs/plugin-vue": "^6.0.1",
 		"@vue/eslint-config-prettier": "^10.2.0",
 		"@vue/eslint-config-typescript": "^14.6.0",

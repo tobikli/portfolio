@@ -5,7 +5,6 @@ const birthday = new Date('2003-05-26')
 const age = getAge(birthday)
 
 export const information = {
-  url: 'https://tobiwn.me',
   name: 'Tobias Wen Klingenberg',
   name_short: 'Tobias Klingenberg',
   mail: 'hello@tobiwn.me',
