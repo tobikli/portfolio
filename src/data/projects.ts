@@ -49,8 +49,8 @@ export const projects: Project[] = [
     link: 'https://twks.net',
   },
   {
-    name: 'tobia.sh',
-    shortName: 'tobia.sh',
+    name: 'v2.tobiwn.me',
+    shortName: 'v2.tobiwn.me',
     shortDescription: 'Secondary portfolio website.',
     longDescription: `
     This is my second personal portfolio and website. It holds all my information including my projects, my resume and contact options.
@@ -62,9 +62,9 @@ export const projects: Project[] = [
     link: 'https://v2.tobiwn.me',
   },
   {
-    name: 'Bachelor',
-    shortName: 'Bachelor',
-    shortDescription: 'Bachelor Thesis.',
+    name: 'Theia E2E Testing',
+    shortName: 'Theia E2E',
+    shortDescription: 'Load and E2E Integration Testing.',
     longDescription: `
     My Bachelor Thesis at the TUM about Load Testing and Performance Evaluation of the Theia Online IDE focused on evaluating the Theia Online IDE in the context of large university courses and exams, especially integrated in the Artemis System.
     Foremost, Playwright was used for all kinds of testing.
