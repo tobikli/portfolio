@@ -117,4 +117,10 @@ $ease: cubic-bezier(0.23, 1, 0.32, 1);
   transition: transform 0.2s $ease;
   z-index: inherit;
 }
+
+@media (hover: none) {
+  .custom-cursor {
+    display: none !important;
+  }
+}
 </style>
