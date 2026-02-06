@@ -1,10 +1,16 @@
 export const work = [
+    {
+    place: 'Siemens AG',
+    role: 'Foundational Technologies Working Student',
+    information: 'Research and Development in Automotive Vehicles',
+    time: '2026',
+  },
   {
     place: 'Siemens AG',
     role: 'Cybersecurity IS Working Student',
     information:
       'Automation, Virtualisation and Administration of Infrastructure for Cybersecurity Systems',
-    time: '2025-Present',
+    time: '2025-2026',
   },
   {
     place: 'Applied Education Technologies @ TUM',

@@ -2,13 +2,21 @@
 import { information } from '@/data/information'
 import { education } from '@/data/education'
 import { work } from '@/data/work'
-
+import { ref } from 'vue'
 import { motion } from 'motion-v'
 import { showPopup } from '@/composables/usePopup'
 import AnimationButton from '@/components/AnimationButton.vue'
 import CVDetail from '@/components/CVDetail.vue'
 import ImageDetail from '@/components/ImageDetail.vue'
 import PublicationsOverview from '@/components/PublicationsOverview.vue'
+
+const listLimit = 4;
+const showAll = ref(false);
+
+const toggleShowAll = () => {
+  showAll.value = !showAll.value;
+};
+
 </script>
 
 <template>
@@ -92,8 +100,17 @@ import PublicationsOverview from '@/components/PublicationsOverview.vue'
         <!-- Education column -->
         <div>
           <h2 class="text-xl mb-6">Education</h2>
-          <ul class="space-y-4 flex flex-col items-center">
-            <li v-for="edu in education" :key="edu.degree" class="w-full max-w-100">
+          <motion.ul class="space-y-4 flex flex-col items-center" layout>
+            <motion.li
+              v-for="(edu, index) in showAll ? education : education.slice(0, listLimit)"
+              :key="edu.degree"
+              class="w-full max-w-100"
+              layout
+              :initial="{ opacity: 0, y: 8 }"
+              :animate="{ opacity: 1, y: 0 }"
+              :exit="{ opacity: 0, y: -8 }"
+              :transition="{ duration: 0.2, delay: index * 0.03 }"
+            >
               <div
                 class="border border-gray-200 dark:border-gray-400 p-5 flex flex-col items-center text-center hover:bg-black/3 hover:dark:bg-white/3"
               >
@@ -110,15 +127,24 @@ import PublicationsOverview from '@/components/PublicationsOverview.vue'
                   {{ edu.information }}
                 </p>
               </div>
-            </li>
-          </ul>
+            </motion.li>
+          </motion.ul>
         </div>
 
         <!-- Work column -->
         <div>
           <h2 class="text-xl mb-6">Work</h2>
-          <ul class="space-y-4 flex flex-col items-center">
-            <li v-for="job in work" :key="job.role" class="w-full max-w-100">
+          <motion.ul class="space-y-4 flex flex-col items-center" layout>
+            <motion.li
+              v-for="(job, index) in showAll ? work : work.slice(0, listLimit)"
+              :key="job.role"
+              class="w-full max-w-100"
+              layout
+              :initial="{ opacity: 0, y: 8 }"
+              :animate="{ opacity: 1, y: 0 }"
+              :exit="{ opacity: 0, y: -8 }"
+              :transition="{ duration: 0.2, delay: index * 0.03 }"
+            >
               <div
                 class="border border-gray-200 dark:border-gray-400 p-5 flex flex-col items-center text-center hover:bg-black/3 hover:dark:bg-white/3"
               >
@@ -135,9 +161,16 @@ import PublicationsOverview from '@/components/PublicationsOverview.vue'
                   {{ job.information }}
                 </p>
               </div>
-            </li>
-          </ul>
+            </motion.li>
+          </motion.ul>
         </div>
+      </div>
+      <div v-if="(work.length > listLimit || education.length > listLimit)" class="flex justify-center">
+        <button class="cursor-hover p-2 mt-8 border border-gray-200 dark:border-gray-400 hover:dark:bg-white hover:dark:text-black hover:bg-black hover:text-white"
+        @click="toggleShowAll"
+        >
+          {{ showAll ? 'Show Less' : 'Show More' }}
+      </button>
       </div>
     </div>
   </div>
@@ -207,4 +240,5 @@ import PublicationsOverview from '@/components/PublicationsOverview.vue'
 .status-orange {
   background-color: #db8719;
 }
+
 </style>
