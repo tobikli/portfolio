@@ -8,7 +8,7 @@ export interface WorkEntry {
   time: string
 }
 
-const workFiles = import.meta.glob('../content/work/*.md', {
+const workFiles = import.meta.glob('./content/work/*.md', {
   eager: true,
   query: '?raw',
   import: 'default',

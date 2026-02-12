@@ -8,7 +8,7 @@ export interface EducationEntry {
   time: string
 }
 
-const educationFiles = import.meta.glob('../content/education/*.md', {
+const educationFiles = import.meta.glob('./content/education/*.md', {
   eager: true,
   query: '?raw',
   import: 'default',

@@ -10,13 +10,13 @@ export interface PublicationEntry {
   link?: string
 }
 
-const publicationFiles = import.meta.glob('../content/publications/*.md', {
+const publicationFiles = import.meta.glob('./content/publications/*.md', {
   eager: true,
   query: '?raw',
   import: 'default',
 })
 
-const pdfFiles = import.meta.glob('../assets/papers/*', {
+const pdfFiles = import.meta.glob('./content/publications/papers/*', {
   eager: true,
   import: 'default',
 })

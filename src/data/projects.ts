@@ -11,7 +11,7 @@ export interface Project {
   link: string
 }
 
-const projectFiles = import.meta.glob('../content/projects/*.md', {
+const projectFiles = import.meta.glob('./content/projects/*.md', {
   eager: true,
   query: '?raw',
   import: 'default',
