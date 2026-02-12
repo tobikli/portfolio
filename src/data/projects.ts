@@ -9,6 +9,7 @@ export interface Project {
   date: string
   tags: string[]
   link: string
+  status: string
 }
 
 const projectFiles = import.meta.glob('./content/projects/*.md', {
@@ -31,6 +32,7 @@ function parseProject(raw: string) {
     date: frontmatter.date ? String(frontmatter.date) : '',
     tags: Array.isArray(frontmatter.tags) ? frontmatter.tags.map((tag) => String(tag)) : [],
     link: frontmatter.link ?? '',
+    status: frontmatter.status ?? '',
   }
 }
 

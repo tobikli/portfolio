@@ -5,6 +5,7 @@ shortDescription: Secondary portfolio website.
 date: "2024-2025"
 tags: [PHP, JS, HTML]
 link: https://v2.tobiwn.me
+status: finished
 ---
 
 This is my second personal portfolio and website. It holds all my information including my projects, my resume and contact options.

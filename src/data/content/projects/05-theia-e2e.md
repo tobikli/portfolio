@@ -5,6 +5,7 @@ shortDescription: Load and E2E Integration Testing.
 date: "2025"
 tags: [TS, Playwright, Typst]
 link: https://github.com/tobikli/theia-scale-tests
+status: finished
 ---
 
 My Bachelor Thesis at the TUM about Load Testing and Performance Evaluation of the Theia Online IDE focused on evaluating the Theia Online IDE in the context of large university courses and exams, especially integrated in the Artemis System.

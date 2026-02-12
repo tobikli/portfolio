@@ -5,6 +5,7 @@ shortDescription: University planning app.
 date: "2025"
 tags: [React, Next.js, TS]
 link: https://uplan.twks.net
+status: ongoing
 ---
 
 u_plan is a University Planning App I developed to help students organize their studies better.

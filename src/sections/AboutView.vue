@@ -72,7 +72,7 @@ const toggleShowAll = () => {
         ></div>
         <div class="text-left p-5">
           <div class="border-gray-400/40 p-2 mb-10 text-center">
-            <div class="flex items-center gap-4">
+            <div class="flex items-center gap-4 justify-center">
               <span class="status-dot status-green"></span>
               <p class="m-0">{{ information.status }}</p>
             </div>
