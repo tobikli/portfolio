@@ -10,9 +10,9 @@ const columns = ref(1)
 
 const updateColumns = () => {
   const width = window.innerWidth
-  if (width >= 1280) {
+  if (width > 1230) {
     columns.value = 3
-  } else if (width >= 768) {
+  } else if (width >= 832) {
     columns.value = 2
   } else {
     columns.value = 1
