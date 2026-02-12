@@ -1,33 +1,34 @@
-export const work = [
-    {
-    place: 'Siemens AG',
-    role: 'Foundational Technologies Working Student',
-    information: 'Research and Development in Automotive Vehicles',
-    time: '2026-Present',
-  },
-  {
-    place: 'Siemens AG',
-    role: 'Cybersecurity IS Working Student',
-    information:
-      'Automation, Virtualisation and Administration of Infrastructure for Cybersecurity Systems',
-    time: '2025-2026',
-  },
-  {
-    place: 'Applied Education Technologies @ TUM',
-    role: 'Software Engineer Intern',
-    information: 'Practical Course for engineering iOS applications',
-    time: '2024-2025',
-  },
-  {
-    place: 'Itestra GmbH',
-    role: 'Software Engineering Summer Camp',
-    information: 'Modeling and development of Unity Applications',
-    time: '2024',
-  },
-  {
-    place: 'DSJ AG',
-    role: 'Audit and Finance Working Student',
-    information: 'Annual audit of medium to large financial services',
-    time: '2021-2022',
-  },
-]
+import matter from 'gray-matter'
+import './polyfillBuffer'
+
+export interface WorkEntry {
+  place: string
+  role: string
+  information: string
+  time: string
+}
+
+const workFiles = import.meta.glob('../content/work/*.md', {
+  eager: true,
+  query: '?raw',
+  import: 'default',
+})
+
+type WorkFrontmatter = Partial<WorkEntry>
+
+function parseWork(raw: string) {
+  const { data } = matter(raw)
+  const frontmatter = data as WorkFrontmatter
+
+  return {
+    place: frontmatter.place ?? '',
+    role: frontmatter.role ?? '',
+    information: frontmatter.information ?? '',
+    time: frontmatter.time ?? '',
+  }
+}
+
+export const work: WorkEntry[] = Object.entries(workFiles)
+  .map(([path, raw]) => ({ path, entry: parseWork(raw as string) }))
+  .sort((a, b) => (a.path < b.path ? 1 : -1))
+  .map((item) => item.entry)

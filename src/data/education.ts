@@ -1,32 +1,34 @@
-export const education = [
-  {
-    school: 'Technical University of Munich',
-    degree: 'M. Sc. Informatics',
-    information: 'Specialization in Software Engineering, ML and Cybersecurity',
-    time: '2025-Present',
-  },
-  {
-    school: 'Technical University of Munich',
-    degree: 'B. Sc. Informatics',
-    information: 'Participation in iPraktikum',
-    time: '2022-2025',
-  },
-  {
-    school: 'Goethe Universitsy of Frankfurt',
-    degree: 'B. Sc. Management and Economics',
-    information: 'Reorientation to Informatics',
-    time: '2021-2022',
-  },
-  {
-    school: 'Helene-Lange-Gymnasium',
-    degree: 'Abitur',
-    information: 'Math, Biology, English, Geography',
-    time: '2013-2021',
-  },
-  {
-    school: 'Huade Chinesische Schule',
-    degree: 'HSK 3',
-    information: 'Chinese Language',
-    time: '2009-2019',
-  },
-]
+import matter from 'gray-matter'
+import './polyfillBuffer'
+
+export interface EducationEntry {
+  school: string
+  degree: string
+  information: string
+  time: string
+}
+
+const educationFiles = import.meta.glob('../content/education/*.md', {
+  eager: true,
+  query: '?raw',
+  import: 'default',
+})
+
+type EducationFrontmatter = Partial<EducationEntry>
+
+function parseEducation(raw: string) {
+  const { data } = matter(raw)
+  const frontmatter = data as EducationFrontmatter
+
+  return {
+    school: frontmatter.school ?? '',
+    degree: frontmatter.degree ?? '',
+    information: frontmatter.information ?? '',
+    time: frontmatter.time ?? '',
+  }
+}
+
+export const education: EducationEntry[] = Object.entries(educationFiles)
+  .map(([path, raw]) => ({ path, entry: parseEducation(raw as string) }))
+  .sort((a, b) => (a.path < b.path ? 1 : -1))
+  .map((item) => item.entry)
