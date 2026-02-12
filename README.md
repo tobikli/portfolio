@@ -1,4 +1,5 @@
 # Portfolio
+[![Build Vite App](https://github.com/tobikli/portfolio/actions/workflows/build.yml/badge.svg)](https://github.com/tobikli/portfolio/actions/workflows/build.yml)
 
 Clean, animated personal portfolio built with Vue 3 + Vite. Content lives in simple Markdown files and a few small data helpers, so you can update sections without touching components.
 
