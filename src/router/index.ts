@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import ShellView from '@/views/ShellView.vue'
-import AdminView from '@/views/AdminView.vue'
 import MainView from '@/views/MainView.vue'
 
 const router = createRouter({
@@ -15,11 +14,6 @@ const router = createRouter({
       path: '/shell',
       name: 'shell',
       component: ShellView,
-    },
-    {
-      path: '/admin',
-      name: 'admin',
-      component: AdminView,
     },
     {
       path: '/:pathMatch(.*)*',
