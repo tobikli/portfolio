@@ -48,9 +48,3 @@ html.dark {
 .section {
   scroll-margin-top: var(--header-height);
 }
-
-* { cursor: none; }
-
-.cursor-hover {
-  cursor: none;
-}

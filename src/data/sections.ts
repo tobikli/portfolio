@@ -1,7 +1,7 @@
-import HomeView from '@/views/HomeView.vue'
-import ProjectsView from '@/views/ProjectsView.vue'
-import ContactView from '@/views/ContactView.vue'
-import AboutView from '@/views/AboutView.vue'
+import HomeView from '@/sections/HomeView.vue'
+import ProjectsView from '@/sections/ProjectsView.vue'
+import ContactView from '@/sections/ContactView.vue'
+import AboutView from '@/sections/AboutView.vue'
 
 /* eslint-disable  @typescript-eslint/no-wrapper-object-types */
 

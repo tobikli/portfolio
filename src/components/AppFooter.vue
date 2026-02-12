@@ -12,11 +12,11 @@ const openGitHub = () => {
 
   <div class="flex justify-center text-center">
     <div class="flex items-center divide-x m-2 border">
-      <div class="px-2 hover-cursor hover:bg-black hover:text-white hover:dark:bg-white hover:dark:text-black" @click="openGitHub">
-        <a class="text-xs">This page on </a>
-        <font-awesome-icon :icon="'fa-brands fa-github'" size="sm" class="cursor-hover" />
+      <div class="px-2 py-1 flex items-center space-x-1 hover-cursor hover:bg-black hover:text-white hover:dark:bg-white hover:dark:text-black" @click="openGitHub">
+        <span class="text-xs">This page on</span>
+        <font-awesome-icon :icon="'fa-brands fa-github'" size="xs" class="cursor-hover" />
       </div>
-      <div class="px-2">
+      <div class="px-2 flex items-center space-x-1">
         <span class="text-xs">{{ config.commit }}</span>
       </div>
     </div>
@@ -28,7 +28,7 @@ const openGitHub = () => {
     :damping="10"
     :stiffness="500"
     :velocity-mapping="{ input: [0, 1000], output: [0, 5] }"
-    class-name="text-sm font-light"
+    class-name="text-sm font-light pb-2"
     parallax-class-name="custom-parallax"
     scroller-class-name="custom-scroller"
   />
