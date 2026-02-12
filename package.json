@@ -7,8 +7,8 @@
 		"node": "^20.19.0 || >=22.12.0"
 	},
 	"scripts": {
-		"dev": "VITE_GIT_HASH=$(git rev-parse --short HEAD) vite",
-		"build": "VITE_GIT_HASH=$(git rev-parse --short HEAD) run-p type-check \"build-only {@}\" --",
+		"dev": "VITE_GIT_HASH=$(git rev-parse --short HEAD) VITE_GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD) vite",
+		"build": "VITE_GIT_HASH=$(git rev-parse --short HEAD) VITE_GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD) run-p type-check \"build-only {@}\" --",
 		"preview": "vite preview",
 		"build-only": "vite build",
 		"type-check": "vue-tsc --build",

@@ -67,7 +67,7 @@ const handleMouseMove = (e: MouseEvent) => {
   const dotY = e.clientY - dot.clientHeight / 2
 
   circle.style.transform = `translate(${circleX}px,${circleY}px) scale(${scale})`
-  dot.style.transform = `translate(${dotX}px,${dotY}px)`
+  dot.style.transform = `translate(${dotX}px,${dotY}px) scale(${scale})`
 }
 
 onMounted(() => {
@@ -97,7 +97,7 @@ $ease: cubic-bezier(0.23, 1, 0.32, 1);
   left: 0;
   width: 20px;
   height: 20px;
-  border: 1px solid #fff;
+  border: 0px solid #fff;
   border-radius: 50%;
   transform: translate(-100%, -100%);
   transition: transform 0.4s $ease;
@@ -109,8 +109,8 @@ $ease: cubic-bezier(0.23, 1, 0.32, 1);
   cursor: none;
   top: 1px;
   left: 1px;
-  width: 5px;
-  height: 5px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background-color: #fff;
   transform: translate(-100%, -100%);

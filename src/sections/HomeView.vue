@@ -51,7 +51,7 @@ const splitLines = lines.map((line) => ({
                 (lineIndex > 0 ? splitLines[lineIndex - 1]!.words.length * 0.2 : 0),
             }"
             :whileHover="{ scale: 1.15, y: -4 }"
-            :hoverTransition="{ duration: 0.15, delay: 0 }"
+            :hoverTransition="{ duration: 0.05, delay: 0 }"
             :class="line.weight"
           >
             {{ word }}
