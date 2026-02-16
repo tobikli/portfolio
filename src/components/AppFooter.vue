@@ -14,32 +14,37 @@ const openCommit = () => {
 </script>
 
 <template>
-  <div class="flex justify-center text-center">
-    <div class="flex items-center divide-x m-2">
+  <div class="flex justify-center text-center mb-2">
+    <div
+      class="inline-grid grid-flow-row auto-rows-max items-center justify-items-center divide-y divide-black/10 dark:divide-white/10 sm:divide-y-0 sm:grid-flow-col sm:auto-cols-max"
+    >
       <div
-        class="px-2 py-1 flex items-center space-x-1 hover-cursor cursor-hover hover:bg-black hover:text-white hover:dark:bg-white hover:dark:text-black"
-        @click="openRepo"
+        class="flex items-center justify-center divide-x divide-black/10 dark:divide-white/10 sm:divide-x-0 sm:contents"
       >
-        <span class="text-xs">This page on</span>
-        <font-awesome-icon :icon="'fa-brands fa-github'" size="xs" class="cursor-hover" />
+        <div
+          class="px-2 py-1 flex items-center justify-center space-x-1 hover-cursor cursor-hover hover:bg-black hover:text-white hover:dark:bg-white hover:dark:text-black"
+          @click="openRepo"
+        >
+          <span class="text-xs">This page on</span>
+          <font-awesome-icon :icon="'fa-brands fa-github'" size="xs" class="cursor-hover" />
+        </div>
+        <div
+          class="px-2 py-1 flex items-center justify-center space-x-1 hover-cursor cursor-hover hover:bg-black hover:text-white hover:dark:bg-white hover:dark:text-black sm:border-l sm:border-black/10 sm:dark:border-white/10"
+          @click="openBranch"
+        >
+          <span class="text-xs">{{ config.branch }}</span>
+        </div>
+        <div
+          class="px-2 py-1 flex items-center justify-center space-x-1 hover-cursor cursor-hover hover:bg-black hover:text-white hover:dark:bg-white hover:dark:text-black sm:border-l sm:border-black/10 sm:dark:border-white/10"
+          @click="openCommit"
+        >
+          <span class="text-xs">{{ config.commit }}</span>
+        </div>
       </div>
       <div
-        class="px-2 py-1 flex items-center space-x-1 hover-cursor cursor-hover hover:bg-black hover:text-white hover:dark:bg-white hover:dark:text-black"
-        @click="openBranch"
+        class="px-2 py-1 flex items-center justify-center space-x-1 sm:border-l sm:border-black/10 sm:dark:border-white/10"
       >
-        <span class="text-xs">{{ config.branch }}</span>
-      </div>
-      <div
-        class="px-2 py-1 flex items-center space-x-1 hover-cursor cursor-hover hover:bg-black hover:text-white hover:dark:bg-white hover:dark:text-black"
-        @click="openCommit"
-      >
-        <span class="text-xs">{{ config.commit }}</span>
-      </div>
-      <div class="px-2 py-1 flex items-center space-x-1">
         <span class="text-xs">{{ `Copyright © ${year} ${information.name}` }}</span>
-      </div>
-      <div class="px-2 py-1 flex items-center space-x-1">
-        <span class="text-xs">Made with ♡ and Vue.js</span>
       </div>
     </div>
   </div>
