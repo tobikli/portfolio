@@ -24,6 +24,7 @@
 		"@tato30/vue-pdf": "^1.11.5",
 		"@unhead/vue": "^2.1.1",
 		"@vueuse/core": "^14.0.0",
+		"axios": "^1.13.5",
 		"buffer": "^6.0.3",
 		"gray-matter": "^4.0.3",
 		"gsap": "^3.13.0",

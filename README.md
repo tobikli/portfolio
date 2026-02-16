@@ -20,9 +20,9 @@ npm run dev
 Recommended: Node 20 (package.json engines covers ^20.19.0 or >=22.12.0).
 
 ## Customization
-- Edit content in Markdown under src/content (projects, education, work, publications). Entries are ordered by filename, so use numeric prefixes (e.g., 05-latest.md … 01-oldest.md) to keep newest first.
+- Edit content in Markdown under src/data/content/... (projects, education, work, publications). Entries are ordered by filename, so use numeric prefixes (e.g., 05-latest.md … 01-oldest.md) to keep newest first.
 - Adjust small data helpers in src/data if you add new fields. Components read from those typed loaders.
-- Assets like PDFs for publications live in src/assets/papers; reference filenames in the Markdown frontmatter.
+- Assets like PDFs for publications live in src/data/content/publications/papers; reference filenames in the Markdown frontmatter.
 
 > **_NOTE:_**  More information on customization [is here](src/data/README.md)
 

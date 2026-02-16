@@ -71,7 +71,7 @@ const splitLines = lines.map((line) => ({
           class="m-6"
           :initial="{ opacity: 0, y: 20 }"
           :animate="{ opacity: 1, y: 0 }"
-          :transition="{ duration: 0.5, delay: 0 }"
+          :transition="{ duration: 0.1, delay: 0 }"
           :whileHover="{ scale: 1.2 }"
           :whileTap="{ scale: 0.9 }"
         >

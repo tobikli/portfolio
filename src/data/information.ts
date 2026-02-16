@@ -10,9 +10,10 @@ export const information = {
   mail: 'hello@tobiwn.me',
   slogan: 'Master Informatics student at TUM',
   birthday: birthday,
-  age,
+  age: age,
   profilePic: profilePic,
   cv: CV,
+  location: 'Munich, Germany',
   status: 'Currently employed at Siemens FT',
   aboutHtml: `
           <p>

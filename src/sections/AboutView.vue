@@ -2,21 +2,28 @@
 import { information } from '@/data/information'
 import { education } from '@/data/education'
 import { work } from '@/data/work'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { motion } from 'motion-v'
 import { showPopup } from '@/composables/usePopup'
 import AnimationButton from '@/components/AnimationButton.vue'
 import CVDetail from '@/components/CVDetail.vue'
 import ImageDetail from '@/components/ImageDetail.vue'
 import PublicationsOverview from '@/components/PublicationsOverview.vue'
+import axios from 'axios'
+import { config } from '@/data/config'
 
-const listLimit = 4;
-const showAll = ref(false);
+const listLimit = 4
+const showAll = ref(false)
 
 const toggleShowAll = () => {
-  showAll.value = !showAll.value;
-};
+  showAll.value = !showAll.value
+}
 
+const status = ref('Loading...')
+
+onMounted(async () => {
+  status.value = (await axios.get(config.api)).data.response
+})
 </script>
 
 <template>
@@ -71,10 +78,19 @@ const toggleShowAll = () => {
           class="inline-block h-0.5 lg:h-auto lg:w-0.5 self-stretch bg-black/10 dark:bg-white/10"
         ></div>
         <div class="text-left p-5">
-          <div class="border-gray-400/40 p-2 mb-10 text-center">
-            <div class="flex items-center gap-4 justify-center">
-              <span class="status-dot status-green"></span>
-              <p class="m-0">{{ information.status }}</p>
+          <div class="hover:bg-black/2 hover:dark:bg-white/2 p-2 mb-8 cursor-hover">
+            <div class="border-gray-400/40 m-2 text-center">
+              <div class="flex items-center gap-4 justify-center">
+                <span class="status-dot status-green"></span>
+                <p>{{ status }}</p>
+              </div>
+            </div>
+            <hr class="mx-2 border-black/20 dark:border-white/20" />
+            <div class="m-2 text-center">
+              <div class="flex items-center gap-4 justify-center">
+                <span class="">🗺</span>
+                <p>Currently located in {{ information.location }}</p>
+              </div>
             </div>
           </div>
           <div class="space-y-3" v-html="information.aboutSideHtml"></div>
@@ -104,7 +120,7 @@ const toggleShowAll = () => {
             <motion.li
               v-for="(edu, index) in showAll ? education : education.slice(0, listLimit)"
               :key="edu.degree"
-              class="w-full max-w-100"
+              class="w-full max-w-96"
               layout
               :initial="{ opacity: 0, y: 8 }"
               :animate="{ opacity: 1, y: 0 }"
@@ -138,7 +154,7 @@ const toggleShowAll = () => {
             <motion.li
               v-for="(job, index) in showAll ? work : work.slice(0, listLimit)"
               :key="job.role"
-              class="w-full max-w-100"
+              class="w-full max-w-96"
               layout
               :initial="{ opacity: 0, y: 8 }"
               :animate="{ opacity: 1, y: 0 }"
@@ -165,12 +181,16 @@ const toggleShowAll = () => {
           </motion.ul>
         </div>
       </div>
-      <div v-if="(work.length > listLimit || education.length > listLimit)" class="flex justify-center">
-        <button class="cursor-hover p-2 mt-8 border border-gray-200 dark:border-gray-400 hover:dark:bg-white hover:dark:text-black hover:bg-black hover:text-white"
-        @click="toggleShowAll"
+      <div
+        v-if="work.length > listLimit || education.length > listLimit"
+        class="flex justify-center"
+      >
+        <button
+          class="cursor-hover p-2 mt-8 border border-gray-200 dark:border-gray-400 hover:dark:bg-white hover:dark:text-black hover:bg-black hover:text-white"
+          @click="toggleShowAll"
         >
           {{ showAll ? 'Show Less' : 'Show More' }}
-      </button>
+        </button>
       </div>
     </div>
   </div>
@@ -240,5 +260,4 @@ const toggleShowAll = () => {
 .status-orange {
   background-color: #db8719;
 }
-
 </style>

@@ -11,14 +11,14 @@ const sendMessage = () => {
   if (EMAIL_RGX.test(email.value)) {
     showPopup({ title: 'Under Construction', message: 'This feature is currently in development' })
   } else {
-    showPopup({ title: 'Error', message: 'Invalid Email' })
+    showPopup({ title: 'Invalid Email', message: 'The email you provided is invalid, please provide a valid email address!' })
   }
 }
 </script>
 
 <template>
-  <div class="w-full flex flex-col items-center justify-start px-6 pb-20 md:pb-28">
-    <div class="text-center">
+  <div class="flex flex-col items-center justify-start px-6 pb-20 md:pb-28">
+    <div class="w-full max-w-sm text-center">
       <h1 class="text-3xl mb-12">Contact</h1>
       <p class="text-md mb-5">Contact me directly</p>
       <a
@@ -28,15 +28,15 @@ const sendMessage = () => {
       >
       <hr class="mt-10 border-black/40 dark:border-white/40" />
       <p class="mb-5 mt-5 text-md">or here</p>
-      <div class="grid p-10 bg-black/5 dark:bg-white/2">
+      <div class="grid p-10 bg-black/5 dark:bg-white/2 border border-black/20 hover:border-black/50 dark:hover:border-white/50 dark:border-white/20">
         <input
-          class="border-b mb-5 focus:outline-none focus:"
+          class="border-b mb-5 pb-2 focus:outline-none focus:"
           type="email"
           placeholder="Your email"
           v-model="email"
         />
         <textarea
-          class="max-h-50 min-h-30 border-b mb-5 focus:outline-none focus:"
+          class="max-h-50 min-h-30 border-b mb-5 pb-2 focus:outline-none focus:"
           placeholder="Your message"
           v-model="message"
         />
