@@ -11,6 +11,7 @@ import ImageDetail from '@/components/ImageDetail.vue'
 import PublicationsOverview from '@/components/PublicationsOverview.vue'
 import axios from 'axios'
 import { config } from '@/data/config'
+import CertificatesOverview from '@/components/CertificatesOverview.vue'
 
 const listLimit = 4
 const showAll = ref(false)
@@ -88,7 +89,7 @@ onMounted(async () => {
             <hr class="mx-2 border-black/20 dark:border-white/20" />
             <div class="m-2 text-center">
               <div class="flex items-center gap-4 justify-center">
-                <span class="">🗺</span>
+                <font-awesome-icon :icon="'fa-solid fa-location-dot'" size="sm" class="cursor-hover" />
                 <p>Currently located in {{ information.location }}</p>
               </div>
             </div>
@@ -98,9 +99,9 @@ onMounted(async () => {
           <div>
             <div class="justify-center grid grid-cols-1 sm:grid-cols-2 mt-5">
               <AnimationButton
-                text="Curriculum Vitae"
-                title="Curriculum Vitae"
-                :component="CVDetail"
+                text="Certificates"
+                title="Certificates"
+                :component="CertificatesOverview"
               />
               <AnimationButton
                 text="Publications"
@@ -108,6 +109,14 @@ onMounted(async () => {
                 :component="PublicationsOverview"
               />
             </div>
+          </div>
+          <div class="mr-4">
+            <AnimationButton
+              text="Curriculum Vitae"
+              title="Curriculum Vitae"
+              class="w-full"
+              :component="CVDetail"
+            />
           </div>
         </div>
       </div>

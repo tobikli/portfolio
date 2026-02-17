@@ -13,7 +13,7 @@ export const information = {
   age: age,
   profilePic: profilePic,
   cv: CV,
-  location: 'Munich, Germany',
+  location: 'Munich, GER',
   status: 'Currently employed at Siemens FT',
   aboutHtml: `
           <p>

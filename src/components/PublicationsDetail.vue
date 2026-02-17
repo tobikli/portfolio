@@ -43,6 +43,25 @@ const decreasePresentation = () => {
   if (presentationPage.value - 1 >= 0) presentationPage.value--
 }
 
+const downloadFile = (url: string, fallbackName: string) => {
+  const linkEl = document.createElement('a')
+  linkEl.href = url
+  linkEl.download = url.split('/').pop() || fallbackName
+  linkEl.target = '_blank'
+  linkEl.rel = 'noopener noreferrer'
+  linkEl.click()
+}
+
+const downloadThesis = () => {
+  downloadFile(props.pdfthesis, 'paper.pdf')
+}
+
+const downloadPresentation = () => {
+  if (props.pdfpresentation) {
+    downloadFile(props.pdfpresentation, 'presentation.pdf')
+  }
+}
+
 onBeforeUnmount(() => {
   if (thesis.value) {
     try {
@@ -75,7 +94,9 @@ onBeforeUnmount(() => {
       <i class="pi pi-arrow-left"></i>
     </Button>
     <p>{{ detail }}</p>
-    <h1 class="text-center text-xl p-4">Paper</h1>
+    <div class="flex justify-center items-center p-4">
+      <h1 class="text-xl underline-offset-3 underline">Paper</h1>
+    </div>
     <div>
       <div class="relative flex justify-center items-center">
         <div
@@ -98,9 +119,19 @@ onBeforeUnmount(() => {
         <span class="m-2 text-gray-900 dark:text-gray-100">/ {{ thesisPages }}</span>
         <button @click="increaseThesis" class="m-2 hover:cursor-pointer">&gt;</button>
       </div>
+      <div class="flex justify-center pb-6">
+        <button
+          class="text-sm border px-3 py-1 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
+          @click="downloadThesis"
+        >
+          Download Paper
+        </button>
+      </div>
     </div>
     <div v-if="presentation">
-      <h1 class="text-center text-xl p-4">Presentation</h1>
+      <div class="flex justify-center items-center p-4">
+        <h1 class="text-xl underline-offset-3 underline">Presentation</h1>
+      </div>
       <div>
         <div class="relative flex justify-center items-center">
           <div
@@ -127,6 +158,14 @@ onBeforeUnmount(() => {
           />
           <span class="m-2 text-gray-900 dark:text-gray-100">/ {{ presentationPages }}</span>
           <button @click="increasePresentation" class="m-2 hover:cursor-pointer">&gt;</button>
+        </div>
+        <div class="flex justify-center pb-6">
+          <button
+            class="text-sm border px-3 py-1 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
+            @click="downloadPresentation"
+          >
+            Download Presentation
+          </button>
         </div>
       </div>
     </div>

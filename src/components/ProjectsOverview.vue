@@ -5,10 +5,10 @@ import ProjectDetail from './ProjectDetail.vue'
 </script>
 
 <template>
-  <div class="text-center p-5">
+  <div class="text-center">
     <div v-for="project in projects" :key="project.name">
       <button
-        class="p-3 w-full"
+        class="py-3 w-full"
         @click="
           showPopup({
             title: project.name,
