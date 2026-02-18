@@ -45,7 +45,7 @@
 		"@vue/eslint-config-typescript": "^14.6.0",
 		"@vue/tsconfig": "^0.8.1",
 		"eslint": "^9.37.0",
-		"eslint-plugin-vue": "~10.5.0",
+		"eslint-plugin-vue": "^10.8.0",
 		"jiti": "^2.6.1",
 		"jsrepo": "^3.0.5",
 		"npm-run-all2": "^8.0.4",
@@ -56,5 +56,8 @@
 		"vite": "^7.1.11",
 		"vite-plugin-vue-devtools": "^8.0.3",
 		"vue-tsc": "^3.1.1"
+	},
+	"volta": {
+		"node": "25.6.1"
 	}
 }
