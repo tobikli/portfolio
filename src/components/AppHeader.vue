@@ -110,8 +110,8 @@ nav a.nav-link::after {
   background: currentColor;
   opacity: 1;
   transition:
-    transform 180ms cubic-bezier(0.2, 0.9, 0.4, 1),
-    opacity 120ms;
+    transform 400ms cubic-bezier(0.2, 0.9, 0.4, 1),
+    opacity 400ms;
   border-radius: 2px;
   pointer-events: none;
 }
@@ -123,6 +123,6 @@ nav a.nav-link.active::after {
 }
 
 nav a.nav-link:active::after {
-  transition-duration: 120ms;
+  transition-duration: 400ms;
 }
 </style>
