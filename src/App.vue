@@ -13,7 +13,7 @@ const isDark = useDark()
     :circleColorHover="isDark ? '#fff' : '#000'"
     :dotColor="isDark ? '#fff' : '#000'"
     :dotColorHover="isDark ? '#fff' : '#000'"
-    :hoverSize="1.4"
+    :hoverSize="1"
   />
   <RouterView />
 </template>

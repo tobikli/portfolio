@@ -1,7 +1,11 @@
 <template>
   <div class="custom-cursor">
-    <div class="custom-cursor__circle" ref="circleEl"></div>
-    <div class="custom-cursor__dot" ref="dotEl"></div>
+    <div
+      class="custom-cursor__circle"
+      ref="circleEl"
+      :class="{ 'is-hover': isHovering }"
+      :style="circleStyle"
+    ></div>
   </div>
 </template>
 
@@ -15,22 +19,23 @@ const props = withDefaults(
     targets?: TargetList
     circleColor?: string
     circleColorHover?: string
-    dotColor?: string
-    dotColorHover?: string
     hoverSize?: number
   }>(),
   {
     targets: () => [],
-    circleColor: '#2f2f2f',
-    circleColorHover: '#2f2f2f',
-    dotColor: '#2f2f2f',
-    dotColorHover: '#2f2f2f',
-    hoverSize: 1.8,
+    circleColor: '#ffffff',
+    circleColorHover: '#ffffff',
+    hoverSize: 1.5,
   },
 )
 
 const circleEl = ref<HTMLDivElement | null>(null)
-const dotEl = ref<HTMLDivElement | null>(null)
+const isHovering = ref(false)
+
+const circleStyle = computed(() => ({
+  backgroundColor: isHovering.value ? props.circleColorHover : props.circleColor,
+  borderColor: isHovering.value ? props.circleColorHover : props.circleColor,
+}))
 
 const targetSet = computed(() => new Set((props.targets ?? []).map((t) => t.toLowerCase())))
 
@@ -55,19 +60,18 @@ const isHoverMatch = (eventTarget: EventTarget | null): boolean => {
 
 const handleMouseMove = (e: MouseEvent) => {
   const circle = circleEl.value
-  const dot = dotEl.value
-  if (!circle || !dot) return
+  if (!circle) return
 
   const hovered = isHoverMatch(e.target)
-  const scale = hovered ? props.hoverSize : 1
+  isHovering.value = hovered
+
+  const circleScale = hovered ? props.hoverSize : 1
+  const rotation = hovered ? -18 : 0
 
   const circleX = e.clientX - circle.clientWidth / 2
   const circleY = e.clientY - circle.clientHeight / 2
-  const dotX = e.clientX - dot.clientWidth / 2
-  const dotY = e.clientY - dot.clientHeight / 2
 
-  circle.style.transform = `translate(${circleX}px,${circleY}px) scale(${scale})`
-  dot.style.transform = `translate(${dotX}px,${dotY}px) scale(${scale})`
+  circle.style.transform = `translate(${circleX}px,${circleY}px) scale(${circleScale}) rotate(${rotation}deg)`
 }
 
 onMounted(() => {
@@ -95,27 +99,25 @@ $ease: cubic-bezier(0.23, 1, 0.32, 1);
   cursor: none;
   top: 0;
   left: 0;
-  width: 20px;
-  height: 20px;
-  border: 0px solid #fff;
+  width: 14px;
+  height: 14px;
+  border: 0 solid currentColor;
   border-radius: 50%;
   transform: translate(-100%, -100%);
-  transition: transform 0.4s $ease;
+  transform-origin: 20% 20%;
+  transition:
+    transform 0.25s $ease,
+    clip-path 0.2s $ease,
+    background-color 0.2s ease,
+    border-radius 0.2s ease;
   z-index: inherit;
 }
 
-.custom-cursor__dot {
-  position: fixed;
-  cursor: none;
-  top: 1px;
-  left: 1px;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: #fff;
-  transform: translate(-100%, -100%);
-  transition: transform 0.2s $ease;
-  z-index: inherit;
+.custom-cursor__circle.is-hover {
+  width: 20px;
+  height: 20px;
+  clip-path: polygon(52% 0, 12% 88%, 46% 68%, 60% 68%, 88% 88%);
+  border-radius: 7px;
 }
 
 @media (hover: none) {
@@ -126,11 +128,11 @@ $ease: cubic-bezier(0.23, 1, 0.32, 1);
 </style>
 
 <style>
-
-* { cursor: none; }
+* {
+  cursor: none;
+}
 
 .cursor-hover {
   cursor: none;
 }
-
 </style>
