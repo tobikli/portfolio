@@ -35,7 +35,7 @@ const downloadPdf = () => {
   </div>
   <div class="flex justify-center mt-5">
     <button
-      class="border p-2 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
+      class="border p-2 hover:cursor-pointer hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
       @click="downloadPdf"
     >
       Download

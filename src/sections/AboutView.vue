@@ -20,10 +20,17 @@ const toggleShowAll = () => {
   showAll.value = !showAll.value
 }
 
-const status = ref('Loading...')
+const status = ref(information.status)
 
 onMounted(async () => {
-  status.value = (await axios.get(config.api)).data.response
+  try {
+    const response = (await axios.get(config.api)).data.response
+    if (response) {
+      status.value = response
+    }
+  } catch (error) {
+    console.error("Failed to fetch status:", error)
+  }
 })
 </script>
 
@@ -34,7 +41,7 @@ onMounted(async () => {
       <!-- Information -->
       <div class="grid grid:cols-1 lg:grid-cols-[1fr_auto_1fr] mb-40">
         <div class="text-left p-5">
-          <div class="flex justify-center mb-6">
+          <div class="flex justify-center mt-3 mb-6">
             <div class="relative w-30 h-30 mb-5">
               <img
                 :src="information.profilePic"
@@ -54,13 +61,13 @@ onMounted(async () => {
           </div>
           <h2 class="text-lg mb-3">My name is {{ information.name }}</h2>
           <div class="space-y-3" v-html="information.aboutHtml"></div>
-          <p class="mt-3 mb-3">I have experience with:</p>
-          <div class="flex flex-wrap gap-2">
+          <p class="mt-6 mb-3">I have experience with:</p>
+          <div class="grid grid-cols-6 mt-5 border dark:border-white/10 border-black/10 p-4 gap-4 place-items-center">
             <motion.a
               v-for="tech in information.techstack"
               :key="tech.name"
               :title="tech.name"
-              class="p-1"
+              class=""
               :initial="{ opacity: 0, y: 20 }"
               :animate="{ opacity: 1, y: 0 }"
               :transition="{ duration: 0.5, delay: 0 }"
@@ -79,17 +86,21 @@ onMounted(async () => {
           class="inline-block h-0.5 lg:h-auto lg:w-0.5 self-stretch bg-black/10 dark:bg-white/10"
         ></div>
         <div class="text-left p-5">
-          <div class="hover:bg-black/2 hover:dark:bg-white/2 p-2 mb-8 cursor-hover">
+          <div class="bg-black/3 dark:bg-white/3 p-2 mb-8 cursor-hover">
             <div class="border-gray-400/40 m-2 text-center">
               <div class="flex items-center gap-4 justify-center">
                 <span class="status-dot status-green"></span>
                 <p>{{ status }}</p>
               </div>
             </div>
-            <hr class="mx-2 border-black/20 dark:border-white/20" />
+            <hr class="mx-2 border-black/20 dark:border-white/20 my-4" />
             <div class="m-2 text-center">
               <div class="flex items-center gap-4 justify-center">
-                <font-awesome-icon :icon="'fa-solid fa-location-dot'" size="sm" class="cursor-hover" />
+                <font-awesome-icon
+                  :icon="'fa-solid fa-location-dot'"
+                  size="sm"
+                  class="cursor-hover"
+                />
                 <p>Currently located in {{ information.location }}</p>
               </div>
             </div>

@@ -82,7 +82,7 @@ onBeforeUnmount(() => {
 
 <template>
   <div>
-    <Button
+    <button
       class="px-2 py-1 hover:cursor-pointer mb-4 text-sm hover:bg-black hover:text-white hover:dark:bg-white hover:dark:text-black cursor-hover"
       @click="
         showPopup({
@@ -92,7 +92,7 @@ onBeforeUnmount(() => {
       "
     >
       <i class="pi pi-arrow-left"></i>
-    </Button>
+    </button>
     <p>{{ detail }}</p>
     <div class="flex justify-center items-center p-4">
       <h1 class="text-xl underline-offset-3 underline">Paper</h1>
@@ -121,7 +121,7 @@ onBeforeUnmount(() => {
       </div>
       <div class="flex justify-center pb-6">
         <button
-          class="text-sm border px-3 py-1 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
+          class="text-sm border px-3 py-1 hover:cursor-pointer hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
           @click="downloadThesis"
         >
           Download Paper
@@ -161,7 +161,7 @@ onBeforeUnmount(() => {
         </div>
         <div class="flex justify-center pb-6">
           <button
-            class="text-sm border px-3 py-1 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
+            class="text-sm border px-3 py-1 hover:cursor-pointer hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
             @click="downloadPresentation"
           >
             Download Presentation

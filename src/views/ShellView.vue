@@ -23,7 +23,7 @@ const welcomeText = `
 Welcome to my Shell! ${version}
 Here you can quickly find information about me.
 Run help for a overview of possible commands.
-This is a WIP shell, for full features including auth, visit https://v2.tobiwn.me
+This is a WIP shell, for full features including auth, visit https://v2.tobiwn.me/shell
 `
 
 const enforceCursorPosition = (input: HTMLInputElement) => {
@@ -179,6 +179,9 @@ onBeforeUnmount(() => {
 
 .shell-root {
   padding: 1rem;
+  background-color: black;
+  color: white;
+  min-height: 100vh;
 }
 
 * {
@@ -201,10 +204,10 @@ onBeforeUnmount(() => {
   padding: 6px;
   font-size: 1rem;
   box-sizing: border-box;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(5px); /* Apply Gaussian blur */
   -webkit-backdrop-filter: blur(10px); /* Safari support */
-  border: 1px solid #444;
+  border: 1px solid #ffffff;
   border-width: 0;
 }
 
@@ -276,7 +279,6 @@ textarea {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: white;
   font-size: 15px;
   font-family: Arial, sans-serif;
   display: none;

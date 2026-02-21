@@ -1,8 +1,4 @@
-import profileUrl from '@/assets/images/profile.png'
-import { config } from '@/data/config'
-const absoluteProfileUrl = new URL(profileUrl, config.url).href
-
-export const meta = {
+export const createGlobalMeta = (currentUrl: string, imageUrl: string) => ({
   title: 'Tobias Klingenberg – Software Engineer & Computer Science Student',
   meta: [
     {
@@ -10,20 +6,18 @@ export const meta = {
       content:
         'Portfolio of Tobias Klingenberg, Computer Science student at TUM. Projects in software engineering, web development, and system design.',
     },
-
     {
       name: 'keywords',
       content:
         'Tobias Klingenberg, Tobias Wen Klingenberg, TWK, software engineer, computer science, TUM, portfolio',
     },
-
     {
       name: 'author',
       content: 'Tobias Klingenberg',
     },
     {
       property: 'image',
-      content: absoluteProfileUrl,
+      content: imageUrl,
     },
     {
       property: 'og:title',
@@ -40,15 +34,15 @@ export const meta = {
     },
     {
       property: 'og:url',
-      content: config.url,
+      content: currentUrl,
     },
     {
       property: 'og:image',
-      content: absoluteProfileUrl,
+      content: imageUrl,
     },
     {
       property: 'og:image:alt',
-      content: "Tobias Klingenberg — profile photo",
+      content: 'Tobias Klingenberg — profile photo',
     },
     {
       name: 'twitter:card',
@@ -64,17 +58,17 @@ export const meta = {
     },
     {
       name: 'twitter:image',
-      content: absoluteProfileUrl,
+      content: imageUrl,
     },
   ],
   link: [
     {
       rel: 'canonical',
-      href: config.url,
+      href: currentUrl,
     },
     {
       rel: 'image_src',
-      href: absoluteProfileUrl,
+      href: imageUrl,
     },
   ],
   script: [
@@ -84,7 +78,7 @@ export const meta = {
         '@context': 'https://schema.org',
         '@type': 'ProfilePage',
         name: 'Tobias Klingenberg',
-        url: config.url,
+        url: currentUrl,
         dateCreated: '2024-12-23T12:34:00-05:00',
         dateModified: '2025-03-27T14:53:00-05:00',
         mainEntity: {
@@ -93,7 +87,7 @@ export const meta = {
           alternateName: 'tobikli',
           identifier: 'tobiwn',
           description: 'CS Student at TUM, Software Engineer',
-          image: absoluteProfileUrl,
+          image: imageUrl,
           sameAs: ['https://www.linkedin.com/in/klingenberg', 'https://github.com/tobikli'],
           interactionStatistic: [
             {
@@ -116,4 +110,4 @@ export const meta = {
       }),
     },
   ],
-}
+})

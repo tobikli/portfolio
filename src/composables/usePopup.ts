@@ -1,4 +1,6 @@
-import { reactive } from 'vue'
+import { reactive, markRaw } from 'vue'
+
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 
 export type PopupPayload = {
   title?: string
@@ -24,7 +26,7 @@ export function showPopup(payload: PopupPayload) {
   // set new
   popupState.title = payload.title ?? ''
   popupState.message = payload.message ?? ''
-  popupState.component = payload.component ?? null
+  popupState.component = payload.component ? markRaw(payload.component) : null
   popupState.componentProps = payload.componentProps ?? {}
   popupState.componentKey++
   popupState.visible = true

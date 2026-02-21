@@ -6,11 +6,6 @@ import AppHeader from '@/components/AppHeader.vue'
 import PopupView from '@/views/PopupView.vue'
 import Darkmode from '@/components/DarkMode.vue'
 import { reactive, onMounted, onBeforeUnmount } from 'vue'
-import { useHead } from '@unhead/vue'
-
-import { meta } from '@/data/meta'
-
-useHead(meta)
 
 const visible = reactive<Record<string, boolean>>({})
 

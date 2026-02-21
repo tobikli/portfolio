@@ -10,6 +10,6 @@ defineProps<{
   <div>
     <p>{{ project.longDescription }}</p>
     <br>
-    <a :href="project.link" class="underline">More Information</a>
+    <a :href="project.link" class="border p-2 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black">More Information</a>
   </div>
 </template>

@@ -22,20 +22,20 @@ const openCommit = () => {
         class="flex items-center justify-center divide-x divide-black/10 dark:divide-white/10 sm:divide-x-0 sm:contents"
       >
         <div
-          class="px-2 py-1 flex items-center justify-center space-x-1 hover-cursor cursor-hover hover:bg-black hover:text-white hover:dark:bg-white hover:dark:text-black"
+          class="px-2 py-1 flex items-center hover:cursor-pointer justify-center space-x-1 hover-cursor cursor-hover hover:bg-black hover:text-white hover:dark:bg-white hover:dark:text-black"
           @click="openRepo"
         >
           <span class="text-xs">This page on</span>
           <font-awesome-icon :icon="'fa-brands fa-github'" size="xs" class="cursor-hover" />
         </div>
         <div
-          class="px-2 py-1 flex items-center justify-center space-x-1 hover-cursor cursor-hover hover:bg-black hover:text-white hover:dark:bg-white hover:dark:text-black sm:border-l sm:border-black/10 sm:dark:border-white/10"
+          class="px-2 py-1 flex items-center hover:cursor-pointer justify-center space-x-1 hover-cursor cursor-hover hover:bg-black hover:text-white hover:dark:bg-white hover:dark:text-black sm:border-l sm:border-black/10 sm:dark:border-white/10"
           @click="openBranch"
         >
           <span class="text-xs">{{ config.branch }}</span>
         </div>
         <div
-          class="px-2 py-1 flex items-center justify-center space-x-1 hover-cursor cursor-hover hover:bg-black hover:text-white hover:dark:bg-white hover:dark:text-black sm:border-l sm:border-black/10 sm:dark:border-white/10"
+          class="px-2 py-1 flex items-center hover:cursor-pointer justify-center space-x-1 hover-cursor cursor-hover hover:bg-black hover:text-white hover:dark:bg-white hover:dark:text-black sm:border-l sm:border-black/10 sm:dark:border-white/10"
           @click="openCommit"
         >
           <span class="text-xs">{{ config.commit }}</span>

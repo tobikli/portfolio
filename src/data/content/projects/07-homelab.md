@@ -5,7 +5,7 @@ shortDescription: Proxmox VM Cluster.
 date: "2025"
 tags: [Proxmox, VM, Net]
 link: https://twks.net
-status: finished
+status: ongoing
 ---
 
 During my Working Student Position at Siemens, I found passion in building and hosting my own services, especially regarding Virtualization and Clustering.
