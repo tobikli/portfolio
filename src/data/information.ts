@@ -106,13 +106,13 @@ export const information = {
       name: 'CSS',
       icon: 'fa-brands fa-css3-alt',
     },
+		{
+      name: 'Javascript / Typescript',
+      icon: 'fa-brands fa-js',
+    },
     {
       name: 'Kubernetes',
       icon: 'fa-brands fa-kubernetes',
-    },
-    {
-      name: 'Javascript / Typescript',
-      icon: 'fa-brands fa-js',
     },
     {
       name: 'Docker',
