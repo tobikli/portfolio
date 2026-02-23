@@ -24,7 +24,7 @@ const status = ref(information.status)
 
 onMounted(async () => {
   try {
-    const response = (await axios.get(config.api)).data.response
+    const response = (await axios.get(`${config.api}/status`)).data.response
     if (response) {
       status.value = response
     }

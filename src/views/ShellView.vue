@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from 'vue'
-
+import { config } from '@/data/config'
 const version = 'v0.3'
 const prefix = '> '
 const prefixLength = prefix.length
 
 const outputRef = ref<HTMLTextAreaElement | null>(null)
 const inputRef = ref<HTMLInputElement | null>(null)
-const execButtonRef = ref<HTMLButtonElement | null>(null)
 
 let adminCode: string | undefined
 let name: string | undefined
@@ -39,7 +38,7 @@ const sendCommandToServer = async (
 ) => {
   input.disabled = true
   try {
-    const response = await fetch('https://api.twks.net/shell-2', {
+    const response = await fetch(`${config.api}/shell-2`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -77,6 +76,8 @@ const handleInput = async (input: HTMLInputElement, output: HTMLTextAreaElement)
   await sendCommandToServer(input.value, input, output)
   output.scrollTop = output.scrollHeight
   input.value = prefix
+  input.focus()
+  input.setSelectionRange(input.value.length, input.value.length)
 }
 
 let cleanupFns: Array<() => void> = []
@@ -84,18 +85,7 @@ let cleanupFns: Array<() => void> = []
 onMounted(() => {
   const output = outputRef.value
   const input = inputRef.value
-  const button = execButtonRef.value
-  if (!output || !input || !button) return
-
-  // Dataset lookup (optional; may be undefined in SFC context)
-  adminCode =
-    document.currentScript instanceof HTMLScriptElement
-      ? document.currentScript.dataset.admin
-      : undefined
-  name =
-    document.currentScript instanceof HTMLScriptElement
-      ? document.currentScript.dataset.name
-      : undefined
+  if (!output || !input) return
 
   output.value = welcomeText
   if (name) {
@@ -105,7 +95,6 @@ onMounted(() => {
   input.value = prefix
   input.focus()
 
-  const clickHandler = () => handleInput(input, output)
   const keyHandler = (event: KeyboardEvent) => {
     if (event.key === 'Enter') {
       event.preventDefault()
@@ -124,21 +113,19 @@ onMounted(() => {
     input.focus()
   }
 
-  button.addEventListener('click', clickHandler)
   input.addEventListener('keydown', keyHandler)
   input.addEventListener('click', focusHandler)
   input.addEventListener('focus', focusHandler)
   window.addEventListener('keydown', windowFocusHandler)
 
   cleanupFns = [
-    () => button.removeEventListener('click', clickHandler),
     () => input.removeEventListener('keydown', keyHandler),
     () => input.removeEventListener('click', focusHandler),
     () => input.removeEventListener('focus', focusHandler),
     () => window.removeEventListener('keydown', windowFocusHandler),
   ]
 
-  fetch('https://api.twks.net')
+  fetch(config.api)
     .then((response) => {
       if (response.status !== 200) {
         output.value += `\nAttention: The server is not reachable! Commands will not work!`
@@ -164,12 +151,12 @@ onBeforeUnmount(() => {
           <span class="minimize"></span>
           <span class="maximize"></span>
         </div>
+        <span class="title-text">tobiwn.me</span>
       </div>
       <textarea id="output" ref="outputRef" readonly></textarea>
-    </div>
-    <div class="input-container">
-      <input id="inputField" ref="inputRef" autofocus />
-      <button id="executeButton" ref="execButtonRef">▷</button>
+      <div class="input-container">
+        <input id="inputField" ref="inputRef" autofocus />
+      </div>
     </div>
   </div>
 </template>
@@ -178,10 +165,17 @@ onBeforeUnmount(() => {
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 
 .shell-root {
-  padding: 1rem;
-  background-color: black;
-  color: white;
-  min-height: 100vh;
+  padding-top: calc(1rem + env(safe-area-inset-top));
+  padding-right: calc(1rem + env(safe-area-inset-right));
+  padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+  padding-left: calc(1rem + env(safe-area-inset-left));
+  background-color: #15161a;
+  color: #fff;
+  height: 100dvh;
+  min-height: 100dvh;
+  box-sizing: border-box;
+  display: flex;
+  align-items: stretch;
 }
 
 * {
@@ -194,9 +188,9 @@ onBeforeUnmount(() => {
 
 .input-container {
   display: flex;
-  margin-top: 8px;
   gap: 8px;
   align-items: center;
+  padding: 8px;
 }
 
 #inputField {
@@ -204,48 +198,43 @@ onBeforeUnmount(() => {
   padding: 6px;
   font-size: 1rem;
   box-sizing: border-box;
-  background-color: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(5px); /* Apply Gaussian blur */
-  -webkit-backdrop-filter: blur(10px); /* Safari support */
-  border: 1px solid #ffffff;
-  border-width: 0;
+  color: #fff;
 }
-
-#executeButton {
-  padding: 6px 16px;
-  font-size: 1rem;
-  cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(5px); /* Apply Gaussian blur */
-  -webkit-backdrop-filter: blur(10px); /* Safari support */
-  border: 1px solid #444;
-  color: green;
-  border-width: 0;
-}
-
-/* Shell */
 
 .window {
   width: 100%;
-  margin: auto;
-  border: 1px solid #444;
+  margin: 0;
+  border: 1px solid #2f2f2f;
   border-radius: 8px;
   overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(5px); /* Apply Gaussian blur */
-  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
 }
 
 textarea {
-  background: transparent;
+  background-color: #000;
+  color: #fff;
 }
 
 .title-bar {
   height: 30px;
-  background-color: #2b2b2b;
+  background-color: #111;
   display: flex;
   align-items: center;
   padding: 0 10px;
+  position: relative;
+}
+
+.title-text {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.8rem;
+  color: #d1d5db;
+  user-select: none;
 }
 
 .buttons {
@@ -300,13 +289,21 @@ textarea {
 
 #output {
   width: 100%;
-  height: 85vh;
+  flex: 1;
+  height: auto;
   resize: none;
   border: none;
   padding: 1rem;
   font-family: monospace;
   font-size: 1rem;
-  background-color: transparent; /* Make it transparent */
+  background-color: #000;
+  color: #fff;
   box-sizing: border-box;
+}
+
+#output::selection,
+#inputField::selection {
+  background-color: #2b2b2b;
+  color: #fff;
 }
 </style>
