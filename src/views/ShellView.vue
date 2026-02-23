@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 import { config } from '@/data/config'
-const version = 'v0.3'
+const version = 'v0.5'
 const prefix = '> '
 const prefixLength = prefix.length
 
@@ -12,12 +12,10 @@ let adminCode: string | undefined
 let name: string | undefined
 
 const welcomeText = `
-████████╗ ██████╗ ██████╗ ██╗██╗    ██╗███╗   ██╗
-╚══██╔══╝██╔═══██╗██╔══██╗██║██║    ██║████╗  ██║
-   ██║   ██║   ██║██████╔╝██║██║ █╗ ██║██╔██╗ ██║
-   ██║   ██║   ██║██╔══██╗██║██║███╗██║██║╚██╗██║
-   ██║   ╚██████╔╝██████╔╝██║╚███╔███╔╝██║ ╚████║
-   ╚═╝    ╚═════╝ ╚═════╝ ╚═╝ ╚══╝╚══╝ ╚═╝  ╚═══╝
+ _       _   _
+| |_ ___| |_|_|_ _ _ ___   _____ ___
+|  _| . | . | | | | |   |_|     | -_|
+|_| |___|___|_|_____|_|_|_|_|_|_|___|
 
 Welcome to my Shell! ${version}
 Here you can quickly find information about me.
@@ -96,10 +94,7 @@ onMounted(() => {
   input.focus()
 
   const keyHandler = (event: KeyboardEvent) => {
-    if (event.key === 'Enter') {
-      event.preventDefault()
-      handleInput(input, output)
-    } else {
+    if (event.key !== 'Enter') {
       // keep caret after prefix
       setTimeout(() => {
         if (!input.value.startsWith(prefix)) input.value = prefix
@@ -111,6 +106,10 @@ onMounted(() => {
   const windowFocusHandler = (event: KeyboardEvent) => {
     if (event.ctrlKey || event.metaKey || event.altKey) return
     input.focus()
+    if (event.key === 'Enter') {
+      event.preventDefault()
+      handleInput(input, output)
+    }
   }
 
   input.addEventListener('keydown', keyHandler)
