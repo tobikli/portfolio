@@ -1,6 +1,6 @@
 ---
 place: Siemens AG
-role: Foundational Technologies
-information: Research and Development in Automotive Vehicles
+role: Foundational Technologies Working Student
+information: Research and Development in Automotive Vehicles and MeshNetworks
 time: 2026-Present
 ---

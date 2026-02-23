@@ -8,6 +8,17 @@ link: https://v2.tobiwn.me
 status: finished
 ---
 
-This is my second personal portfolio and website. It holds all my information including my projects, my resume and contact options.
-It is written in pure HTML and CSS and includes some features written in PHP, for example a contact page, different backgrounds and Login via auth.twks.net (mostly for the admin page, but everybody can log in).
-It also features a shining card on the homepage with a cool animation :).
+<p>
+	This is my <strong>second</strong> personal portfolio website. It includes my project overview, resume, and
+	contact options.
+</p>
+
+<p>
+	It is built with plain HTML and CSS, plus selected PHP features such as a contact form,
+	alternative background modes, and login via auth.twks.net (mainly used for admin pages, but
+	available to everyone).
+</p>
+
+<p>
+	It also features a shining animated card on the homepage.
+</p>

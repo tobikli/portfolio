@@ -8,5 +8,17 @@ link: https://twks.net
 status: ongoing
 ---
 
-During my Working Student Position at Siemens, I found passion in building and hosting my own services, especially regarding Virtualization and Clustering.
-Currently, I have a own Proxmox machine running several services in a fenced of internal network. These include my own cloud storage, VPN, several services like Paperless and also this website. Homelabbing taught me many things regarding Networking, System Administration and architecture. You can get access to the Server using the link below.
+<p>
+	During my working student position at Siemens, I developed a strong interest in building and
+	hosting my own services, especially around <strong>virtualization and clustering</strong>.
+</p>
+
+<p>
+	I currently run a <strong>Proxmox</strong> machine that hosts several services in an isolated internal network,
+	including cloud storage, VPN access, Paperless, and this website.
+</p>
+
+<p>
+	Homelabbing has taught me a lot about <strong>networking, system administration, and architecture</strong>. You
+	can access the server via the link below.
+</p>

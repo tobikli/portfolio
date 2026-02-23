@@ -1,6 +1,6 @@
 ---
 school: Technical University of Munich
 degree: B. Sc. Informatics
-information: Participation in iPraktikum
+information: Classes in Algorithms, Logic, Maths, Low Level and Cloud
 time: 2022-2025
 ---

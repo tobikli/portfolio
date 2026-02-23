@@ -8,4 +8,11 @@ link: https://tobiwn.me
 status: ongoing
 ---
 
-This is my new personal portfolio, and the first page I wrote with Vue.js. In comparison to my other pages, this one is single page and has a dynamic header and is dynamically configurable, therefore even being able to be used as a template.
+<p>
+	This is my new personal portfolio and the first website I built with <strong>Vue.js</strong>.
+</p>
+
+<p>
+	Compared to my previous websites, this one is a <strong>single-page application</strong> with a dynamic header
+	and dynamic configuration, so it can also serve as a reusable template.
+</p>

@@ -8,11 +8,25 @@ link: https://github.com/tobikli/theia-scale-tests
 status: finished
 ---
 
-My Bachelor Thesis at the TUM about Load Testing and Performance Evaluation of the Theia Online IDE focused on evaluating the Theia Online IDE in the context of large university courses and exams, especially integrated in the Artemis System.
-Foremost, Playwright was used for all kinds of testing.
+<p>
+	My Bachelor Thesis at TUM, <b><em>"Load Testing and Performance Evaluation of the Theia Online IDE"</em></b>, focused on evaluating the Theia Online IDE for large university courses and exams, especially when integrated into the Artemis system.
+</p>
 
-Load Testing for Theia Cloud by simulating a large amount of students
-Randomized / AI generated student behaviour
+<p>
+	<b>Playwright</b> was used as the main framework for end-to-end and load-testing scenarios.
+</p>
 
-For more comprehensive information, take a look at my GitHub Repo for this thesis including the Playwright tests.
-Find my thesis and proposal text here.
+<ul>
+	<li>Load testing for Theia Cloud by simulating a large number of students</li>
+	<li>Randomized and AI-generated student behavior</li>
+</ul>
+
+<p>
+	For more comprehensive information, visit the
+	<a href="https://github.com/tobikli/theia-scale-tests" target="_blank" rel="noopener noreferrer">GitHub repository</a>
+	with the full thesis project and Playwright tests.
+</p>
+
+<p>
+	You can also find my thesis and proposal text <a href="https://github.com/tobikli/theia-scale-tests" target="_blank" rel="noopener noreferrer">here</a>.
+</p>

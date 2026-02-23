@@ -2,12 +2,23 @@
 name: u_plan
 shortName: uplan
 shortDescription: University planning app.
-date: "2025"
+date: '2025'
 tags: [React, Next.js, TS]
 link: https://uplan.twks.net
 status: ongoing
 ---
 
-u_plan is a University Planning App I developed to help students organize their studies better.
-It includes features like timetable management, assignment tracking, and study resources.
-The app is built with React and Next.js for a responsive and user-friendly experience in combination with ShadCN.
+<p>
+	u_plan is a <strong>university planning app</strong> I developed to help students organize their studies more
+	effectively.
+</p>
+
+<p>
+	It includes features such as program management, per course notes and program wide and global statistics.
+</p>
+
+<p>
+	The app is built with <strong>React and Next.js</strong>, combined with shadcn/ui, to provide a responsive and
+	user-friendly experience.
+    The backend is powered by <strong>Supabase</strong>, including authentication with Google and local users.
+</p>

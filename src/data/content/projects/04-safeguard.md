@@ -2,15 +2,24 @@
 name: Safeguard
 shortName: Safeguard
 shortDescription: Siemens EHS App.
-date: "2024-2025"
+date: '2024-2025'
 tags: [Swift, JS, TS, MQTT]
 link: https://aet.cit.tum.de/projects/courses/ipraktikum/24w/
 status: finished
 ---
 
-During my Bachelor Praktikum at TUM, I participated at the renowned iPraktikum in WS24. Together with SIEMENS as a Client, me and my team created a Real-Time EHS App for iOS, informing workers and guests about upcoming hazards in Siemens factories. Some notable features include:
-App Clip Support,
-Live Activity Support,
-Supabase Backend,
-Industrial Edge Connection,
-MQTT Protocol
+<p>
+    During my <strong>Bachelor Praktikum at TUM</strong>, I participated in the iPraktikum in WS24.
+    Together with <strong>Siemens</strong> as the client, my team and I built a real-time EHS iOS app
+    to inform workers and guests about upcoming hazards in Siemens factories.
+</p>
+
+<p>Notable features included:</p>
+
+<ul style="list-style-type: disc; padding-left: 1.25rem; margin: 0.5rem 0;">
+    <li>App Clip support</li>
+    <li>Live Activity support</li>
+    <li>Supabase backend</li>
+    <li>Industrial Edge connection</li>
+    <li>MQTT protocol</li>
+</ul>
