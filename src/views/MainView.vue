@@ -68,7 +68,7 @@ onBeforeUnmount(() => {
 }
 
 .section {
-  transform: translateY(12px) scale(0.996);
+  transform: scale(0.99);
   scroll-margin-top: 80px;
   transition:
     opacity 420ms cubic-bezier(0.2, 0.9, 0.4, 1),
@@ -78,12 +78,12 @@ onBeforeUnmount(() => {
 
 .section-visible {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: scale(1);
 }
 
 .section-hidden {
   opacity: 0.4;
-  transform: translateY(12px) scale(0.98);
+  transform: scale(0.99);
 }
 
 @media (prefers-reduced-motion: reduce) {
