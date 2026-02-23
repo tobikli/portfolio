@@ -3,7 +3,7 @@ import { information } from '@/data/information'
 import { education } from '@/data/education'
 import { work } from '@/data/work'
 import { onMounted, ref } from 'vue'
-import { AnimatePresence, LayoutGroup, motion } from 'motion-v'
+import { AnimatePresence, motion } from 'motion-v'
 import { showPopup } from '@/composables/usePopup'
 import AnimationButton from '@/components/AnimationButton.vue'
 import CVDetail from '@/components/CVDetail.vue'
@@ -36,7 +36,7 @@ onMounted(async () => {
 
 <template>
   <div class="w-full flex flex-col items-center justify-start px-6 pb-20 md:pb-28">
-    <div class="text-center w-full max-w-4xl">
+    <div class="text-center w-full max-w-4xl about-no-anchor">
       <h1 class="text-3xl mb-12">About me</h1>
       <!-- Information -->
       <div class="grid grid:cols-1 lg:grid-cols-[1fr_auto_1fr] mb-40">
@@ -130,22 +130,20 @@ onMounted(async () => {
         </div>
       </div>
 
-      <LayoutGroup>
-        <motion.div class="grid grid-cols-1 md:grid-cols-2 gap-6" layout>
+      <motion.div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <!-- Education column -->
           <div>
             <h2 class="text-xl mb-6">Education</h2>
-            <motion.ul class="flex flex-col gap-4 items-center" layout>
-              <AnimatePresence mode="popLayout">
+            <motion.ul class="flex flex-col gap-4 items-center">
+              <AnimatePresence mode="sync">
                 <motion.li
                   v-for="edu in showAll ? education : education.slice(0, listLimit)"
                   :key="edu.degree"
                   class="w-full max-w-96"
-                  layout
-                  :initial="{ opacity: 0, y: 8 }"
-                  :animate="{ opacity: 1, y: 0 }"
-                  :exit="{ opacity: 0, y: 0 }"
-                  :transition="{ duration: 0.2 }"
+                  :initial="{ opacity: 0 }"
+                  :animate="{ opacity: 1 }"
+                  :exit="{ opacity: 0 }"
+                  :transition="{ duration: 0.4 }"
                 >
                   <div
                     class="border border-gray-200 dark:border-gray-400 p-5 flex flex-col items-center text-center hover:bg-black/3 hover:dark:bg-white/3"
@@ -171,17 +169,16 @@ onMounted(async () => {
           <!-- Work column -->
           <div>
             <h2 class="text-xl mb-6">Work</h2>
-            <motion.ul class="flex flex-col gap-4 items-center" layout>
-              <AnimatePresence mode="popLayout">
+            <motion.ul class="flex flex-col gap-4 items-center">
+              <AnimatePresence mode="sync">
                 <motion.li
                   v-for="job in showAll ? work : work.slice(0, listLimit)"
                   :key="job.role"
                   class="w-full max-w-96"
-                  layout
-                  :initial="{ opacity: 0, y: 8 }"
-                  :animate="{ opacity: 1, y: 0 }"
-                  :exit="{ opacity: 0, y: 0 }"
-                  :transition="{ duration: 0.2 }"
+                  :initial="{ opacity: 0}"
+                  :animate="{ opacity: 1 }"
+                  :exit="{ opacity: 0 }"
+                  :transition="{ duration: 0.4 }"
                 >
                   <div
                     class="border border-gray-200 dark:border-gray-400 p-5 flex flex-col items-center text-center hover:bg-black/3 hover:dark:bg-white/3"
@@ -203,12 +200,12 @@ onMounted(async () => {
               </AnimatePresence>
             </motion.ul>
           </div>
-        </motion.div>
+      </motion.div>
         <motion.div
           v-if="work.length > listLimit || education.length > listLimit"
           class="flex justify-center"
           layout
-          :transition="{ duration: 0.25, ease: 'easeOut' }"
+          :transition="{ duration: 0.5, ease: 'easeOut', delay: showAll ? 0 : 0.6 }"
         >
           <button
             class="cursor-hover p-2 px-5 mt-8 border border-gray-200 dark:border-gray-400 hover:dark:bg-white hover:dark:text-black hover:bg-black hover:text-white"
@@ -217,7 +214,6 @@ onMounted(async () => {
             {{ showAll ? 'Show Less' : 'Show More' }}
           </button>
         </motion.div>
-      </LayoutGroup>
     </div>
   </div>
 </template>
@@ -285,5 +281,9 @@ onMounted(async () => {
 
 .status-orange {
   background-color: #db8719;
+}
+
+.about-no-anchor {
+  overflow-anchor: none;
 }
 </style>

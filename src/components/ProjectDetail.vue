@@ -8,7 +8,7 @@ defineProps<{
 
 <template>
   <div>
-    <p v-html="project.longDescription" class=" mb-5 py-3 border-t border-b"></p>
+    <p v-html="project.longDescription" class=" mb-5 pb-3 border-b"></p>
     <div class="flex justify-center">
       <a
         :href="project.link"
