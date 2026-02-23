@@ -40,7 +40,7 @@ const sendMessage = () => {
           placeholder="Your message"
           v-model="message"
         />
-        <button class="anim p-6 hover:cursor-pointer" @click="sendMessage()" type="submit">
+        <button class="anim p-6 cursor-hover" @click="sendMessage()" type="submit">
           Submit
         </button>
       </div>

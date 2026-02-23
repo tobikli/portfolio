@@ -43,7 +43,7 @@ const downloadPdf = () => {
 
 <template>
   <button
-    class="px-2 py-1 hover:cursor-pointer mb-4 text-sm hover:bg-black hover:text-white hover:dark:bg-white hover:dark:text-black cursor-hover"
+    class="px-2 py-1 mb-4 text-sm hover:bg-black hover:text-white hover:dark:bg-white hover:dark:text-black cursor-hover"
     @click="
       showPopup({
         title: 'Certificates',
@@ -64,13 +64,13 @@ const downloadPdf = () => {
     </div>
     <div class="flex flex-1 justify-end gap-2 ml-2">
       <button
-        class="border p-2 hover:cursor-pointer hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
+        class="border p-2 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
         @click="downloadPdf"
       >
         Download
       </button>
       <button
-        :class="['border p-2', { 'opacity-50 cursor-not-allowed': !props.link },{ 'hover:bg-black hover:cursor-pointer hover:text-white dark:hover:bg-white dark:hover:text-black ': props.link } ]"
+        :class="['border p-2', { 'opacity-50 cursor-not-allowed': !props.link },{ 'hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black ': props.link } ]"
         :disabled="!props.link"
         @click='openVerify'
       >

@@ -83,7 +83,7 @@ onBeforeUnmount(() => {
 <template>
   <div>
     <button
-      class="px-2 py-1 hover:cursor-pointer mb-4 text-sm hover:bg-black hover:text-white hover:dark:bg-white hover:dark:text-black cursor-hover"
+      class="px-2 py-1 mb-4 text-sm hover:bg-black hover:text-white hover:dark:bg-white hover:dark:text-black cursor-hover"
       @click="
         showPopup({
           title: 'Publications',
@@ -107,7 +107,7 @@ onBeforeUnmount(() => {
         <VuePDF :fit-parent="true" :pdf="thesis" :page="thesisPage" @loaded="loading1 = false" />
       </div>
       <div class="flex justify-center items-center p-4">
-        <button @click="decreaseThesis" class="m-2 hover:cursor-pointer">&lt;</button>
+        <button @click="decreaseThesis" class="m-2">&lt;</button>
         <input
           type="number"
           v-model.number="thesisPage"
@@ -117,11 +117,11 @@ onBeforeUnmount(() => {
           aria-label="Current thesis page"
         />
         <span class="m-2 text-gray-900 dark:text-gray-100">/ {{ thesisPages }}</span>
-        <button @click="increaseThesis" class="m-2 hover:cursor-pointer">&gt;</button>
+        <button @click="increaseThesis" class="m-2">&gt;</button>
       </div>
       <div class="flex justify-center pb-6">
         <button
-          class="text-sm border px-3 py-1 hover:cursor-pointer hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
+          class="text-sm border px-3 py-1 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
           @click="downloadThesis"
         >
           Download Paper
@@ -147,7 +147,7 @@ onBeforeUnmount(() => {
           />
         </div>
         <div class="flex justify-center items-center p-4">
-          <button @click="decreasePresentation" class="m-2 hover:cursor-pointer">&lt;</button>
+          <button @click="decreasePresentation" class="m-2">&lt;</button>
           <input
             type="number"
             v-model.number="presentationPage"
@@ -157,11 +157,11 @@ onBeforeUnmount(() => {
             aria-label="Current thesis page"
           />
           <span class="m-2 text-gray-900 dark:text-gray-100">/ {{ presentationPages }}</span>
-          <button @click="increasePresentation" class="m-2 hover:cursor-pointer">&gt;</button>
+          <button @click="increasePresentation" class="m-2">&gt;</button>
         </div>
         <div class="flex justify-center pb-6">
           <button
-            class="text-sm border px-3 py-1 hover:cursor-pointer hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
+            class="text-sm border px-3 py-1 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
             @click="downloadPresentation"
           >
             Download Presentation

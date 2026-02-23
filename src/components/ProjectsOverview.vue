@@ -18,7 +18,7 @@ import ProjectDetail from './ProjectDetail.vue'
         "
       >
         <div
-          class="grid sm:grid-cols-[30%_50%_20%] p-4 bg hover:cursor-pointer bg-black/3 dark:bg-white/3 hover:bg-black hover:dark:bg-white transition-all hover:text-white hover:dark:text-black"
+          class="grid sm:grid-cols-[30%_50%_20%] cursor-hover p-4 bg bg-black/3 dark:bg-white/3 hover:bg-black hover:dark:bg-white transition-all hover:text-white hover:dark:text-black"
         >
           <a class="text-left underline-offset-5 underline wrap-break-word">
             {{ project.name }}

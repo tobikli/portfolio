@@ -49,3 +49,6 @@ html.dark {
   scroll-margin-top: var(--header-height);
 }
 
+.cursor-hover {
+  cursor: pointer;
+}

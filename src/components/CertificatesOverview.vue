@@ -23,7 +23,7 @@ import CertificatesDetail from './CertificatesDetail.vue';
         "
       >
         <div class="grid grid-cols-[65%_20%] gap-4 w-full">
-          <a class="text-right underline-offset-5 underline hover:cursor-pointer">{{
+          <a class="text-right underline-offset-5 underline">{{
             cert.name
           }}</a>
           <a class="text-left">{{ cert.date.toLocaleDateString() }}</a>

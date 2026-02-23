@@ -30,7 +30,7 @@ const matchStatus = (status: string): string => {
         componentProps: { project },
       })
     "
-    class="flex flex-col min-h-40 w-96 p-5 bg-black/3 dark:bg-white/3 backdrop-blur-2xl transition-transform transform-gpu hover:cursor-pointer border border-black/3 dark:border-white/3 hover:border-black hover:dark:border-white cursor-hover"
+    class="flex flex-col min-h-40 w-96 p-5 bg-black/3 dark:bg-white/3 backdrop-blur-2xl transition-transform transform-gpu border border-black/3 dark:border-white/3 hover:border-black hover:dark:border-white cursor-hover"
     role="article"
     aria-label="project box"
   >

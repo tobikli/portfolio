@@ -77,7 +77,7 @@ onMounted(async () => {
               <font-awesome-icon
                 :icon="tech.icon"
                 size="lg"
-                class="transition-all duration-300 hover:scale-110 cursor-hover"
+                class="transition-all duration-300 hover:scale-110"
               />
             </motion.a>
           </div>
@@ -86,7 +86,7 @@ onMounted(async () => {
           class="inline-block h-0.5 lg:h-auto lg:w-0.5 self-stretch bg-black/10 dark:bg-white/10"
         ></div>
         <div class="text-left p-5">
-          <div class="bg-black/3 dark:bg-white/3 p-2 mb-8 cursor-hover">
+          <div class="bg-black/3 dark:bg-white/3 p-2 mb-8">
             <div class="border-gray-400/40 m-2 text-center">
               <div class="flex items-center gap-4 justify-center">
                 <span class="status-dot status-green"></span>
@@ -99,7 +99,6 @@ onMounted(async () => {
                 <font-awesome-icon
                   :icon="'fa-solid fa-location-dot'"
                   size="sm"
-                  class="cursor-hover"
                 />
                 <p>Currently located in {{ information.location }}</p>
               </div>
@@ -206,7 +205,7 @@ onMounted(async () => {
         class="flex justify-center"
       >
         <button
-          class="cursor-hover p-2 mt-8 border border-gray-200 dark:border-gray-400 hover:dark:bg-white hover:dark:text-black hover:bg-black hover:text-white"
+          class="cursor-hover p-2 px-5 mt-8 border border-gray-200 dark:border-gray-400 hover:dark:bg-white hover:dark:text-black hover:bg-black hover:text-white"
           @click="toggleShowAll"
         >
           {{ showAll ? 'Show Less' : 'Show More' }}
