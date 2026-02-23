@@ -79,12 +79,11 @@ watch(
 
 .popup-panel-enter-active,
 .popup-panel-leave-active {
-  transition: opacity 170ms ease, transform 170ms ease;
+  transition: opacity 170ms ease,;
 }
 
 .popup-panel-enter-from,
 .popup-panel-leave-to {
   opacity: 0;
-  transform: translateY(8px) scale(0.98);
 }
 </style>
