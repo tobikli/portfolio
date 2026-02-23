@@ -64,13 +64,13 @@ const downloadPdf = () => {
     </div>
     <div class="flex flex-1 justify-end gap-2 ml-2">
       <button
-        class="border p-2 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
+        class="border p-2 cursor-hover hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
         @click="downloadPdf"
       >
         Download
       </button>
       <button
-        :class="['border p-2', { 'opacity-50 cursor-not-allowed': !props.link },{ 'hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black ': props.link } ]"
+        :class="['border p-2', { 'opacity-50 cursor-not-allowed': !props.link },{ 'cursor-hover hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black ': props.link } ]"
         :disabled="!props.link"
         @click='openVerify'
       >

@@ -3,7 +3,7 @@ import { information } from '@/data/information'
 import { education } from '@/data/education'
 import { work } from '@/data/work'
 import { onMounted, ref } from 'vue'
-import { motion } from 'motion-v'
+import { AnimatePresence, LayoutGroup, motion } from 'motion-v'
 import { showPopup } from '@/composables/usePopup'
 import AnimationButton from '@/components/AnimationButton.vue'
 import CVDetail from '@/components/CVDetail.vue'
@@ -29,7 +29,7 @@ onMounted(async () => {
       status.value = response
     }
   } catch (error) {
-    console.error("Failed to fetch status:", error)
+    console.error('Failed to fetch status:', error)
   }
 })
 </script>
@@ -62,7 +62,9 @@ onMounted(async () => {
           <h2 class="text-lg mb-3">My name is {{ information.name }}</h2>
           <div class="space-y-3" v-html="information.aboutHtml"></div>
           <p class="mt-6 mb-3">I have experience with:</p>
-          <div class="grid grid-cols-6 mt-5 border dark:border-white/10 border-black/10 p-4 gap-4 place-items-center">
+          <div
+            class="grid grid-cols-6 mt-5 border dark:border-white/10 border-black/10 p-4 gap-4 place-items-center"
+          >
             <motion.a
               v-for="tech in information.techstack"
               :key="tech.name"
@@ -96,10 +98,7 @@ onMounted(async () => {
             <hr class="mx-2 border-black/20 dark:border-white/20 my-4" />
             <div class="m-2 text-center">
               <div class="flex items-center gap-4 justify-center">
-                <font-awesome-icon
-                  :icon="'fa-solid fa-location-dot'"
-                  size="sm"
-                />
+                <font-awesome-icon :icon="'fa-solid fa-location-dot'" size="sm" />
                 <p>Currently located in {{ information.location }}</p>
               </div>
             </div>
@@ -131,86 +130,94 @@ onMounted(async () => {
         </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Education column -->
-        <div>
-          <h2 class="text-xl mb-6">Education</h2>
-          <motion.ul class="space-y-4 flex flex-col items-center" layout>
-            <motion.li
-              v-for="(edu, index) in showAll ? education : education.slice(0, listLimit)"
-              :key="edu.degree"
-              class="w-full max-w-96"
-              layout
-              :initial="{ opacity: 0, y: 8 }"
-              :animate="{ opacity: 1, y: 0 }"
-              :exit="{ opacity: 0, y: -8 }"
-              :transition="{ duration: 0.2, delay: index * 0.03 }"
-            >
-              <div
-                class="border border-gray-200 dark:border-gray-400 p-5 flex flex-col items-center text-center hover:bg-black/3 hover:dark:bg-white/3"
-              >
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">
-                  {{ edu.degree }}
-                </h3>
-                <p class="text-md text-gray-500 dark:text-gray-400 mt-1">
-                  {{ edu.school }}
-                </p>
-                <time class="text-xs text-gray-400 mt-2">
-                  {{ edu.time }}
-                </time>
-                <p class="mt-3 text-sm text-gray-700 dark:text-gray-300">
-                  {{ edu.information }}
-                </p>
-              </div>
-            </motion.li>
-          </motion.ul>
-        </div>
+      <LayoutGroup>
+        <motion.div class="grid grid-cols-1 md:grid-cols-2 gap-6" layout>
+          <!-- Education column -->
+          <div>
+            <h2 class="text-xl mb-6">Education</h2>
+            <motion.ul class="flex flex-col gap-4 items-center" layout>
+              <AnimatePresence mode="popLayout">
+                <motion.li
+                  v-for="edu in showAll ? education : education.slice(0, listLimit)"
+                  :key="edu.degree"
+                  class="w-full max-w-96"
+                  layout
+                  :initial="{ opacity: 0, y: 8 }"
+                  :animate="{ opacity: 1, y: 0 }"
+                  :exit="{ opacity: 0, y: 0 }"
+                  :transition="{ duration: 0.2 }"
+                >
+                  <div
+                    class="border border-gray-200 dark:border-gray-400 p-5 flex flex-col items-center text-center hover:bg-black/3 hover:dark:bg-white/3"
+                  >
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                      {{ edu.degree }}
+                    </h3>
+                    <p class="text-md text-gray-500 dark:text-gray-400 mt-1">
+                      {{ edu.school }}
+                    </p>
+                    <time class="text-xs text-gray-400 mt-2">
+                      {{ edu.time }}
+                    </time>
+                    <p class="mt-3 text-sm text-gray-700 dark:text-gray-300">
+                      {{ edu.information }}
+                    </p>
+                  </div>
+                </motion.li>
+              </AnimatePresence>
+            </motion.ul>
+          </div>
 
-        <!-- Work column -->
-        <div>
-          <h2 class="text-xl mb-6">Work</h2>
-          <motion.ul class="space-y-4 flex flex-col items-center" layout>
-            <motion.li
-              v-for="(job, index) in showAll ? work : work.slice(0, listLimit)"
-              :key="job.role"
-              class="w-full max-w-96"
-              layout
-              :initial="{ opacity: 0, y: 8 }"
-              :animate="{ opacity: 1, y: 0 }"
-              :exit="{ opacity: 0, y: -8 }"
-              :transition="{ duration: 0.2, delay: index * 0.03 }"
-            >
-              <div
-                class="border border-gray-200 dark:border-gray-400 p-5 flex flex-col items-center text-center hover:bg-black/3 hover:dark:bg-white/3"
-              >
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">
-                  {{ job.role }}
-                </h3>
-                <p class="text-md text-gray-500 dark:text-gray-400 mt-1">
-                  {{ job.place }}
-                </p>
-                <time class="text-xs text-gray-400 mt-2">
-                  {{ job.time }}
-                </time>
-                <p class="mt-3 text-sm text-gray-700 dark:text-gray-300">
-                  {{ job.information }}
-                </p>
-              </div>
-            </motion.li>
-          </motion.ul>
-        </div>
-      </div>
-      <div
-        v-if="work.length > listLimit || education.length > listLimit"
-        class="flex justify-center"
-      >
-        <button
-          class="cursor-hover p-2 px-5 mt-8 border border-gray-200 dark:border-gray-400 hover:dark:bg-white hover:dark:text-black hover:bg-black hover:text-white"
-          @click="toggleShowAll"
+          <!-- Work column -->
+          <div>
+            <h2 class="text-xl mb-6">Work</h2>
+            <motion.ul class="flex flex-col gap-4 items-center" layout>
+              <AnimatePresence mode="popLayout">
+                <motion.li
+                  v-for="job in showAll ? work : work.slice(0, listLimit)"
+                  :key="job.role"
+                  class="w-full max-w-96"
+                  layout
+                  :initial="{ opacity: 0, y: 8 }"
+                  :animate="{ opacity: 1, y: 0 }"
+                  :exit="{ opacity: 0, y: 0 }"
+                  :transition="{ duration: 0.2 }"
+                >
+                  <div
+                    class="border border-gray-200 dark:border-gray-400 p-5 flex flex-col items-center text-center hover:bg-black/3 hover:dark:bg-white/3"
+                  >
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                      {{ job.role }}
+                    </h3>
+                    <p class="text-md text-gray-500 dark:text-gray-400 mt-1">
+                      {{ job.place }}
+                    </p>
+                    <time class="text-xs text-gray-400 mt-2">
+                      {{ job.time }}
+                    </time>
+                    <p class="mt-3 text-sm text-gray-700 dark:text-gray-300">
+                      {{ job.information }}
+                    </p>
+                  </div>
+                </motion.li>
+              </AnimatePresence>
+            </motion.ul>
+          </div>
+        </motion.div>
+        <motion.div
+          v-if="work.length > listLimit || education.length > listLimit"
+          class="flex justify-center"
+          layout
+          :transition="{ duration: 0.25, ease: 'easeOut' }"
         >
-          {{ showAll ? 'Show Less' : 'Show More' }}
-        </button>
-      </div>
+          <button
+            class="cursor-hover p-2 px-5 mt-8 border border-gray-200 dark:border-gray-400 hover:dark:bg-white hover:dark:text-black hover:bg-black hover:text-white"
+            @click="toggleShowAll"
+          >
+            {{ showAll ? 'Show Less' : 'Show More' }}
+          </button>
+        </motion.div>
+      </LayoutGroup>
     </div>
   </div>
 </template>

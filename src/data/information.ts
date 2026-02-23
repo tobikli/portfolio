@@ -7,7 +7,7 @@ const age = getAge(birthday)
 export const information = {
   name: 'Tobias Wen Klingenberg',
   name_short: 'Tobias Klingenberg',
-  mail: 'hello@tobiwn.me',
+  mail: 'mail@tobiwn.me',
   slogan: 'Master Informatics student at TUM',
   birthday: birthday,
   age: age,

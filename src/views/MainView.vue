@@ -68,23 +68,18 @@ onBeforeUnmount(() => {
 }
 
 .section {
-  opacity: 0;
-  transform: translateY(12px) scale(0.996);
+  opacity: 1;
   scroll-margin-top: 80px;
-  transition:
-    opacity 420ms cubic-bezier(0.2, 0.9, 0.4, 1),
-    transform 420ms cubic-bezier(0.2, 0.9, 0.4, 1);
-  will-change: opacity, transform;
+  transition: filter 420ms cubic-bezier(0.2, 0.9, 0.4, 1);
+  will-change: filter;
 }
 
 .section-visible {
-  opacity: 1;
-  transform: translateY(0) scale(1);
+  filter: brightness(1);
 }
 
 .section-hidden {
-  opacity: 0.2;
-  transform: translateY(12px) scale(0.996);
+  filter: brightness(0.2);
 }
 
 @media (prefers-reduced-motion: reduce) {

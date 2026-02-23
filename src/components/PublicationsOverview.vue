@@ -21,7 +21,7 @@ import PublicationsDetail from './PublicationsDetail.vue'
           })
         "
       >
-        <div class="grid grid-cols-[65%_20%] gap-4 w-full">
+        <div class="grid grid-cols-[65%_20%] gap-4 w-full cursor-hover">
           <a class="text-right underline-offset-5 underline">{{
             publication.title
           }}</a>

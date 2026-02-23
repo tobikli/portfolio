@@ -22,7 +22,7 @@ import CertificatesDetail from './CertificatesDetail.vue';
           })
         "
       >
-        <div class="grid grid-cols-[65%_20%] gap-4 w-full">
+        <div class="grid grid-cols-[65%_20%] cursor-hover gap-4 w-full">
           <a class="text-right underline-offset-5 underline">{{
             cert.name
           }}</a>
