@@ -4,7 +4,6 @@ import { sections } from '@/data/sections'
 import AppFooter from '@/components/AppFooter.vue'
 import AppHeader from '@/components/AppHeader.vue'
 import PopupView from '@/views/PopupView.vue'
-import Darkmode from '@/components/DarkMode.vue'
 import { reactive, onMounted, onBeforeUnmount } from 'vue'
 
 const visible = reactive<Record<string, boolean>>({})
@@ -57,7 +56,6 @@ onBeforeUnmount(() => {
       </section>
     </main>
     <AppFooter />
-    <Darkmode />
     <PopupView />
   </template>
 

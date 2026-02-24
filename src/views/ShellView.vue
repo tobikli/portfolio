@@ -164,17 +164,41 @@ onBeforeUnmount(() => {
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 
 .shell-root {
+  --shell-page-bg: #f3f4f6;
+  --shell-page-fg: #111827;
+  --shell-window-bg: #ffffff;
+  --shell-window-border: #d1d5db;
+  --shell-terminal-bg: #ffffff;
+  --shell-terminal-fg: #111827;
+  --shell-titlebar-bg: #e5e7eb;
+  --shell-title-fg: #4b5563;
+  --shell-selection-bg: #dbeafe;
+  --shell-selection-fg: #111827;
+
   padding-top: calc(1rem + env(safe-area-inset-top));
   padding-right: calc(1rem + env(safe-area-inset-right));
   padding-bottom: calc(1rem + env(safe-area-inset-bottom));
   padding-left: calc(1rem + env(safe-area-inset-left));
-  background-color: #15161a;
-  color: #fff;
+  background-color: var(--shell-page-bg);
+  color: var(--shell-page-fg);
   height: 100dvh;
   min-height: 100dvh;
   box-sizing: border-box;
   display: flex;
   align-items: stretch;
+}
+
+:global(html.dark .shell-root) {
+  --shell-page-bg: #15161a;
+  --shell-page-fg: #ffffff;
+  --shell-window-bg: #000000;
+  --shell-window-border: #2f2f2f;
+  --shell-terminal-bg: #000000;
+  --shell-terminal-fg: #ffffff;
+  --shell-titlebar-bg: #111111;
+  --shell-title-fg: #d1d5db;
+  --shell-selection-bg: #2b2b2b;
+  --shell-selection-fg: #ffffff;
 }
 
 * {
@@ -197,16 +221,19 @@ onBeforeUnmount(() => {
   padding: 6px;
   font-size: 1rem;
   box-sizing: border-box;
-  color: #fff;
+  color: var(--shell-terminal-fg);
+  background-color: transparent;
+  border: none;
+  caret-color: var(--shell-terminal-fg);
 }
 
 .window {
   width: 100%;
   margin: 0;
-  border: 1px solid #2f2f2f;
+  border: 1px solid var(--shell-window-border);
   border-radius: 8px;
   overflow: hidden;
-  background-color: #000;
+  background-color: var(--shell-window-bg);
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -214,13 +241,13 @@ onBeforeUnmount(() => {
 }
 
 textarea {
-  background-color: #000;
-  color: #fff;
+  background-color: var(--shell-terminal-bg);
+  color: var(--shell-terminal-fg);
 }
 
 .title-bar {
   height: 30px;
-  background-color: #111;
+  background-color: var(--shell-titlebar-bg);
   display: flex;
   align-items: center;
   padding: 0 10px;
@@ -232,7 +259,7 @@ textarea {
   left: 50%;
   transform: translateX(-50%);
   font-size: 0.8rem;
-  color: #d1d5db;
+  color: var(--shell-title-fg);
   user-select: none;
 }
 
@@ -295,14 +322,14 @@ textarea {
   padding: 1rem;
   font-family: monospace;
   font-size: 1rem;
-  background-color: #000;
-  color: #fff;
+  background-color: var(--shell-terminal-bg);
+  color: var(--shell-terminal-fg);
   box-sizing: border-box;
 }
 
 #output::selection,
 #inputField::selection {
-  background-color: #2b2b2b;
-  color: #fff;
+  background-color: var(--shell-selection-bg);
+  color: var(--shell-selection-fg);
 }
 </style>

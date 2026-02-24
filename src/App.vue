@@ -6,6 +6,8 @@ import { useHead } from '@unhead/vue'
 import { useRoute } from 'vue-router'
 import profileUrl from '@/assets/images/profile.png'
 import { createGlobalMeta } from '@/data/meta'
+import Darkmode from '@/components/DarkMode.vue'
+
 
 const route = useRoute()
 
@@ -13,7 +15,6 @@ const currentUrl = computed(() => new URL(route.path || '/', window.location.ori
 const absoluteProfileUrl = computed(() => new URL(profileUrl, window.location.origin).href)
 
 useHead(() => createGlobalMeta(currentUrl.value, absoluteProfileUrl.value))
-
 </script>
 
 <template>
@@ -27,4 +28,5 @@ useHead(() => createGlobalMeta(currentUrl.value, absoluteProfileUrl.value))
     :hoverSize="1"
   />-->
   <RouterView />
+  <Darkmode />
 </template>
