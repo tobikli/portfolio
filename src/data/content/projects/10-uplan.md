@@ -2,7 +2,7 @@
 name: u_plan
 shortName: uplan
 shortDescription: University planning app.
-date: '2025'
+date: 2026
 tags: [React, Next.js, TS]
 link: https://uplan.twks.net
 status: ongoing

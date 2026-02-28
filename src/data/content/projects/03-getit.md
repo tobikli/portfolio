@@ -2,7 +2,7 @@
 name: getit
 shortName: getit
 shortDescription: Raycast request extension.
-date: "2024"
+date: 2024
 tags: [TS, RC API]
 link: https://github.com/tobikli/getit
 status: finished

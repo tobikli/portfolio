@@ -2,7 +2,7 @@
 name: Home Lab
 shortName: homelab
 shortDescription: Proxmox VM Cluster.
-date: "2025"
+date: 2026
 tags: [Proxmox, VM, Net]
 link: https://twks.net
 status: ongoing

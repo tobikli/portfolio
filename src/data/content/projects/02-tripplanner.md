@@ -2,7 +2,7 @@
 name: TripPlanner
 shortName: TripPlanner
 shortDescription: iOS App for planning trips.
-date: "2024"
+date: 2024
 tags: [Swift]
 link: https://github.com/tobikli/TripPlanner
 status: finished

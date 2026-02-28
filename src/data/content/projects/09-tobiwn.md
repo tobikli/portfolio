@@ -2,7 +2,7 @@
 name: tobiwn.me
 shortName: tobiwn.me
 shortDescription: This portfolio website.
-date: "2025"
+date: 2026
 tags: [TS, Vue.js, Tailwind]
 link: https://tobiwn.me
 status: ongoing

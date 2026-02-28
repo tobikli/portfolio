@@ -2,7 +2,7 @@
 name: v2.tobiwn.me
 shortName: v2.tobiwn.me
 shortDescription: Secondary portfolio website.
-date: "2024-2025"
+date: 2024-2025
 tags: [PHP, JS, HTML]
 link: https://v2.tobiwn.me
 status: finished

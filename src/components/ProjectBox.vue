@@ -9,16 +9,16 @@ defineProps<{
 
 const matchStatus = (status: string): string => {
   switch (status) {
-    case "finished":
-      return "status-green"
-    case "ongoing":
-      return "status-yellow"
-    case "aborted":
-      return "status-red"
+    case 'finished':
+      return 'status-green'
+    case 'ongoing':
+      return 'status-yellow'
+    case 'aborted':
+      return 'status-red'
     default:
-      return "status-green"
+      return 'status-green'
   }
-};
+}
 </script>
 
 <template>
@@ -36,7 +36,7 @@ const matchStatus = (status: string): string => {
   >
     <header class="flex items-start justify-between gap-4">
       <h3 class="text-lg font-semibold leading-tight">
-        {{ project.name }}
+        {{ project.shortName }}
       </h3>
 
       <time class="text-sm text-gray-500 dark:text-gray-400" :datetime="project.date">
