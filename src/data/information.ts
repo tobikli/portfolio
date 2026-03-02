@@ -72,6 +72,11 @@ export const information = {
       link: 'https://www.reddit.com/user/tobiji/',
       icon: 'fa-brands fa-reddit',
     },
+    {
+      name: 'Mastodon',
+      link: 'https://mastodon.social/@tobikli',
+      icon: 'fa-brands fa-mastodon',
+    },
   ],
   techstack: [
     {
@@ -106,7 +111,7 @@ export const information = {
       name: 'CSS',
       icon: 'fa-brands fa-css3-alt',
     },
-		{
+    {
       name: 'Javascript / Typescript',
       icon: 'fa-brands fa-js',
     },

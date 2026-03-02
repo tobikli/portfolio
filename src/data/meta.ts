@@ -60,6 +60,10 @@ export const createGlobalMeta = (currentUrl: string, imageUrl: string) => ({
       name: 'twitter:image',
       content: imageUrl,
     },
+    {
+      name: 'fediverse:creator',
+      content: '@tobikli@mastodon.social',
+    },
   ],
   link: [
     {
@@ -69,6 +73,10 @@ export const createGlobalMeta = (currentUrl: string, imageUrl: string) => ({
     {
       rel: 'image_src',
       href: imageUrl,
+    },
+    {
+      rel: 'me',
+      href: 'https://mastodon.social/@tobikli',
     },
   ],
   script: [
