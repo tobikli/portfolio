@@ -6,7 +6,7 @@ import { useHead } from '@unhead/vue'
 import { useRoute } from 'vue-router'
 import profileUrl from '@/assets/images/profile.png'
 import { createGlobalMeta } from '@/data/meta'
-import Darkmode from '@/components/DarkMode.vue'
+import ToggleMenu from '@/components/ToggleMenu.vue'
 
 
 const route = useRoute()
@@ -28,5 +28,5 @@ useHead(() => createGlobalMeta(currentUrl.value, absoluteProfileUrl.value))
     :hoverSize="1"
   />-->
   <RouterView />
-  <Darkmode />
+  <ToggleMenu />
 </template>
