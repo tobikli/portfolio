@@ -43,11 +43,11 @@ const onError = () => {
   <div :class="['relative', wrapperClass]">
     <div
       v-if="showSpinner && isLoading"
-      class="absolute inset-0 flex items-center justify-center pointer-events-none"
+      :class="[imgClass, 'min-h-24 flex items-center justify-center pointer-events-none']"
     >
-      <div
-        class="absolute w-8 h-8 border-4 border-gray-300 border-t-gray-700 rounded-full animate-spin"
-      ></div>
+      <div class="p-5 bg-black/2 dark:bg-white/2">
+        <div class="w-8 h-8 border-4 border-gray-300 border-t-gray-700 rounded-full animate-spin"></div>
+      </div>
     </div>
 
     <img
@@ -56,7 +56,7 @@ const onError = () => {
       :class="[
         imgClass,
         'transition-opacity duration-150',
-        showSpinner && isLoading ? 'opacity-0' : 'opacity-100',
+        showSpinner && isLoading ? 'hidden' : 'opacity-100',
       ]"
       @load="onLoad"
       @error="onError"

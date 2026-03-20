@@ -11,8 +11,8 @@ defineProps<{
 
 <template>
   <div>
-    <div class="flex flex-col md:flex-row gap-4 md:items-center mb-2">
-      <div v-if="project.image" class="w-70 md:w-56 md:max-w-250 md:shrink-0 flex items-center justify-center">
+    <div class="flex flex-col md:flex-row gap-6 md:items-center">
+      <div v-if="project.image" class="w-70 self-center md:self-auto md:w-56 md:max-w-250 md:shrink-0 flex items-center justify-center">
         <ImageWrapper
           :src="project.image!"
           alt="Project Image"
@@ -30,8 +30,7 @@ defineProps<{
       </div>
       <p v-html="project.longDescription" class="flex-1"></p>
     </div>
-    <div class="mb-5 pb-3 border-b"></div>
-
+    <div class="mb-5 mt-3 pb-3 border-b"></div>
     <div class="flex justify-center">
       <a
         :href="project.link"
