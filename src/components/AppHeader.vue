@@ -8,6 +8,7 @@ import { ref, onMounted, onBeforeUnmount } from 'vue'
 
 const isDark = useDark()
 const currentAnchor = ref(sections[0]?.id ?? '')
+const isMobileMenuOpen = ref(false)
 
 const replaceHash = (id: string) => {
   if (!id) return
@@ -50,28 +51,53 @@ const handleScroll = () => {
   })
 }
 
+const closeMobileMenu = () => {
+  isMobileMenuOpen.value = false
+}
+
+const toggleMobileMenu = () => {
+  isMobileMenuOpen.value = !isMobileMenuOpen.value
+}
+
+const handleResize = () => {
+  if (window.innerWidth >= 640) {
+    closeMobileMenu()
+  }
+}
+
 onMounted(() => {
   updateActiveSection()
   window.addEventListener('scroll', handleScroll, { passive: true })
   window.addEventListener('resize', handleScroll, { passive: true })
+  window.addEventListener('resize', handleResize, { passive: true })
 })
 
 onBeforeUnmount(() => {
   window.removeEventListener('scroll', handleScroll)
   window.removeEventListener('resize', handleScroll)
+  window.removeEventListener('resize', handleResize)
 })
 </script>
 
 <template>
-  <header class="sticky top-0 left-0 right-0 z-50 backdrop-blur-md h-16">
+  <header class="sticky top-0 left-0 right-0 z-50 backdrop-blur-md h-16 border-b border-gray-300/60 dark:border-gray-200/7">
     <div class="max-w-6xl mx-auto w-full px-4 flex items-center gap-4 h-full">
       <ImageWrapper
         :src="isDark ? logo_light : logo_dark"
         alt="Logo"
-        wrapper-class="w-10 h-10 shrink-0 hidden sm:block"
+        wrapper-class="w-10 h-10 shrink-0"
         img-class="w-full h-full"
       />
-      <div class="flex-1 flex justify-center">
+
+      <div class="sm:hidden flex-1 min-w-0 text-center">
+        <span
+          class="inline-block mt-2 text-sm font-medium text-gray-900 dark:text-gray-100 truncate max-w-full"
+        >
+          {{ sections.find((section) => section.id === currentAnchor)?.name ?? 'Menu' }}
+        </span>
+      </div>
+
+      <div class="hidden sm:flex flex-1 justify-center">
         <nav class="flex gap-2" role="navigation" aria-label="Main">
           <a
             v-for="section in sections"
@@ -87,9 +113,53 @@ onBeforeUnmount(() => {
           </a>
         </nav>
       </div>
+
+      <button
+        type="button"
+        class="sm:hidden inline-flex items-center justify-center w-10 h-10 rounded text-gray-900 dark:text-gray-100 cursor-hover"
+        :aria-expanded="isMobileMenuOpen"
+        aria-controls="mobile-nav"
+        aria-label="Toggle navigation menu"
+        @click="toggleMobileMenu"
+      >
+        <Transition name="menu-icon" mode="out-in">
+          <i
+            :key="isMobileMenuOpen ? 'close' : 'open'"
+            :class="isMobileMenuOpen ? 'pi pi-times' : 'pi pi-bars'"
+          />
+        </Transition>
+      </button>
+
       <div class="w-10 h-10 shrink-0 hidden sm:block" aria-hidden="true"></div>
     </div>
   </header>
+
+  <Transition name="mobile-menu">
+    <nav
+      v-if="isMobileMenuOpen"
+      id="mobile-nav"
+      class="sm:hidden fixed top-18 right-4 z-40"
+      role="navigation"
+      aria-label="Mobile"
+    >
+      <div class="mobile-menu-panel w-max max-w-[calc(100vw-2rem)] border border-gray-300/60 dark:border-gray-200/7 p-3">
+        <a
+          v-for="section in sections"
+          :key="`mobile-${section.id}`"
+          :href="'#' + section.id"
+          class="mobile-menu-link block px-5 py-2 text-sm text-gray-900 dark:text-gray-100 whitespace-nowrap"
+          :class="
+            currentAnchor === section.id
+              ? 'bg-black/80 text-white dark:bg-gray-100/80 dark:text-gray-900'
+              : 'hover:bg-gray-900/7 dark:hover:bg-gray-100/10'
+          "
+          @click="closeMobileMenu"
+        >
+          {{ section.name }}
+        </a>
+      </div>
+    </nav>
+  </Transition>
 </template>
 
 <style scoped>
@@ -126,5 +196,45 @@ nav a.nav-link.active::after {
 
 nav a.nav-link:active::after {
   transition-duration: 400ms;
+}
+
+.mobile-menu-panel {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+:global(.dark) .mobile-menu-panel {
+  background: transparent;
+}
+
+.mobile-menu-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(255, 255, 255, 0);
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+}
+
+:global(.dark) .mobile-menu-panel::before {
+  background: rgba(15, 16, 19, 0);
+}
+
+.mobile-menu-link {
+  position: relative;
+  z-index: 1;
+}
+
+.menu-icon-enter-active,
+.menu-icon-leave-active {
+  transition: opacity 120ms ease, transform 120ms ease;
+}
+
+.menu-icon-enter-from,
+.menu-icon-leave-to {
+  opacity: 0.5;
+  transform: scale(0.9);
 }
 </style>
