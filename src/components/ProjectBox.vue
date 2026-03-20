@@ -30,13 +30,13 @@ const matchStatus = (status: string): string => {
         componentProps: { project },
       })
     "
-    class="flex flex-col min-h-40 w-96 p-5 bg-black/3 dark:bg-white/3 backdrop-blur-2xl transition-transform transform-gpu border border-black/3 dark:border-white/3 hover:border-black hover:dark:border-white cursor-hover"
+    class="flex flex-col min-h-40 p-5 w-[80vw] lg:w-96 bg-black/3 dark:bg-white/3 backdrop-blur-2xl transition-transform transform-gpu border border-black/3 dark:border-white/3 hover:border-black hover:dark:border-white cursor-hover"
     role="article"
     aria-label="project box"
   >
     <header class="flex items-start justify-between gap-4">
       <h3 class="text-lg font-semibold leading-tight">
-        {{ project.shortName }}
+        {{ project.name }}
       </h3>
 
       <time class="text-sm text-gray-500 dark:text-gray-400" :datetime="project.date">

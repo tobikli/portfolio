@@ -10,6 +10,7 @@ export interface Project {
   tags: string[]
   link: string
   status: string
+  image?: string
 }
 
 const projectFiles = import.meta.glob('./content/projects/*.md', {
@@ -18,7 +19,27 @@ const projectFiles = import.meta.glob('./content/projects/*.md', {
   import: 'default',
 })
 
+const projectImageFiles = import.meta.glob('./content/projects/images/*', {
+  eager: true,
+  import: 'default',
+}) as Record<string, string>
+
 type ProjectFrontmatter = Partial<Project>
+
+function resolveProjectImage(image: string | undefined) {
+  if (!image) {
+    return ''
+  }
+
+  if (/^(https?:)?\/\//.test(image) || image.startsWith('/')) {
+    return image
+  }
+
+  const normalizedImage = image.replace(/^\.\//, '')
+  const imagePath = `./content/projects/images/${normalizedImage}`
+
+  return projectImageFiles[imagePath] ?? ''
+}
 
 function parseProject(raw: string) {
   const { data, content } = matter(raw)
@@ -33,6 +54,7 @@ function parseProject(raw: string) {
     tags: Array.isArray(frontmatter.tags) ? frontmatter.tags.map((tag) => String(tag)) : [],
     link: frontmatter.link ?? '',
     status: frontmatter.status ?? '',
+    image: resolveProjectImage(frontmatter.image),
   }
 }
 

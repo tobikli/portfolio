@@ -6,6 +6,7 @@ date: 2026
 tags: [TS, Vue.js, Tailwind]
 link: https://tobiwn.me
 status: ongoing
+image: tobiwn.png
 ---
 
 <p>

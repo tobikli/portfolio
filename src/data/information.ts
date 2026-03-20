@@ -47,10 +47,6 @@ export const information = {
             You can also find some cool stuff on my
             <a class="underline" href="https://v2.tobiwn.me">alternative Portfolio!</a>
           </p>
-          <p>
-            and stats of my personal infrastructure here:
-            <a class="underline" href="https://twks.net">TWKS</a>
-          </p>
           <p class="mt-6">
             More information about myself and my work can be seen below or using this interactive
             <a class="underline" href="/shell">shell</a>.

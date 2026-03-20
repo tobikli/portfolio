@@ -28,14 +28,12 @@ const toggleTheme = async () => {
   document.body.removeChild(overlay)
   document.body.style.overflow = ''
 }
-var audio = new Audio(bg)
+const audio = new Audio(bg)
 onMounted(() => {
-  audio.volume = 0.2
+  audio.volume = 0.05
   audio.loop = true
-  audio.autoplay = true
-  audio.play()
 })
-const isMusicOn = ref(true)
+const isMusicOn = ref(false)
 const toggleMusic = () => {
   isMusicOn.value = !isMusicOn.value
   if (isMusicOn.value) {
@@ -48,10 +46,10 @@ const toggleMusic = () => {
 </script>
 
 <template>
-  <div class="fixed bottom-4 right-4 z-9000 pb-safearea rounded-full hover:bg-gray-600/10  bg-gray-600/5 backdrop-blur-xs grid grid-cols-1">
+  <div class="fixed bottom-4 right-4 z-9999 pb-safearea bg-gray-600/7 backdrop-blur-xs grid grid-cols-1">
     <button
       @click="toggleMusic"
-      class="inline-flex items-center rounded-full justify-center w-10 h-10 hover:scale-105 transform-gpu transition cursor-hover"
+      class="inline-flex items-center justify-center w-10 h-10 hover:scale-105 transform-gpu transition cursor-hover"
     >
       <span class="icon-cross-wrap">
           <i class="pi pi-volume-up" />
@@ -63,7 +61,7 @@ const toggleMusic = () => {
     <div class="w-6 h-px bg-gray-500/40 mx-auto" />
     <button
       @click="toggleTheme"
-      class="inline-flex items-center rounded-full justify-center w-10 h-10 hover:scale-105 transform-gpu transition cursor-hover"
+      class="inline-flex items-center justify-center w-10 h-10 hover:scale-105 transform-gpu transition cursor-hover"
     >
       <Transition name="icon-cross" mode="out-in">
         <span :key="isDark ? 'sun' : 'moon'" class="icon-cross-wrap">
@@ -100,10 +98,10 @@ const toggleMusic = () => {
   inset: 0;
   background: linear-gradient(
     to top right,
-    transparent calc(50% - 0.7px),
-    currentColor calc(50% - 0.7px),
-    currentColor calc(50% + 0.7px),
-    transparent calc(50% + 0.7px)
+    transparent calc(50% - 1.4px),
+    currentColor calc(50% - 1.4px),
+    currentColor calc(50% + 1.4px),
+    transparent calc(50% + 1.4px)
   );
 }
 

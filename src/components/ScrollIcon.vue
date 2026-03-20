@@ -7,7 +7,7 @@ const scrollToNextAnchor = () => {
 </script>
 
 <template>
-  <div class="absolute left-1/2 -translate-x-1/2 bottom-25 z-50 pb-safearea" aria-hidden="true">
+  <div class="z-50" aria-hidden="true">
     <motion.button
       @click="scrollToNextAnchor"
       class="opacity-80 cursor-hover"

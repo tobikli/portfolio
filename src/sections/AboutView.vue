@@ -1,26 +1,20 @@
 <script setup lang="ts">
 import { information } from '@/data/information'
-import { education } from '@/data/education'
-import { work } from '@/data/work'
 import { onMounted, ref } from 'vue'
-import { AnimatePresence, motion } from 'motion-v'
+import { motion } from 'motion-v'
 import { showPopup } from '@/composables/usePopup'
 import AnimationButton from '@/components/AnimationButton.vue'
 import CVDetail from '@/components/CVDetail.vue'
 import ImageDetail from '@/components/ImageDetail.vue'
+import ImageWrapper from '@/components/ImageWrapper.vue'
 import PublicationsOverview from '@/components/PublicationsOverview.vue'
 import axios from 'axios'
 import { config } from '@/data/config'
 import CertificatesOverview from '@/components/CertificatesOverview.vue'
 
-const listLimit = 4
-const showAll = ref(false)
-
-const toggleShowAll = () => {
-  showAll.value = !showAll.value
-}
 
 const status = ref(information.status)
+
 
 onMounted(async () => {
   try {
@@ -35,18 +29,19 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="w-full flex flex-col items-center justify-start px-6 pb-20 md:pb-28">
+  <div class="w-full flex flex-col items-center justify-start px-6">
     <div class="text-center w-full max-w-4xl about-no-anchor">
       <h1 class="text-3xl mb-12">About me</h1>
       <!-- Information -->
-      <div class="grid grid:cols-1 lg:grid-cols-[1fr_auto_1fr] mb-40">
+      <div class="grid grid:cols-1 lg:grid-cols-[1fr_auto_1fr] mb-40 items-center">
         <div class="text-left p-5">
           <div class="flex justify-center mt-3 mb-6">
             <div class="relative w-30 h-30 mb-5">
-              <img
+              <ImageWrapper
                 :src="information.profilePic"
                 :alt="`Portrait of ${information.name}`"
-                class="relative w-full h-full object-cover rounded-full hover:cursor-crosshair"
+                wrapper-class="w-full h-full rounded-full overflow-hidden"
+                img-class="relative w-full h-full object-cover hover:cursor-crosshair"
                 @click="
                   showPopup({
                     title: 'Me',
@@ -128,89 +123,6 @@ onMounted(async () => {
             />
           </div>
         </div>
-      </div>
-
-      <motion.div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Education column -->
-        <div>
-          <h2 class="text-xl mb-6">Education</h2>
-          <motion.ul class="flex flex-col gap-4 items-center">
-            <AnimatePresence mode="sync">
-              <motion.li
-                v-for="edu in showAll ? education : education.slice(0, listLimit)"
-                :key="edu.degree"
-                class="w-full max-w-96"
-                :initial="{ opacity: 0 }"
-                :animate="{ opacity: 1 }"
-                :exit="{ opacity: 0 }"
-                :transition="{ duration: 0.4 }"
-              >
-                <div
-                  class="border border-gray-200 dark:border-gray-400 p-5 flex flex-col items-center text-center hover:bg-black/3 hover:dark:bg-white/3"
-                >
-                  <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">
-                    {{ edu.degree }}
-                  </h3>
-                  <p class="text-md text-gray-500 dark:text-gray-400 mt-1">
-                    {{ edu.school }}
-                  </p>
-                  <time class="text-xs text-gray-400 mt-2">
-                    {{ edu.time }}
-                  </time>
-                  <p class="mt-3 text-sm text-gray-700 dark:text-gray-300">
-                    {{ edu.information }}
-                  </p>
-                </div>
-              </motion.li>
-            </AnimatePresence>
-          </motion.ul>
-        </div>
-
-        <!-- Work column -->
-        <div>
-          <h2 class="text-xl mb-6">Work</h2>
-          <motion.ul class="flex flex-col gap-4 items-center">
-            <AnimatePresence mode="sync">
-              <motion.li
-                v-for="job in showAll ? work : work.slice(0, listLimit)"
-                :key="job.role"
-                class="w-full max-w-96"
-                :initial="{ opacity: 0 }"
-                :animate="{ opacity: 1 }"
-                :exit="{ opacity: 0 }"
-                :transition="{ duration: 0.4 }"
-              >
-                <div
-                  class="border border-gray-200 dark:border-gray-400 p-5 flex flex-col items-center text-center hover:bg-black/3 hover:dark:bg-white/3"
-                >
-                  <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">
-                    {{ job.role }}
-                  </h3>
-                  <p class="text-md text-gray-500 dark:text-gray-400 mt-1">
-                    {{ job.place }}
-                  </p>
-                  <time class="text-xs text-gray-400 mt-2">
-                    {{ job.time }}
-                  </time>
-                  <p class="mt-3 text-sm text-gray-700 dark:text-gray-300">
-                    {{ job.information }}
-                  </p>
-                </div>
-              </motion.li>
-            </AnimatePresence>
-          </motion.ul>
-        </div>
-      </motion.div>
-      <div
-        v-if="work.length > listLimit || education.length > listLimit"
-        class="flex justify-center"
-      >
-        <button
-          class="cursor-hover p-2 px-5 mt-8 border border-gray-200 dark:border-gray-400 hover:dark:bg-white hover:dark:text-black hover:bg-black hover:text-white"
-          @click="toggleShowAll"
-        >
-          {{ showAll ? 'Show Less' : 'Show More' }}
-        </button>
       </div>
     </div>
   </div>

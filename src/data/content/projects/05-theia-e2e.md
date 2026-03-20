@@ -1,11 +1,12 @@
 ---
 name: Theia E2E Testing
-shortName: Theia E2E
+shortName: theia e2e
 shortDescription: Load and E2E Integration Testing.
 date: 2025
 tags: [TS, Playwright, Typst]
 link: https://github.com/tobikli/theia-scale-tests
 status: finished
+image: theia.png
 ---
 
 <p>

@@ -3,6 +3,7 @@ import { useDark } from '@vueuse/core'
 import logo_dark from '@/assets/logo_dark.svg'
 import logo_light from '@/assets/logo_light.svg'
 import { sections } from '@/data/sections'
+import ImageWrapper from '@/components/ImageWrapper.vue'
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 
 const isDark = useDark()
@@ -64,10 +65,11 @@ onBeforeUnmount(() => {
 <template>
   <header class="sticky top-0 left-0 right-0 z-50 backdrop-blur-md h-16">
     <div class="max-w-6xl mx-auto w-full px-4 flex items-center gap-4 h-full">
-      <img
+      <ImageWrapper
         :src="isDark ? logo_light : logo_dark"
         alt="Logo"
-        class="w-10 h-10 shrink-0 hidden sm:block"
+        wrapper-class="w-10 h-10 shrink-0 hidden sm:block"
+        img-class="w-full h-full"
       />
       <div class="flex-1 flex justify-center">
         <nav class="flex gap-2" role="navigation" aria-label="Main">

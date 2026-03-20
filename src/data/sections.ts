@@ -1,7 +1,9 @@
 import HomeView from '@/sections/HomeView.vue'
+import AboutView from '@/sections/AboutView.vue'
+import JourneyView from '@/sections/JourneyView.vue'
 import ProjectsView from '@/sections/ProjectsView.vue'
 import ContactView from '@/sections/ContactView.vue'
-import AboutView from '@/sections/AboutView.vue'
+
 
 /* eslint-disable  @typescript-eslint/no-wrapper-object-types */
 
@@ -21,6 +23,11 @@ export const sections: Section[] = [
     name: 'About',
     id: 'about',
     view: AboutView,
+  },
+      {
+    name: 'Journey',
+    id: 'journey',
+    view: JourneyView,
   },
   {
     name: 'Projects',

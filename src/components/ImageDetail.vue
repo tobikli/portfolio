@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import ImageWrapper from './ImageWrapper.vue'
+
 defineProps<{
   image: string
 }>()
@@ -6,6 +8,6 @@ defineProps<{
 
 <template>
   <div class="flex items-center justify-center p-4">
-    <img :src="image" alt="Detail image" class="max-w-full max-h-[50dvh] object-contain" />
+    <ImageWrapper :src="image" alt="Detail image" img-class="max-w-full max-h-[50dvh] object-contain" />
   </div>
 </template>

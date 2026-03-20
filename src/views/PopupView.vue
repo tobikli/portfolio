@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, onBeforeUnmount, watch } from 'vue'
-import { popupState, hidePopup } from '@/composables/usePopup'
+import { popupState, hidePopup, returnPopup } from '@/composables/usePopup'
 import { motion } from 'motion-v'
 function onKey(e: KeyboardEvent) {
   if (e.key === 'Escape') hidePopup()
@@ -41,7 +41,15 @@ watch(
         @click.stop
       >
         <header class="flex items-start justify-between gap-4 mb-4">
-          <div>
+          <div class="flex items-center gap-2">
+            <button
+              v-if="popupState.history.length > 0"
+              class="px-2 py-1 text-sm hover:bg-black hover:text-white hover:dark:bg-white hover:dark:text-black cursor-hover"
+              @click="returnPopup"
+              aria-label="Go back"
+            >
+              <i class="pi pi-arrow-left"></i>
+            </button>
             <h3 class="text-lg font-semibold">{{ popupState.title }}</h3>
           </div>
           <motion.button

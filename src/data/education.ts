@@ -6,6 +6,7 @@ export interface EducationEntry {
   degree: string
   information: string
   time: string
+  link: string
 }
 
 const educationFiles = import.meta.glob('./content/education/*.md', {
@@ -25,6 +26,7 @@ function parseEducation(raw: string) {
     degree: frontmatter.degree ?? '',
     information: frontmatter.information ?? '',
     time: frontmatter.time ?? '',
+    link: frontmatter.link ?? '',
   }
 }
 

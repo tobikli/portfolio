@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { VuePDF, usePDF } from '@tato30/vue-pdf'
-import { showPopup } from '@/composables/usePopup'
 import { ref, onBeforeUnmount } from 'vue'
-import PublicationsOverview from './PublicationsOverview.vue'
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 
 const props = defineProps<{
@@ -82,17 +80,6 @@ onBeforeUnmount(() => {
 
 <template>
   <div>
-    <button
-      class="px-2 py-1 mb-4 text-sm hover:bg-black hover:text-white hover:dark:bg-white hover:dark:text-black cursor-hover"
-      @click="
-        showPopup({
-          title: 'Publications',
-          component: PublicationsOverview,
-        })
-      "
-    >
-      <i class="pi pi-arrow-left"></i>
-    </button>
     <p>{{ detail }}</p>
     <div class="flex justify-center items-center p-4">
       <h1 class="text-xl underline-offset-3 underline">Paper</h1>

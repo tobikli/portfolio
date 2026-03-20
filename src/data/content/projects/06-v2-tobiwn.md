@@ -6,6 +6,7 @@ date: 2024-2025
 tags: [PHP, JS, HTML]
 link: https://v2.tobiwn.me
 status: finished
+image: v2tobiwn.png
 ---
 
 <p>

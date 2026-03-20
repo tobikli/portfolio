@@ -6,6 +6,7 @@ export interface WorkEntry {
   role: string
   information: string
   time: string
+  link: string
 }
 
 const workFiles = import.meta.glob('./content/work/*.md', {
@@ -25,6 +26,7 @@ function parseWork(raw: string) {
     role: frontmatter.role ?? '',
     information: frontmatter.information ?? '',
     time: frontmatter.time ?? '',
+    link: frontmatter.link ?? '',
   }
 }
 

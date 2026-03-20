@@ -1,6 +1,6 @@
 ---
 name: piARno
-shortName: piARno
+shortName: piarno
 shortDescription: Piano Tiles like Game.
 date: 2024
 tags: [Unity, C#]

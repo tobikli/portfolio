@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { VuePDF, usePDF } from '@tato30/vue-pdf'
-import { showPopup } from '@/composables/usePopup'
 import { ref, onBeforeUnmount } from 'vue'
-import CertificatesOverview from './CertificatesOverview.vue'
 
 const props = defineProps<{
   issuer: string
@@ -42,17 +40,6 @@ const downloadPdf = () => {
 </script>
 
 <template>
-  <button
-    class="px-2 py-1 mb-4 text-sm hover:bg-black hover:text-white hover:dark:bg-white hover:dark:text-black cursor-hover"
-    @click="
-      showPopup({
-        title: 'Certificates',
-        component: CertificatesOverview,
-      })
-    "
-  >
-    <i class="pi pi-arrow-left"></i>
-  </button>
   <div class="flex items-center">
     <div>
       <div>

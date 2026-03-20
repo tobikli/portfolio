@@ -30,8 +30,7 @@ const splitLines = lines.map((line) => ({
         <div class="meteor-13"></div>
       </div>
     </div>
-    <div class="relative z-10 w-full flex flex-col items-center pb-36 md:pb-44">
-      <div class="h-50"></div>
+    <div class="relative z-10 w-full min-h-dvh flex flex-col items-center justify-center pb-20">
       <div class="p-5">
         <div
           v-for="(line, lineIndex) in splitLines"
@@ -82,8 +81,10 @@ const splitLines = lines.map((line) => ({
           />
         </motion.a>
       </motion.div>
+      <div class="absolute bottom-20 left-1/2 -translate-x-1/2">
+        <ScrollIcon />
+      </div>
     </div>
-    <ScrollIcon />
   </div>
 </template>
 

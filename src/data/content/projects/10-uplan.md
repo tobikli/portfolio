@@ -1,10 +1,11 @@
 ---
-name: u_plan
-shortName: uplan
+name: U_Plan
+shortName: u_plan
 shortDescription: University planning app.
 date: 2026
 tags: [React, Next.js, TS]
 link: https://uplan.twks.net
+image: uplan.png
 status: ongoing
 ---
 

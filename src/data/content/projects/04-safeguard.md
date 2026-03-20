@@ -1,11 +1,12 @@
 ---
 name: Safeguard
-shortName: Safeguard
+shortName: safeguard
 shortDescription: Siemens EHS App.
 date: 2024-2025
 tags: [Swift, JS, TS, MQTT]
 link: https://aet.cit.tum.de/projects/courses/ipraktikum/24w/
 status: finished
+image: safeguard.jpg
 ---
 
 <p>
@@ -14,12 +15,10 @@ status: finished
     to inform workers and guests about upcoming hazards in Siemens factories.
 </p>
 
-<p>Notable features included:</p>
+<p>Notable features include:</p>
 
 <ul style="list-style-type: disc; padding-left: 1.25rem; margin: 0.5rem 0;">
-    <li>App Clip support</li>
-    <li>Live Activity support</li>
+    <li>App Clip support, Live Activity support</li>
     <li>Supabase backend</li>
-    <li>Industrial Edge connection</li>
-    <li>MQTT protocol</li>
+    <li>Industrial Edge connection, MQTT protocol</li>
 </ul>
