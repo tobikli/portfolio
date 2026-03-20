@@ -2,6 +2,45 @@
 import { onMounted, onBeforeUnmount, watch } from 'vue'
 import { popupState, hidePopup, returnPopup } from '@/composables/usePopup'
 import { motion } from 'motion-v'
+
+let previousBodyOverflow = ''
+let previousBodyTouchAction = ''
+let previousBodyOverscroll = ''
+let previousHtmlOverflow = ''
+let previousHtmlTouchAction = ''
+let previousHtmlOverscroll = ''
+let scrollLockApplied = false
+
+const setScrollLock = (locked: boolean) => {
+  if (locked && !scrollLockApplied) {
+    previousBodyOverflow = document.body.style.overflow
+    previousBodyTouchAction = document.body.style.touchAction
+    previousBodyOverscroll = document.body.style.overscrollBehavior
+    previousHtmlOverflow = document.documentElement.style.overflow
+    previousHtmlTouchAction = document.documentElement.style.touchAction
+    previousHtmlOverscroll = document.documentElement.style.overscrollBehavior
+
+    document.body.style.overflow = 'hidden'
+    document.body.style.touchAction = 'none'
+    document.body.style.overscrollBehavior = 'none'
+    document.documentElement.style.overflow = 'hidden'
+    document.documentElement.style.touchAction = 'none'
+    document.documentElement.style.overscrollBehavior = 'none'
+    scrollLockApplied = true
+    return
+  }
+
+  if (!locked && scrollLockApplied) {
+    document.body.style.overflow = previousBodyOverflow
+    document.body.style.touchAction = previousBodyTouchAction
+    document.body.style.overscrollBehavior = previousBodyOverscroll
+    document.documentElement.style.overflow = previousHtmlOverflow
+    document.documentElement.style.touchAction = previousHtmlTouchAction
+    document.documentElement.style.overscrollBehavior = previousHtmlOverscroll
+    scrollLockApplied = false
+  }
+}
+
 function onKey(e: KeyboardEvent) {
   if (e.key === 'Escape') hidePopup()
 }
@@ -12,12 +51,13 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   window.removeEventListener('keydown', onKey)
+  setScrollLock(false)
 })
 
 watch(
   () => popupState.visible,
   (visible) => {
-    document.body.style.overflow = visible ? 'hidden' : ''
+    setScrollLock(visible)
   },
 )
 </script>

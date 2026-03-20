@@ -19,6 +19,7 @@ const toggleTheme = async () => {
   // Briefly inject a transparent fixed overlay to force that recalculation.
   await nextTick()
   const overlay = document.createElement('div')
+  const previousOverflow = document.body.style.overflow
   overlay.style.cssText =
     'position:fixed;inset:0;z-index:99999;pointer-events:none;backdrop-filter:blur(0px);-webkit-backdrop-filter:blur(0px)'
   document.body.style.overflow = 'hidden'
@@ -26,7 +27,7 @@ const toggleTheme = async () => {
   await new Promise((r) => requestAnimationFrame(r))
   await new Promise((r) => requestAnimationFrame(r))
   document.body.removeChild(overlay)
-  document.body.style.overflow = ''
+  document.body.style.overflow = previousOverflow
 }
 const audio = new Audio(bg)
 onMounted(() => {
