@@ -38,7 +38,7 @@ defineProps<{
           <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">
             {{ item.title }}
           </h3>
-          <a :href="item.link" class="text-md text-gray-500 dark:text-gray-400 mt-1 underline underline-offset-2 hover:cursor-pointer ">
+          <a :href="item.link" class="text-md text-gray-500 dark:text-gray-400 mt-1 underline underline-offset-2 hover:cursor-pointer hover:text-black dark:hover:text-white">
             {{ item.subtitle }}
           </a>
           <time class="text-xs text-gray-400 mt-2">

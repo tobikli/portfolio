@@ -17,7 +17,7 @@ export const information = {
   status: 'Currently employed at Siemens FT',
   aboutHtml: `
           <p>
-            I'm currently ${age} years old and in my
+            I'm ${age} years old and in my
             <b>Master of Science</b> studies of
             <a
               class="underline"
@@ -31,7 +31,7 @@ export const information = {
           <p>
             During my Bachelor studies, next to mandatory courses in maths, algorithms and logic, I
             focused on <b>Software Engineering</b> and <b>Cloud Technologies</b>. My Master courses
-            focus on AI, SE and <b>Cybersecurity</b>.
+            focus on <b>AI</b>, SE and <b>Cybersecurity</b>.
           </p>
   `,
   aboutSideHtml: `
@@ -49,7 +49,7 @@ export const information = {
           </p>
           <p class="mt-6">
             More information about myself and my work can be seen below or using this interactive
-            <a class="underline" href="/shell">shell</a>.
+            <a class="underline " href="/shell"><b>shell</b></a>.
           </p>
   `,
   links: [

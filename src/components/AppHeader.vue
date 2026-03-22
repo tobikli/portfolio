@@ -292,8 +292,8 @@ nav a.nav-link:active::after {
 .section-down-enter-active,
 .section-down-leave-active {
   transition:
-    opacity 300ms ease,
-    transform 300ms ease;
+    opacity 200ms ease,
+    transform 200ms ease;
 }
 
 .section-down-enter-from {
@@ -310,8 +310,8 @@ nav a.nav-link:active::after {
 .section-up-enter-active,
 .section-up-leave-active {
   transition:
-    opacity 300ms ease,
-    transform 300ms ease;
+    opacity 200ms ease,
+    transform 200ms ease;
 }
 
 .section-up-enter-from {

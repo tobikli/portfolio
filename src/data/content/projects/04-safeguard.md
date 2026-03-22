@@ -3,7 +3,7 @@ name: Safeguard
 shortName: safeguard
 shortDescription: Siemens EHS App.
 date: 2024-2025
-tags: [Swift, JS, TS, MQTT]
+tags: [Swift, TS, MQTT]
 link: https://aet.cit.tum.de/projects/courses/ipraktikum/24w/
 status: finished
 image: safeguard.jpg
