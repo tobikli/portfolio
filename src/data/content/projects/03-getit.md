@@ -19,5 +19,5 @@ image: getit.png
 </p>
 
 <p>
-	Responses can be copied directly to the clipboard for fast reuse.
+	Responses can be copied directly to the clipboard for fast reuse. Unfortunately, the App is not available in the Raycast App Store as it there were already alternatives available, but you can still install it directly using the source code available on GitHub.
 </p>

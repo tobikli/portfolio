@@ -22,4 +22,5 @@ image: v2tobiwn.png
 
 <p>
 	It also features a shining animated card on the homepage.
+	Currently, some of the features (e.g. the login) is not working as I transitioned form Authentik to the much simpler Authelia for my personal Services on twks.net.
 </p>

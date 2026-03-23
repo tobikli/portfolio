@@ -30,7 +30,7 @@ defineProps<{
         :transition="{ duration: 0.4 }"
       >
         <span
-          class="absolute left-0.75 top-7.5 h-2.5 w-2.5 rounded-full bg-black dark:bg-white ring-4 ring-white dark:ring-black"
+          class="absolute left-0.75 top-7.5 h-2.5 w-2.5 rounded-full bg-black dark:bg-white ring-4 ring-(--bg-accent)"
         ></span>
         <div
           class="border border-gray-300 dark:border-gray-300/40 py-5 px-8 flex flex-col items-start text-left hover:bg-black/3 hover:dark:bg-white/3"

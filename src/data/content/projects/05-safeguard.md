@@ -6,12 +6,12 @@ date: 2024-2025
 tags: [Swift, TS, MQTT]
 link: https://aet.cit.tum.de/projects/courses/ipraktikum/24w/
 status: finished
-image: safeguard.jpg
+image: safeguard.png
 ---
 
 <p>
     During my <strong>Bachelor Praktikum at TUM</strong>, I participated in the iPraktikum in WS24.
-    Together with <strong>Siemens</strong> as the client, my team and I built a real-time EHS iOS app
+    Together with <strong>Siemens</strong> as the client, my team and I built an real-time EHS iOS app
     to inform workers and guests about upcoming hazards in Siemens factories.
 </p>
 
