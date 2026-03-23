@@ -7,6 +7,7 @@ export interface EducationEntry {
   information: string
   time: string
   link: string
+  image?: string
 }
 
 const educationFiles = import.meta.glob('./content/education/*.md', {
@@ -14,6 +15,26 @@ const educationFiles = import.meta.glob('./content/education/*.md', {
   query: '?raw',
   import: 'default',
 })
+
+const educationImageFiles = import.meta.glob('./content/education/images/*', {
+  eager: true,
+  import: 'default',
+}) as Record<string, string>
+
+function resolveEducationImage(image: string | undefined) {
+  if (!image) {
+    return ''
+  }
+
+  if (/^(https?:)?\/\//.test(image) || image.startsWith('/')) {
+    return image
+  }
+
+  const normalizedImage = image.replace(/^\.\//, '')
+  const imagePath = `./content/education/images/${normalizedImage}`
+
+  return educationImageFiles[imagePath] ?? ''
+}
 
 type EducationFrontmatter = Partial<EducationEntry>
 
@@ -27,6 +48,7 @@ function parseEducation(raw: string) {
     information: frontmatter.information ?? '',
     time: frontmatter.time ?? '',
     link: frontmatter.link ?? '',
+    image: resolveEducationImage(frontmatter.image),
   }
 }
 

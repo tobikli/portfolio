@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { information } from '@/data/information'
 import { config } from '@/data/config'
+import router from '@/router'
 const year = new Date().getFullYear()
 const openRepo = () => {
   window.location.href = config.github
@@ -10,6 +11,9 @@ const openBranch = () => {
 }
 const openCommit = () => {
   window.location.href = `${config.github}/commit/${config.commit}`
+}
+const openLegal = () => {
+  router.push('/legal')
 }
 </script>
 
@@ -22,9 +26,10 @@ const openCommit = () => {
         class="flex items-center justify-center divide-x divide-black/10 dark:divide-white/10 sm:divide-x-0 sm:contents"
       >
         <div
-          class="px-2 py-1 flex items-center justify-center space-x-1"
+          class="px-2 py-1 flex items-center justify-center space-x-1 hover-cursor cursor-hover hover:bg-black hover:text-white hover:dark:bg-white hover:dark:text-black"
+          @click="openLegal"
         >
-          <span class="text-xs">{{ config.version }}</span>
+          <span class="text-xs">Legal</span>
         </div>
         <div
           class="px-2 py-1 flex items-center justify-center space-x-1 cursor-hover hover:bg-black hover:text-white hover:dark:bg-white hover:dark:text-black sm:border-l sm:border-black/10 sm:dark:border-white/10"
@@ -49,7 +54,9 @@ const openCommit = () => {
       <div
         class="px-2 py-1 flex items-center justify-center space-x-1 sm:border-l sm:border-black/10 sm:dark:border-white/10"
       >
-        <span class="text-xs">{{ `Copyright © ${year} ${information.name}` }}</span>
+        <span class="text-xs">{{
+          `${config.version} / Copyright © ${year} ${information.name_short}`
+        }}</span>
       </div>
     </div>
   </div>

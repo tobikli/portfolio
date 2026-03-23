@@ -1,5 +1,5 @@
 ---
-name: Healthcare Innovation Program
+name: Healthcare Innovation
 shortName: HIP 
 shortDescription: Interdisciplinary Healthcare Project.
 date: 2026

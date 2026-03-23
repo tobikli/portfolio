@@ -1,14 +1,42 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import ShellView from '@/views/ShellView.vue'
 import MainView from '@/views/MainView.vue'
+import LegalView from '@/views/LegalView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
+  scrollBehavior(to, _from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    }
+
+    if (to.hash) {
+      return {
+        el: to.hash,
+        behavior: 'smooth',
+      }
+    }
+
+    return new Promise((resolve) => {
+      requestAnimationFrame(() => {
+        resolve({
+          top: 0,
+          left: 0,
+          behavior: 'auto',
+        })
+      })
+    })
+  },
   routes: [
     {
       path: '/',
       name: 'main',
       component: MainView,
+    },
+    {
+      path: '/legal',
+      name: 'legal',
+      component: LegalView,
     },
     {
       path: '/shell',

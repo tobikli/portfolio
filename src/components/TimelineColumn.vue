@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { motion } from 'motion-v'
+import ImageWrapper from './ImageWrapper.vue'
 
 export type TimelineItem = {
   id: string
@@ -8,6 +9,7 @@ export type TimelineItem = {
   time: string
   information: string
   link: string
+  image?: string
 }
 
 defineProps<{
@@ -33,17 +35,31 @@ defineProps<{
           class="absolute left-0.75 top-7.5 h-2.5 w-2.5 rounded-full bg-black dark:bg-white ring-4 ring-(--bg-accent)"
         ></span>
         <div
-          class="border border-gray-300 dark:border-gray-300/40 py-5 px-8 flex flex-col items-start text-left hover:bg-black/3 hover:dark:bg-white/3"
+          class="border border-gray-300 dark:border-gray-300/40 p-5 flex flex-col items-start text-left hover:bg-black/3 hover:dark:bg-white/3"
         >
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">
-            {{ item.title }}
-          </h3>
-          <a :href="item.link" class="text-md text-gray-500 dark:text-gray-400 mt-1 underline underline-offset-2 hover:cursor-pointer hover:text-black dark:hover:text-white">
-            {{ item.subtitle }}
-          </a>
-          <time class="text-xs text-gray-400 mt-2">
-            {{ item.time }}
-          </time>
+          <div class="flex items-start justify-between w-full gap-4">
+            <div class="flex flex-col items-start min-w-0 flex-1">
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                {{ item.title }}
+              </h3>
+              <a
+                :href="item.link"
+                class="text-md text-gray-500 dark:text-gray-400 mt-1 underline underline-offset-2 hover:cursor-pointer hover:text-black dark:hover:text-white"
+              >
+                {{ item.subtitle }}
+              </a>
+              <time class="text-xs text-gray-400 mt-2">
+                {{ item.time }}
+              </time>
+            </div>
+            <ImageWrapper
+              v-if="item.image"
+              :src="item.image!"
+              alt="Image"
+              img-class="w-full h-auto object-contain"
+              wrapper-class="w-13 flex items-center"
+            />
+          </div>
           <p class="mt-3 text-sm text-gray-700 dark:text-gray-300">
             {{ item.information }}
           </p>

@@ -17,6 +17,7 @@ const educationItems: TimelineItem[] = education.map((entry, index) => ({
   time: entry.time,
   information: entry.information,
   link: entry.link,
+  image: entry.image,
 }))
 
 const workItems: TimelineItem[] = work.map((entry, index) => ({
@@ -26,6 +27,7 @@ const workItems: TimelineItem[] = work.map((entry, index) => ({
   time: entry.time,
   information: entry.information,
   link: entry.link,
+  image: entry.image,
 }))
 </script>
 
