@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { information } from '@/data/information'
 import { config } from '@/data/config'
-import router from '@/router'
+import { showPopup } from '@/composables/usePopup'
+import { legal } from '@/data/legal'
 const year = new Date().getFullYear()
 const openRepo = () => {
   window.location.href = config.github
@@ -13,7 +14,10 @@ const openCommit = () => {
   window.location.href = `${config.github}/commit/${config.commit}`
 }
 const openLegal = () => {
-  router.push('/legal')
+  showPopup({
+    title: 'Legal & Privacy Policy',
+    message: legal,
+  })
 }
 </script>
 
