@@ -10,7 +10,7 @@ status: ongoing
 ---
 
 <p>
-	u_plan is a <strong>university planning app</strong> I developed to help students organize their studies more
+	U_Plan is a <strong>university planning app</strong> I developed to help students organize their studies more
 	effectively.
 </p>
 

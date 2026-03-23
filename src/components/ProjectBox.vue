@@ -13,6 +13,8 @@ const matchStatus = (status: string): string => {
       return 'status-green'
     case 'ongoing':
       return 'status-yellow'
+    case 'planned':
+      return 'status-orange'
     case 'aborted':
       return 'status-red'
     default:
@@ -35,7 +37,7 @@ const matchStatus = (status: string): string => {
     aria-label="project box"
   >
     <header class="flex items-start justify-between gap-4">
-      <h3 class="text-lg font-semibold leading-tight">
+      <h3 class="text-lg font-semibold leading-tight text-left">
         {{ project.name }}
       </h3>
 
@@ -44,7 +46,7 @@ const matchStatus = (status: string): string => {
       </time>
     </header>
 
-    <p class="mt-2 text-sm text-gray-800 dark:text-gray-300">
+    <p class="mt-3 text-sm text-gray-800 dark:text-gray-300">
       {{ project.shortDescription }}
     </p>
 
@@ -88,6 +90,10 @@ const matchStatus = (status: string): string => {
 }
 
 .status-yellow {
-  background-color: #d49c00;
+  background-color: #ffd050;
+}
+
+.status-orange {
+  background-color: #997000;
 }
 </style>

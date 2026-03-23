@@ -47,7 +47,7 @@ const toggleMusic = () => {
 </script>
 
 <template>
-  <div class="fixed bottom-4 right-4 z-9999 pb-safearea bg-gray-600/7 backdrop-blur-xs grid grid-cols-1">
+  <div class="fixed bottom-4 right-4 z-8999 pb-safearea bg-gray-600/7 backdrop-blur-xs grid grid-cols-1">
     <button
       @click="toggleMusic"
       class="inline-flex items-center justify-center w-10 h-10 hover:scale-105 transform-gpu transition cursor-hover"

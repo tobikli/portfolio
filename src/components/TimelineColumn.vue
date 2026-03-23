@@ -30,7 +30,7 @@ defineProps<{
         :transition="{ duration: 0.4 }"
       >
         <span
-          class="absolute left-0.75 top-7.5 h-2.5 w-2.5 rounded-full bg-black dark:bg-white ring-4 ring-white dark:ring-black"
+          class="absolute left-0.75 top-7.5 h-2.5 w-2.5 rounded-full bg-black dark:bg-white ring-4 ring-(--bg-accent)"
         ></span>
         <div
           class="border border-gray-300 dark:border-gray-300/40 py-5 px-8 flex flex-col items-start text-left hover:bg-black/3 hover:dark:bg-white/3"
@@ -38,7 +38,7 @@ defineProps<{
           <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">
             {{ item.title }}
           </h3>
-          <a :href="item.link" class="text-md text-gray-500 dark:text-gray-400 mt-1 underline underline-offset-2 hover:cursor-pointer ">
+          <a :href="item.link" class="text-md text-gray-500 dark:text-gray-400 mt-1 underline underline-offset-2 hover:cursor-pointer hover:text-black dark:hover:text-white">
             {{ item.subtitle }}
           </a>
           <time class="text-xs text-gray-400 mt-2">

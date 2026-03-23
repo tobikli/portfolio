@@ -17,3 +17,7 @@ image: tobiwn.png
 	Compared to my previous websites, this one is a <strong>single-page application</strong> with a dynamic header
 	and dynamic configuration, so it can also serve as a reusable template.
 </p>
+<p>
+	It features a reusable dynamic Popup with a history, custom views for rendering PDFs and images, fetching from my personal API, complete mobile support with a dynamic header, background music, animations and many more. 
+	You can find the source code on GitHub and my Forgejo Instance.
+</p>
