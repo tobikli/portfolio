@@ -7,12 +7,6 @@ const year = new Date().getFullYear()
 const openRepo = () => {
   window.location.href = config.github
 }
-const openBranch = () => {
-  window.location.href = `${config.github}/tree/${config.branch}`
-}
-const openCommit = () => {
-  window.location.href = `${config.github}/commit/${config.commit}`
-}
 const openLegal = () => {
   showPopup({
     title: 'Legal & Privacy Policy',
@@ -44,22 +38,15 @@ const openLegal = () => {
         </div>
         <div
           class="px-2 py-1 flex items-center justify-center space-x-1 cursor-hover hover:bg-black hover:text-white hover:dark:bg-white hover:dark:text-black sm:border-l sm:border-black/10 sm:dark:border-white/10"
-          @click="openBranch"
         >
-          <span class="text-xs">{{ config.branch }}</span>
-        </div>
-        <div
-          class="px-2 py-1 flex items-center justify-center space-x-1 cursor-hover hover:bg-black hover:text-white hover:dark:bg-white hover:dark:text-black sm:border-l sm:border-black/10 sm:dark:border-white/10"
-          @click="openCommit"
-        >
-          <span class="text-xs">{{ config.commit }}</span>
+          <span class="text-xs">{{ config.version }}</span>
         </div>
       </div>
       <div
         class="px-2 py-1 flex items-center justify-center space-x-1 sm:border-l sm:border-black/10 sm:dark:border-white/10"
       >
         <span class="text-xs">{{
-          `${config.version} / Copyright © ${year} ${information.name_short}`
+          `Copyright © ${year} ${information.name_short}`
         }}</span>
       </div>
     </div>
