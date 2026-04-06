@@ -12,9 +12,7 @@ import axios from 'axios'
 import { config } from '@/data/config'
 import CertificatesOverview from '@/components/CertificatesOverview.vue'
 
-
 const status = ref(information.status)
-
 
 onMounted(async () => {
   try {
