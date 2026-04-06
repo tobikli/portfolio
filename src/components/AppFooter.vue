@@ -37,7 +37,7 @@ const openLegal = () => {
           <font-awesome-icon :icon="'fa-brands fa-github'" size="xs" class="cursor-hover" />
         </div>
         <div
-          class="px-2 py-1 flex items-center justify-center space-x-1 cursor-hover hover:bg-black hover:text-white hover:dark:bg-white hover:dark:text-black sm:border-l sm:border-black/10 sm:dark:border-white/10"
+          class="px-2 py-1 flex items-center justify-center space-x-1 sm:border-l sm:border-black/10 sm:dark:border-white/10"
         >
           <span class="text-xs">{{ config.version }}</span>
         </div>
