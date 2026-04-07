@@ -45,7 +45,7 @@ const onError = () => {
       v-if="showSpinner && isLoading"
       :class="[imgClass, 'min-h-24 flex items-center justify-center pointer-events-none']"
     >
-      <div class="p-5 bg-black/2 dark:bg-white/2">
+      <div class="p-5">
         <div class="w-8 h-8 border-4 border-gray-300 border-t-gray-700 rounded-full animate-spin"></div>
       </div>
     </div>
