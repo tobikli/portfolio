@@ -71,7 +71,6 @@ onBeforeUnmount(() => {
   transition:
     opacity 420ms cubic-bezier(0.2, 0.9, 0.4, 1),
     transform 420ms cubic-bezier(0.2, 0.9, 0.4, 1);
-  will-change: opacity, transform;
 }
 
 .section-visible {

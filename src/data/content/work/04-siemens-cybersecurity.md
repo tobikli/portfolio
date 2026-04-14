@@ -4,5 +4,5 @@ role: Cybersecurity IS Working Student
 information: Automation, Virtualisation and Administration of Infrastructure for Cybersecurity Systems
 time: 2025-2026
 link: https://siemens.com
-image: siemens.svg
+image: siemens.png
 ---

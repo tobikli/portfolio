@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { motion } from 'motion-v'
 import ImageWrapper from './ImageWrapper.vue'
-
+import ImageDetail from './ImageDetail.vue';
+import { showPopup } from '@/composables/usePopup';
 export type TimelineItem = {
   id: string
   title: string
@@ -54,10 +55,19 @@ defineProps<{
             </div>
             <ImageWrapper
               v-if="item.image"
-              :src="item.image!"
+              :src="item.image!" 
               alt="Image"
               img-class="w-full h-auto object-contain"
-              wrapper-class="w-13 flex items-center"
+              wrapper-class="w-10 flex items-center cursor-image dark:bg-white/3 bg-black/3 p-1.5 rounded transition hover:scale-105 transform-gpu"
+              @click="
+                showPopup({
+                  title: item.subtitle,
+                  component: ImageDetail,
+                  componentProps: {
+                    image: item.image!,
+                  },
+                })
+              "
             />
           </div>
           <p class="mt-3 text-sm text-gray-700 dark:text-gray-300">

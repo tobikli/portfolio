@@ -16,7 +16,11 @@ image: twks.png
 
 <p>
 	I currently run a <strong>Proxmox</strong> machine that hosts several services in an isolated internal network,
-	including cloud storage, VPN access, Paperless, and this website.
+	including cloud storage, VPN access, Paperless, this website and much more.
+</p>
+
+<p>
+	Furthermore, the whole Server Infrastructure features User Management and SSO with Authentik with custom flows and access management and VM automation with Ansible.
 </p>
 
 <p>

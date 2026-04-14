@@ -12,9 +12,9 @@ import axios from 'axios'
 import { config } from '@/data/config'
 import CertificatesOverview from '@/components/CertificatesOverview.vue'
 
-
 const status = ref(information.status)
 
+const tstoggle = ref(false)
 
 onMounted(async () => {
   try {
@@ -41,7 +41,7 @@ onMounted(async () => {
                 :src="information.profilePic"
                 :alt="`Portrait of ${information.name}`"
                 wrapper-class="w-full h-full rounded-full overflow-hidden"
-                img-class="relative w-full h-full object-cover hover:cursor-crosshair"
+                img-class="relative w-full h-full object-cover cursor-image"
                 @click="
                   showPopup({
                     title: 'Me',
@@ -58,14 +58,13 @@ onMounted(async () => {
           <div class="space-y-3" v-html="information.aboutHtml"></div>
           <p class="mt-6 mb-3">I have experience with:</p>
           <div
-            class="grid grid-cols-6 mt-5 border dark:border-white/10 border-black/10 p-4 gap-4 place-items-center"
+            class="grid grid-cols-6 mt-5 dark:border-white/10 border-black/10 px-3 py-3 gap-4 dark:bg-white/2 bg-black/3 place-items-center mx-auto rounded"
           >
             <motion.a
-              v-for="tech in information.techstack"
+              v-for="tech in tstoggle.valueOf() ? information.techstack.slice(0, 12) : information.techstack.slice(0, 5)"
               :key="tech.name"
               :title="tech.name"
               class=""
-              :initial="{ opacity: 0, y: 20 }"
               :animate="{ opacity: 1, y: 0 }"
               :transition="{ duration: 0.5, delay: 0 }"
               :whileHover="{ scale: 1.2, rotate: 10 }"
@@ -73,6 +72,23 @@ onMounted(async () => {
             >
               <font-awesome-icon
                 :icon="tech.icon"
+                size="lg"
+                class="transition-all duration-300 hover:scale-110"
+              />
+            </motion.a>
+                        <motion.a
+              v-if="!tstoggle.valueOf()"
+              key="show-more"
+              title="Show more"
+              @click="tstoggle = true"
+              class="cursor-pointer"
+              :animate="{ opacity: 1, y: 0 }"
+              :transition="{ duration: 0.5, delay: 0 }"
+              :whileHover="{ scale: 1.2 }"
+              :whileTap="{ scale: 0.9 }"
+            >
+              <font-awesome-icon
+                icon="fa-solid fa-ellipsis"
                 size="lg"
                 class="transition-all duration-300 hover:scale-110"
               />
