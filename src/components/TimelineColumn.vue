@@ -55,10 +55,10 @@ defineProps<{
             </div>
             <ImageWrapper
               v-if="item.image"
-              :src="item.image!"
+              :src="item.image!" 
               alt="Image"
               img-class="w-full h-auto object-contain"
-              wrapper-class="w-10 flex items-center hover:cursor-crosshair"
+              wrapper-class="w-10 flex items-center cursor-image dark:bg-white/3 bg-black/3 p-1.5 rounded transition hover:scale-105 transform-gpu"
               @click="
                 showPopup({
                   title: item.subtitle,
