@@ -16,7 +16,7 @@ defineProps<{
         <ImageWrapper
           :src="project.image!"
           alt="Project Image"
-          img-class="w-full h-auto max-h-64 object-contain hover:cursor-crosshair"
+          img-class="w-full h-auto max-h-64 object-contain cursor-image"
           wrapper-class="w-auto max-w-70 sm:w-70 md:w-56 md:max-w-250 md:shrink-0 flex items-center justify-center"
           @click="
             showPopup({

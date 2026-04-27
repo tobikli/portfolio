@@ -2,7 +2,7 @@
 place: Siemens AG
 role: Foundational Technologies Working Student
 information: Research and Development in Automotive Vehicles and MeshNetworks
-time: 2026-Present
+time: 2026
 link: https://siemens.com
-image: siemens.svg
+image: siemens.png
 ---

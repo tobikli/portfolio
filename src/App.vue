@@ -7,6 +7,7 @@ import { useRoute } from 'vue-router'
 import profileUrl from '@/assets/images/profile.png'
 import { createGlobalMeta } from '@/data/meta'
 import ToggleMenu from '@/components/ToggleMenu.vue'
+import Badge from '@/components/Badge.vue'
 
 
 const route = useRoute()
@@ -29,4 +30,5 @@ useHead(() => createGlobalMeta(currentUrl.value, absoluteProfileUrl.value))
   />-->
   <RouterView />
   <ToggleMenu />
+  <Badge />
 </template>
