@@ -56,7 +56,7 @@ onMounted(async () => {
           </div>
           <h2 class="text-lg mb-3">My name is {{ information.name }}</h2>
           <div class="space-y-3" v-html="information.aboutHtml"></div>
-          <p class="mt-6 mb-3">I have experience with:</p>
+          <p class="mt-6 mb-3">I have experiences with:</p>
           <div
             class="grid grid-cols-6 mt-5 dark:border-white/10 border-black/10 px-3 py-3 gap-4 dark:bg-white/2 bg-black/3 place-items-center mx-auto rounded"
           >

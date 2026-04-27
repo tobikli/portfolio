@@ -3,7 +3,7 @@ name: BCI Companion
 shortName: bci 
 shortDescription: Brain Computer Interface app.
 date: 2026
-tags: [Neuro, App, Management]
+tags: [Neuro, App]
 link: https://www.tum-venture-labs.de/offerings/healthcare-innovation-program-hip-powered-by-stanford
 image: hip.png
 status: ongoing

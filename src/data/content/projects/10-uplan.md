@@ -6,7 +6,7 @@ date: 2026
 tags: [React, Next.js, TS]
 link: https://uplan.twks.net
 image: uplan.png
-status: ongoing
+status: finished
 ---
 
 <p>
