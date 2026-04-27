@@ -3,9 +3,10 @@ name: piARno
 shortName: piarno
 shortDescription: Piano Tiles like Game.
 date: 2024
-tags: [Unity, C#]
+tags: [Unity, C#, MRTK3]
 link: https://www.linkedin.com/posts/itestra_codingcamp-informatik-softwareengineering-ugcPost-7245379330736898048-rwdP?utm_source=share&utm_medium=member_desktop&rcm=ACoAADepmuoBVkaYcjPSFrPITE1sAEKtuY_wo4s
 status: finished
+image: piarno.png
 ---
 
 <p>
