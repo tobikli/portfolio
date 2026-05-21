@@ -1,5 +1,5 @@
 import profilePic from '@/assets/images/profile.png'
-import CV from '@/assets/cv.pdf'
+import CV from '@/assets/cv/main.pdf'
 
 const birthday = new Date('2003-05-26')
 const age = getAge(birthday)
