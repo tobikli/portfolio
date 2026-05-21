@@ -3,7 +3,7 @@ name: CareDesk
 shortName: caredesk 
 shortDescription: Scalable Management for Healthcare.
 date: 2026
-tags: [TS, Springboot, GenAI]
+tags: [FastAPI, Langchain, RAG]
 link: https://aet.cit.tum.de/teaching/26s/devops/
 image: devops.png
 status: ongoing
