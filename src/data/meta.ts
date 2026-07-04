@@ -1,121 +1,21 @@
-export const createGlobalMeta = (currentUrl: string, imageUrl: string) => ({
-  title: 'Tobias Klingenberg – Software Engineer & Computer Science Student',
+// Global, crawler-critical meta (title, description, Open Graph, Twitter,
+// JSON-LD) lives statically in index.html so it is present in the raw HTML that
+// search engines and social scrapers read without executing JavaScript.
+//
+// This runtime layer only handles what genuinely depends on the current route:
+// the canonical URL and og:url. Keeping it minimal avoids injecting duplicate
+// meta tags on top of the static ones.
+export const createGlobalMeta = (currentUrl: string) => ({
   meta: [
-    {
-      name: 'description',
-      content:
-        'Portfolio of Tobias Klingenberg, Computer Science student at TUM. Projects in software engineering, web development, and system design.',
-    },
-    {
-      name: 'keywords',
-      content:
-        'Tobias Klingenberg, Tobias Wen Klingenberg, TWK, software engineer, computer science, TUM, portfolio',
-    },
-    {
-      name: 'author',
-      content: 'Tobias Klingenberg',
-    },
-    {
-      property: 'image',
-      content: imageUrl,
-    },
-    {
-      property: 'og:title',
-      content: 'Tobias Klingenberg – Portfolio',
-    },
-    {
-      property: 'og:description',
-      content:
-        'Personal portfolio of Tobias Klingenberg, showcasing software engineering and computer science projects.',
-    },
-    {
-      property: 'og:type',
-      content: 'website',
-    },
     {
       property: 'og:url',
       content: currentUrl,
-    },
-    {
-      property: 'og:image',
-      content: imageUrl,
-    },
-    {
-      property: 'og:image:alt',
-      content: 'Tobias Klingenberg — profile photo',
-    },
-    {
-      name: 'twitter:card',
-      content: 'summary_large_image',
-    },
-    {
-      name: 'twitter:title',
-      content: 'Tobias Klingenberg – Portfolio',
-    },
-    {
-      name: 'twitter:description',
-      content: 'Portfolio of Tobias Klingenberg, Computer Science student at TUM.',
-    },
-    {
-      name: 'twitter:image',
-      content: imageUrl,
-    },
-    {
-      name: 'fediverse:creator',
-      content: '@tobikli@mastodon.social',
     },
   ],
   link: [
     {
       rel: 'canonical',
       href: currentUrl,
-    },
-    {
-      rel: 'image_src',
-      href: imageUrl,
-    },
-    {
-      rel: 'me',
-      href: 'https://mastodon.social/@tobikli',
-    },
-  ],
-  script: [
-    {
-      type: 'application/ld+json',
-      innerHTML: JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'ProfilePage',
-        name: 'Tobias Klingenberg',
-        url: currentUrl,
-        dateCreated: '2024-12-23T12:34:00-05:00',
-        dateModified: '2025-03-27T14:53:00-05:00',
-        mainEntity: {
-          '@type': 'Person',
-          name: 'Tobias Klingenberg',
-          alternateName: 'tobikli',
-          identifier: 'tobiwn',
-          description: 'CS Student at TUM, Software Engineer',
-          image: imageUrl,
-          sameAs: ['https://www.linkedin.com/in/klingenberg', 'https://github.com/tobikli'],
-          interactionStatistic: [
-            {
-              '@type': 'InteractionCounter',
-              interactionType: 'https://schema.org/FollowAction',
-              userInteractionCount: 1,
-            },
-            {
-              '@type': 'InteractionCounter',
-              interactionType: 'https://schema.org/LikeAction',
-              userInteractionCount: 5,
-            },
-          ],
-          agentInteractionStatistic: {
-            '@type': 'InteractionCounter',
-            interactionType: 'https://schema.org/WriteAction',
-            userInteractionCount: 2346,
-          },
-        },
-      }),
     },
   ],
 })

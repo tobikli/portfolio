@@ -4,7 +4,6 @@ import { computed } from 'vue'
 import { RouterView } from 'vue-router'
 import { useHead } from '@unhead/vue'
 import { useRoute } from 'vue-router'
-import profileUrl from '@/assets/images/profile.png'
 import { createGlobalMeta } from '@/data/meta'
 import ToggleMenu from '@/components/ToggleMenu.vue'
 import Badge from '@/components/Badge.vue'
@@ -13,9 +12,10 @@ import Badge from '@/components/Badge.vue'
 const route = useRoute()
 
 const currentUrl = computed(() => new URL(route.path || '/', window.location.origin).href)
-const absoluteProfileUrl = computed(() => new URL(profileUrl, window.location.origin).href)
 
-useHead(() => createGlobalMeta(currentUrl.value, absoluteProfileUrl.value))
+// Keep the canonical/og:url in sync with the current route for JS-capable
+// clients. All other meta is static in index.html for crawlers.
+useHead(() => createGlobalMeta(currentUrl.value))
 </script>
 
 <template>
