@@ -31,7 +31,8 @@ export const information = {
           <p>
             During my Bachelor studies, next to mandatory courses in maths, algorithms and logic, I
             focused on <b>Software Engineering</b> and <b>Cloud Technologies</b>. My Master courses
-            focus on <b>AI</b>, SE and <b>Cybersecurity</b>.
+            focus on <b>AI</b>, SE and <b>Cybersecurity</b>. Furthermore, I am interested in Hardware, 
+            <b>Robotics</b> and Aerospace topics.
           </p>
   `,
   aboutSideHtml: `
