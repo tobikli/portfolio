@@ -26,6 +26,13 @@ onMounted(async () => {
     console.error('Failed to fetch status:', error)
   }
 })
+
+const showInterests = () => {
+    showPopup({
+    title: 'Interests',
+    message: information.interests.map(s => `• ${s}`).join("<br>"),
+  })
+}
 </script>
 
 <template>
@@ -115,7 +122,7 @@ onMounted(async () => {
             </div>
           </div>
           <div class="space-y-3" v-html="information.aboutSideHtml"></div>
-
+          <p class="mt-6"><a class="underline cursor-hover" @click="showInterests">This</a> is a list of topics I am also interested in.</p>
           <div>
             <div class="justify-center grid grid-cols-1 sm:grid-cols-2 mt-5">
               <AnimationButton

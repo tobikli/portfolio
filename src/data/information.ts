@@ -31,8 +31,7 @@ export const information = {
           <p>
             During my Bachelor studies, next to mandatory courses in maths, algorithms and logic, I
             focused on <b>Software Engineering</b> and <b>Cloud Technologies</b>. My Master courses
-            focus on <b>AI</b>, SE and <b>Cybersecurity</b>. Furthermore, I am interested in Hardware, 
-            <b>Robotics</b> and Aerospace topics.
+            focus on <b>AI</b>, SE and <b>Cybersecurity</b>.
           </p>
   `,
   aboutSideHtml: `
@@ -50,7 +49,7 @@ export const information = {
           </p>
           <p class="mt-6">
             More information about myself and my work can be seen below or using this interactive
-            <a class="underline " href="/shell"><b>shell</b></a>.
+            <a class="underline " href="/shell">shell</a>.
           </p>
   `,
   links: [
@@ -124,6 +123,18 @@ export const information = {
       name: 'Git',
       icon: 'fa-brands fa-git-alt',
     },
+  ],
+  interests: [
+    "Computer Science",
+    "Astrophysics",
+    "Space Exploration",
+    "Quantum Science",
+    "Aerospace Engineering",
+    "Neuroscience",
+    "Artificial Intelligence",
+    "Cybersecurity",
+    "Software Engineering",
+    "Robotics / Mechatronics",
   ],
 }
 
