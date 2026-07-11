@@ -3,7 +3,7 @@ name: CareDesk
 shortName: caredesk 
 shortDescription: Scalable Management for Healthcare.
 date: 2026
-tags: [FastAPI, Langchain, RAG]
+tags: [K8s, CI/CD, FastAPI, LangChain]
 link: https://aet.cit.tum.de/teaching/26s/devops/
 image: devops.png
 status: ongoing
