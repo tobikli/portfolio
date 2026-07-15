@@ -10,7 +10,6 @@ export const certificates = [
     name: 'Healthcare Innovation Program (2nd Place)',
     issuer: 'TUM Venture Labs',
     date: new Date('2026-07-15'),
-    link: 'https://www.ee.cit.tum.de/lbe/teaching/master/packaging-and-production-technologies-for-medical-electronic-products-aufbau-und-verbindungstechnik-in-medizinischen-elektronischen-produkten-1/',
     pdf: hip,
   },
   {
