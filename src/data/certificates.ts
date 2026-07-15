@@ -1,3 +1,4 @@
+import hip from './content/certificates/HIP_tk.pdf'
 import ghfoundations from './content/certificates/GHFoundations_tk.pdf'
 import hackatum from './content/certificates/HackaTUM_tk.pdf'
 import ipraktikum from './content/certificates/iPraktikum_tk.pdf'
@@ -5,6 +6,13 @@ import chinese from './content/certificates/WCH_tk.pdf'
 import english from './content/certificates/WE_tk.pdf'
 
 export const certificates = [
+    {
+    name: 'Healthcare Innovation Program (2nd Place)',
+    issuer: 'TUM Venture Labs',
+    date: new Date('2026-07-15'),
+    link: 'https://www.ee.cit.tum.de/lbe/teaching/master/packaging-and-production-technologies-for-medical-electronic-products-aufbau-und-verbindungstechnik-in-medizinischen-elektronischen-produkten-1/',
+    pdf: hip,
+  },
   {
     name: 'GitHub Foundations',
     issuer: 'GitHub',
