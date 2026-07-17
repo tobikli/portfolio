@@ -4,9 +4,9 @@ shortName: bci
 shortDescription: Brain Computer Interface app.
 date: 2026
 tags: [Neuro, React (Native)]
-link: https://bci.twks.net
+link: https://www.ee.cit.tum.de/lbe/teaching/master/packaging-and-production-technologies-for-medical-electronic-products-aufbau-und-verbindungstechnik-in-medizinischen-elektronischen-produkten-1/
 image: hip.png
-status: ongoing
+status: finished
 ---
 
 <p>

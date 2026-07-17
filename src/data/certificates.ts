@@ -7,7 +7,7 @@ import english from './content/certificates/WE_tk.pdf'
 
 export const certificates = [
     {
-    name: 'Healthcare Innovation Program (2nd Place)',
+    name: 'Healthcare Innovation Program',
     issuer: 'TUM Venture Labs',
     date: new Date('2026-07-15'),
     pdf: hip,

@@ -6,7 +6,7 @@ date: 2026
 tags: [K8s, CI/CD, LangChain]
 link: https://aet.cit.tum.de/teaching/26s/devops/
 image: devops.png
-status: ongoing
+status: finished
 ---
 
 <p>
