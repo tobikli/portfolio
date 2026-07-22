@@ -5,10 +5,14 @@
 
   outputs = { self, nixpkgs }:
     let
-      pkgs = import nixpkgs { system = "x86_64-linux"; };
+      systems = [ "x86_64-linux" "aarch64-darwin" ];
+      forAllSystems = nixpkgs.lib.genAttrs systems;
     in {
-      devShells.x86_64-linux.default = pkgs.mkShell {
-        packages = with pkgs; [ nodejs_24 ];
-      };
+      devShells = forAllSystems (system:
+        let pkgs = import nixpkgs { inherit system; };
+        in {
+          default = pkgs.mkShell { packages = with pkgs; [ nodejs_24 ]; };
+        }
+      );
     };
 }
