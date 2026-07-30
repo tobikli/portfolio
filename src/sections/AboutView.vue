@@ -7,7 +7,7 @@ import AnimationButton from '@/components/AnimationButton.vue'
 import CVDetail from '@/components/CVDetail.vue'
 import ImageDetail from '@/components/ImageDetail.vue'
 import ImageWrapper from '@/components/ImageWrapper.vue'
-import PublicationsOverview from '@/components/PublicationsOverview.vue'
+import ResearchOverview from '@/components/ResearchOverview.vue'
 import axios from 'axios'
 import { config } from '@/data/config'
 import CertificatesOverview from '@/components/CertificatesOverview.vue'
@@ -131,9 +131,9 @@ const showInterests = () => {
                 :component="CertificatesOverview"
               />
               <AnimationButton
-                text="Publications"
-                title="Publications"
-                :component="PublicationsOverview"
+                text="Research"
+                title="Research Papers"
+                :component="ResearchOverview"
               />
             </div>
           </div>
