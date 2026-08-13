@@ -63,7 +63,8 @@
     datetime(year: 2026, month: 6, day: 1),
     "Present",
   )[
-    - Cloud Security and Transformation consulting
+    - Development of an AI native CMMI assessment tool with RAG, turn based interaction and SSO integration
+    - Assistance in Cybersecurity Assessment (IAM, DS, PII) of major clients
   ]
   #work-heading(
     "R&D Software Engineering",
@@ -111,7 +112,6 @@
   )[
     _React, Supabase, Auth_
     - Developed a single page webapp that helps students keep track of their course work / study progress
-    - OAuth with multiple providers, statistics, continous deployment
   ]
   #project-heading(
     "Siemens Safeguard",
