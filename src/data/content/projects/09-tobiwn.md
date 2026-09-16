@@ -5,7 +5,7 @@ shortDescription: This portfolio website.
 date: 2026
 tags: [TS, Vue.js, Tailwind]
 link: https://tobiwn.me
-status: ongoing
+status: finished
 image: tobiwn.png
 ---
 

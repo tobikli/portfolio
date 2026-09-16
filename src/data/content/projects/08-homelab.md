@@ -5,7 +5,7 @@ shortDescription: Proxmox VM Cluster.
 date: 2026
 tags: [Proxmox, VM, Net]
 link: https://twks.net
-status: ongoing
+status: finished
 image: twks.png
 ---
 

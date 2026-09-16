@@ -43,10 +43,6 @@ export const information = {
             Furthermore, I love traveling the world (and hopefully outer worlds soon), trying out
             culinary exquisites and music.
           </p>
-          <p class="mt-3">
-            You can also find some cool stuff on my
-            <a class="underline" href="https://v2.tobiwn.me">alternative Portfolio!</a>
-          </p>
           <p class="mt-6">
             More information about myself and my work can be seen below or using this interactive
             <a class="underline " href="/shell">shell</a>.
