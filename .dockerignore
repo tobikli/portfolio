@@ -1,0 +1,16 @@
+node_modules
+dist
+dist-ssr
+.git
+.github
+.direnv
+.vscode
+.idea
+*.log
+.eslintcache
+coverage
+tmp
+.env.local
+Dockerfile*
+docker-compose*.yml
+.dockerignore
