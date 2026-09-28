@@ -5,7 +5,7 @@
 #let email = "tobikli@pm.me"
 #let github = "tobikli"
 #let linkedin = "klingenberg"
-#let personal-site = "tobiwn.me"
+#let personal-site = "klingenberg.dev"
 
 #show: resume.with(
   top-margin: 0.45in,
@@ -164,7 +164,7 @@
     - Mapping of MusicXML piano sheets to Unity GameObjects, MRTK UI
   ]
   #project-heading(
-    "Personal Portfolio / tobiwn.me",
+    "Personal Portfolio / klingenberg.dev",
   )[
     _HTML, CSS, JavaScript, PHP_
     - Full profile and user system, including email authentication and management

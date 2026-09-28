@@ -5,7 +5,7 @@
 #let email = "tobikli@pm.me"
 #let github = "tobikli"
 #let linkedin = "klingenberg"
-#let personal-site = "tobiwn.me"
+#let personal-site = "klingenberg.dev"
 
 #show: resume.with(
   top-margin: 0.45in,

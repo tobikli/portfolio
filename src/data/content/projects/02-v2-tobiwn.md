@@ -1,10 +1,10 @@
 ---
-name: v2.tobiwn.me
-shortName: v2.tobiwn.me
+name: v2.klingenberg.dev
+shortName: v2.klingenberg.dev
 shortDescription: Secondary portfolio website.
 date: 2024-2025
 tags: [PHP, JS, HTML]
-link: https://v2.tobiwn.me
+link: https://v2.klingenberg.dev
 status: finished
 image: v2tobiwn.png
 ---

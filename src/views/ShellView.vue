@@ -20,7 +20,7 @@ const welcomeText = `
 Welcome to my Shell! ${version}
 Here you can quickly find information about me.
 Run help for a overview of possible commands.
-This is a WIP shell, for full features including auth, visit https://v2.tobiwn.me/shell
+This is a WIP shell, for full features including auth, visit https://v2.klingenberg.dev/shell
 `
 
 const enforceCursorPosition = (input: HTMLInputElement) => {
@@ -150,7 +150,7 @@ onBeforeUnmount(() => {
           <span class="minimize"></span>
           <span class="maximize"></span>
         </div>
-        <span class="title-text">tobiwn.me</span>
+        <span class="title-text">klingenberg.dev</span>
       </div>
       <textarea id="output" ref="outputRef" readonly></textarea>
       <div class="input-container">

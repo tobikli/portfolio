@@ -3,7 +3,7 @@
 
 Clean, animated personal portfolio built with Vue 3 + Vite. Content lives in simple Markdown files and a few small data helpers, so you can update sections without touching components.
 
-> **_NOTE:_**  My live version of this site can be found here: [tobiwn.me](https://tobiwn.me)
+> **_NOTE:_**  My live version of this site can be found here: [klingenberg.dev](https://klingenberg.dev)
 
 ## Features
 - Modern Vue 3 + Vite setup with motion and custom cursor details
