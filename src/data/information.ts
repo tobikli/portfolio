@@ -6,8 +6,6 @@ export const information = {
   name_short: 'Tobias Klingenberg',
   mail: 'tobias@klingenberg.dev',
   slogan: 'Master Informatics student at TUM',
-  birthday: birthday,
-  age: age,
   profilePic: profilePic,
   cv: CV,
   location: 'Munich, GER',
