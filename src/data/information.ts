@@ -1,9 +1,6 @@
 import profilePic from '@/assets/images/profile.png'
 import CV from '@/assets/cv/main.pdf'
 
-const birthday = new Date('2003-05-26')
-const age = getAge(birthday)
-
 export const information = {
   name: 'Tobias Wen Klingenberg',
   name_short: 'Tobias Klingenberg',
@@ -14,10 +11,10 @@ export const information = {
   profilePic: profilePic,
   cv: CV,
   location: 'Munich, GER',
-  status: 'Currently employed at Siemens FT',
+  status: 'Currently employed at Deloitte',
   aboutHtml: `
           <p>
-            I'm ${age} years old and in my
+            I'm currently in my
             <b>Master of Science</b> studies of
             <a
               class="underline"
@@ -132,14 +129,4 @@ export const information = {
     "Software Engineering",
     "Robotics / Mechatronics",
   ],
-}
-
-function getAge(birthDate: Date) {
-  const today = new Date()
-  let age = today.getFullYear() - birthDate.getFullYear()
-  const m = today.getMonth() - birthDate.getMonth()
-  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-    age--
-  }
-  return age
 }
