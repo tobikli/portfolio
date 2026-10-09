@@ -12,15 +12,9 @@ let adminCode: string | undefined
 let name: string | undefined
 
 const welcomeText = `
- _       _   _
-| |_ ___| |_|_|_ _ _ ___   _____ ___
-|  _| . | . | | | | |   |_|     | -_|
-|_| |___|___|_|_____|_|_|_|_|_|_|___|
-
 Welcome to my Shell! ${version}
 Here you can quickly find information about me.
 Run help for a overview of possible commands.
-This is a WIP shell, for full features including auth, visit https://v2.klingenberg.dev/shell
 `
 
 const enforceCursorPosition = (input: HTMLInputElement) => {
