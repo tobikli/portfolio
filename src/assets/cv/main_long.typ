@@ -54,6 +54,16 @@
   )[
     - Reorientation of studies towards computer science
   ]
+  #education-heading(
+    "Helene-Lange-Gymnasium Dortmund",
+    "Dortmund, NRW",
+    "Abitur",
+    "General Qualification for University Entrance",
+    datetime(year: 2013, month: 10, day: 1),
+    datetime(year: 2021, month: 8, day: 1),
+  )[
+    - Intensive courses in mathematics, biology, english and computer science
+  ]
 ]
 
 #custom-title("Experience")[
@@ -130,11 +140,11 @@
     - Langchain integration with FastAPI microservice and vector database for scalable and personalized queries
   ]
   #project-heading(
-    "BCI Companion",
+    "Neurobridge",
   )[
-    _React Native, React, Supabase_
-    - Clinical communication and progress tool for BCI (Brain Computer Inteface) patients to track progress of training sessions
-    - Real world usage at TUM Klinikum
+    _React, Supabase, Healthcare_
+    - A two sided integrated platform for tetraplegic that got a BCI implant, used in real clinical setting
+    - Communication and tracking for patients and caretakers, including a patient portal and a caretaker dashboard and possible training of BCI chip on the smartphone app
   ]
   #project-heading(
     "UPlan",

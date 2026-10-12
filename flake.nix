@@ -11,7 +11,7 @@
       devShells = forAllSystems (system:
         let pkgs = import nixpkgs { inherit system; };
         in {
-          default = pkgs.mkShell { packages = with pkgs; [ nodejs_24 ]; };
+          default = pkgs.mkShell { packages = with pkgs; [ nodejs_24 typst ]; };
         }
       );
     };

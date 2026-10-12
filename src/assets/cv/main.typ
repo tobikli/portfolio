@@ -30,7 +30,7 @@
     "Present",
   )[
     - Specialization in Software Engineering, Cybersecurity and Machine Learning and AI
-    - Relevant Coursework: Deep Learning, Webapp Sec, DevOps, Cryptography, Causality, Cybersecurity
+    - Relevant Coursework: Deep Learning, Webapplication Security, DevOps, Cryptography, Embedded / Network Security, Advanced Algorithms
   ]
   #education-heading(
     "Technical University of Munich",
@@ -43,16 +43,7 @@
     - Minor in Management and Economics
     - Relevant Coursework: Software Engineering, Functional Programming, Data Structures and Algorithms, Computer Networks, Operating Systems
   ]
-  #education-heading(
-    "Goethe University Frankfurt",
-    "Frankfurt, HE",
-    "Bachelor of Science",
-    "Economics and Business Administration",
-    datetime(year: 2021, month: 10, day: 1),
-    datetime(year: 2022, month: 9, day: 1),
-  )[
-    - Reorientation of studies towards computer science
-  ]
+
 ]
 
 #custom-title("Experience")[
@@ -67,22 +58,17 @@
     - Assistance in Cybersecurity Assessment (IAM, DS, PII) of major clients
   ]
   #work-heading(
-    "R&D Software Engineering",
-    "Siemens AG / FT, Working Student",
-    "Munich, BY",
-    datetime(year: 2026, month: 2, day: 1),
-    datetime(year: 2026, month: 5, day: 1),
-  )[
-    - Self localisation of edge devices using Mesh-Networks on mqtt
-    - Integration with autonomously guided vehicles
-  ]
-  #work-heading(
-    "IT-Infrastructure and Administration",
-    "Siemens AG / CYS-OE-IS, Working Student",
+    "Working Student",
+    "Siemens AG",
     "Munich, BY",
     datetime(year: 2025, month: 6, day: 1),
-    datetime(year: 2026, month: 2, day: 1),
+    datetime(year: 2026, month: 5, day: 1),
   )[
+    *FT - R&D Software Engineering* (Feb 2026 – May 2026)
+    - Self localisation of edge devices using Mesh-Networks on mqtt
+    - Integration with autonomously guided vehicles
+
+    *CYS-OE-IS - IT-Infrastructure and Administration* (Jun 2025 – Feb 2026)
     - Deployment and configuration of IT infrastructure for Siemens Cybersecurity (Proxmox)
     - Automation of intra service synchronization
   ]
@@ -101,17 +87,18 @@
 
 #custom-title("Projects")[
   #project-heading(
+    "Neurobridge",
+  )[
+    _React, Supabase, Healthcare_
+    - A two sided integrated platform for tetraplegic that got a BCI implant, used in real clinical setting
+    - Communication and tracking for patients and caretakers, including a patient portal and a caretaker dashboard and possible training of BCI chip on the smartphone app
+  ]
+  #project-heading(
     "CareDesk",
   )[
     _FastAPI, Langchain, CI/CD, Terraform, K8s_
     - Microservice based clinical organization tool, including appointment booking, patient data and GenAI
     - Langchain integration with FastAPI microservice and vector database for scalable and personalized queries
-  ]
-  #project-heading(
-    "UPlan",
-  )[
-    _React, Supabase, Auth_
-    - Developed a single page webapp that helps students keep track of their course work / study progress
   ]
   #project-heading(
     "Siemens Safeguard",
