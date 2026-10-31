@@ -6,7 +6,7 @@ import { useHead } from '@unhead/vue'
 import { useRoute } from 'vue-router'
 import { createGlobalMeta } from '@/data/meta'
 import ToggleMenu from '@/components/ToggleMenu.vue'
-import Badge from '@/components/Badge.vue'
+import AppBadge from '@/components/AppBadge.vue'
 
 
 const route = useRoute()
@@ -30,5 +30,5 @@ useHead(() => createGlobalMeta(currentUrl.value))
   />-->
   <RouterView />
   <ToggleMenu />
-  <Badge />
+  <AppBadge />
 </template>

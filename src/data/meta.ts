@@ -14,7 +14,7 @@ export const createGlobalMeta = (currentUrl: string) => ({
   ],
   link: [
     {
-      rel: 'canonical',
+      rel: 'canonical' as const,
       href: currentUrl,
     },
   ],

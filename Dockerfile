@@ -1,18 +1,18 @@
 # Build stage
-FROM node:22-alpine AS builder
+FROM node:26.13.0-alpine AS builder
 
 WORKDIR /app
 
 # Install dependencies
 COPY package*.json ./
-RUN npm ci
+RUN npm install --global npm@12.2.1 && npm ci
 
 # Copy application source and build
 COPY . .
 RUN npm run build
 
 # Production stage
-FROM nginx:alpine AS runner
+FROM nginx:1.31.8-alpine AS runner
 
 # Copy custom Nginx configuration
 COPY nginx.conf /etc/nginx/conf.d/default.conf

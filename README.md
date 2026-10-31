@@ -13,7 +13,7 @@ Clean, animated personal portfolio built with Vue 3 + Vite. Content lives in sim
 
 ## Quickstart
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 
@@ -41,3 +41,18 @@ Recommended: Node 20 (package.json engines covers ^20.19.0 or >=22.12.0).
 - motion-v for animations
 - @tato30/vue-pdf for inline PDF previews
 - gray-matter for parsing Markdown content
+
+## Toolchain and checks
+
+Use Node.js 26.13.0 (see `.nvmrc` or Volta) and npm 12.2.1. The Nix shell and Docker build also use Node.js 26.
+
+```sh
+npm ci
+npm run lint
+npm run build
+npm audit
+```
+
+Run `npm run lint:fix` to apply automatic lint fixes. TypeScript stays on 6.0, the newest release line supported by the ESLint TypeScript parser.
+
+The `minimatch` override keeps ESLint and its parsers on the patched 11.x release until their upstream dependency ranges catch up.
