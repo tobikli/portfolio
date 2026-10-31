@@ -56,3 +56,15 @@ npm audit
 Run `npm run lint:fix` to apply automatic lint fixes. TypeScript stays on 6.0, the newest release line supported by the ESLint TypeScript parser.
 
 The `minimatch` override keeps ESLint and its parsers on the patched 11.x release until their upstream dependency ranges catch up.
+
+## Deployment badge
+
+Production builds hide the badge by default; `npm run dev` uses the `Develop` label from `.env.development`. Vite embeds `VITE_BADGE_TEXT` during the build, so changing the running Nginx container environment does not change an existing bundle.
+
+To rebuild with no badge using Compose:
+
+```sh
+VITE_BADGE_TEXT= docker compose up -d --build
+```
+
+For other Docker builders, pass `--build-arg VITE_BADGE_TEXT=` (or set the build argument in your deployment platform). Set a nonempty build argument to display a custom badge. Rebuild and redeploy the image after changing the value.

@@ -3,6 +3,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        VITE_BADGE_TEXT: "${VITE_BADGE_TEXT:-}"
     container_name: portfolio
     ports:
       - "${PORT:-8080}:80"

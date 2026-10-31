@@ -9,6 +9,10 @@ RUN npm install --global npm@12.2.1 && npm ci
 
 # Copy application source and build
 COPY . .
+
+# Vite embeds this value at build time; an empty value hides the badge.
+ARG VITE_BADGE_TEXT=
+ENV VITE_BADGE_TEXT=${VITE_BADGE_TEXT}
 RUN npm run build
 
 # Production stage
