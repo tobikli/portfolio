@@ -91,7 +91,7 @@ onBeforeUnmount(() => {
           class="absolute w-8 h-8 border-4 border-gray-300 border-t-gray-700 rounded-full animate-spin"
         />
 
-        <VuePDF :fit-parent="true" :pdf="thesis" :page="thesisPage" @loaded="loading1 = false" />
+        <VuePDF class="w-full" :fit-parent="true" :pdf="thesis" :page="thesisPage" @loaded="loading1 = false" />
       </div>
       <div class="flex justify-center items-center p-4">
         <button @click="decreaseThesis" class="m-2 cursor-hover">&lt;</button>
@@ -127,6 +127,7 @@ onBeforeUnmount(() => {
           />
 
           <VuePDF
+            class="w-full"
             :fit-parent="true"
             :pdf="presentation"
             :page="presentationPage"

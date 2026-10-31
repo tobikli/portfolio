@@ -40,17 +40,26 @@ const splitLines = lines.map((line) => ({
           <motion.span
             v-for="(word, wordIndex) in line.words"
             :key="wordIndex"
-            class="inline-block mr-2 mb-2 transition-transform hover:cursor-default"
+            class="inline-block mr-2 mb-2 cursor-default"
             :initial="{ opacity: 0, y: 20 }"
-            :animate="{ opacity: 1, y: 0 }"
-            :transition="{
-              duration: 0.5,
-              delay:
-                wordIndex * 0.2 +
-                (lineIndex > 0 ? splitLines[lineIndex - 1]!.words.length * 0.2 : 0),
+            :animate="{
+              opacity: 1,
+              y: 0,
+              transition: {
+                type: 'tween',
+                ease: 'easeOut',
+                duration: 0.5,
+                delay:
+                  wordIndex * 0.2 +
+                  (lineIndex > 0 ? splitLines[lineIndex - 1]!.words.length * 0.2 : 0),
+              },
             }"
-            :whileHover="{ scale: 1.15, y: -4 }"
-            :hoverTransition="{ duration: 0.05, delay: 0 }"
+            :transition="{ type: 'tween', ease: 'easeOut', duration: 0.12, delay: 0 }"
+            :whileHover="{
+              scale: 1.15,
+              y: -4,
+              transition: { type: 'tween', ease: 'easeOut', duration: 0.12, delay: 0 },
+            }"
             :class="line.weight"
           >
             {{ word }}
@@ -72,7 +81,7 @@ const splitLines = lines.map((line) => ({
           :animate="{ opacity: 1, y: 0 }"
           :transition="{ duration: 0.1, delay: 0 }"
           :whileHover="{ scale: 1.2 }"
-          :whileTap="{ scale: 0.9 }"
+          :whilePress="{ scale: 0.9 }"
         >
           <font-awesome-icon
             :icon="link.icon"

@@ -71,6 +71,6 @@ const downloadPdf = () => {
       v-if="loading"
       class="absolute w-8 h-8 border-4 border-gray-300 border-t-gray-700 rounded-full animate-spin"
     />
-    <VuePDF :fit-parent="true" :pdf="pdf" @loaded="loading = false" />
+    <VuePDF class="w-full" :fit-parent="true" :pdf="pdf" @loaded="loading = false" />
   </div>
 </template>
