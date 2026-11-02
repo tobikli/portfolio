@@ -54,15 +54,16 @@ const splitLines = lines.map((line) => ({
                   (lineIndex > 0 ? splitLines[lineIndex - 1]!.words.length * 0.2 : 0),
               },
             }"
-            :transition="{ type: 'tween', ease: 'easeOut', duration: 0.12, delay: 0 }"
-            :whileHover="{
-              scale: 1.15,
-              y: -4,
-              transition: { type: 'tween', ease: 'easeOut', duration: 0.12, delay: 0 },
-            }"
             :class="line.weight"
           >
-            {{ word }}
+            <motion.span
+              class="inline-block"
+              :animate="{ scale: 1, y: 0 }"
+              :transition="{ type: 'tween', ease: 'easeOut', duration: 0.12, delay: 0 }"
+              :whileHover="{ scale: 1.15, y: -4 }"
+            >
+              {{ word }}
+            </motion.span>
           </motion.span>
         </div>
       </div>
