@@ -116,15 +116,21 @@ export const information = {
     },
   ],
   interests: [
-    "Computer Science",
-    "Astrophysics",
-    "Space Exploration",
-    "Quantum Science",
-    "Aerospace Engineering",
-    "Neuroscience",
-    "Artificial Intelligence",
-    "Cybersecurity",
-    "Software Engineering",
-    "Robotics / Mechatronics",
+    {
+      name: 'Computer Science',
+      subfields: ['Software Engineering', 'Artificial Intelligence', 'Cybersecurity'],
+    },
+    {
+      name: 'Physics',
+      subfields: ['Astrophysics', 'Quantum Mechanics', 'Space Exploration'],
+    },
+    {
+      name: 'Engineering',
+      subfields: ['Aerospace Engineering', 'Electrical Engineering', 'Robotics / Mechatronics'],
+    },
+    {
+      name: 'Psychology / Neuroscience',
+      subfields: [],
+    },
   ],
 }

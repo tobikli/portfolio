@@ -11,6 +11,7 @@ import ResearchOverview from '@/components/ResearchOverview.vue'
 import axios from 'axios'
 import { config } from '@/data/config'
 import CertificatesOverview from '@/components/CertificatesOverview.vue'
+import InterestsOverview from '@/components/InterestsOverview.vue'
 
 const status = ref(information.status)
 
@@ -28,9 +29,9 @@ onMounted(async () => {
 })
 
 const showInterests = () => {
-    showPopup({
+  showPopup({
     title: 'Interests',
-    message: information.interests.map(s => `• ${s}`).join("<br>"),
+    component: InterestsOverview,
   })
 }
 </script>
@@ -68,7 +69,9 @@ const showInterests = () => {
             class="grid grid-cols-6 mt-5 dark:border-white/10 border-black/10 px-3 py-3 gap-4 dark:bg-white/2 bg-black/3 place-items-center mx-auto rounded"
           >
             <motion.a
-              v-for="tech in tstoggle.valueOf() ? information.techstack.slice(0, 12) : information.techstack.slice(0, 5)"
+              v-for="tech in tstoggle.valueOf()
+                ? information.techstack.slice(0, 12)
+                : information.techstack.slice(0, 5)"
               :key="tech.name"
               :title="tech.name"
               class=""
@@ -83,7 +86,7 @@ const showInterests = () => {
                 class="transition-all duration-300 hover:scale-110"
               />
             </motion.a>
-                        <motion.a
+            <motion.a
               v-if="!tstoggle.valueOf()"
               key="show-more"
               title="Show more"
@@ -122,7 +125,10 @@ const showInterests = () => {
             </div>
           </div>
           <div class="space-y-3" v-html="information.aboutSideHtml"></div>
-          <p class="mt-6"><a class="underline cursor-hover" @click="showInterests">This</a> is a list of topics I am also interested in.</p>
+          <p class="mt-6">
+            <a class="underline cursor-hover" @click="showInterests">This</a> is a list of topics I
+            am also interested in.
+          </p>
           <div>
             <div class="justify-center grid grid-cols-1 sm:grid-cols-2 mt-5">
               <AnimationButton
