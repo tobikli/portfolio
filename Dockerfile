@@ -16,7 +16,7 @@ ENV VITE_BADGE_TEXT=${VITE_BADGE_TEXT}
 RUN npm run build
 
 # Production stage
-FROM nginx:1.31.8-alpine AS runner
+FROM nginx:1.31.9-alpine AS runner
 
 # Copy custom Nginx configuration
 COPY nginx.conf /etc/nginx/conf.d/default.conf
